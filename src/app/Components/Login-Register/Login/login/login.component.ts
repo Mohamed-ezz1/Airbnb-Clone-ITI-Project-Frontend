@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
-import { LoginDto } from 'src/app/Services/types/LoginDto';
+import { LoginDto } from 'src/app/types/LoginDto';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 
@@ -14,7 +14,7 @@ export class LoginComponent {
   constructor(
     private authService: AuthenticationService,
     private router: Router
-  ) {}
+  ) { }
 
   form = new FormGroup({
     username: new FormControl<string>('string'),

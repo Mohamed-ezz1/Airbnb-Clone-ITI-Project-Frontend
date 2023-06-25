@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { LoginDto } from '../types/LoginDto';
+import { LoginDto } from '../../types/LoginDto';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { TokenDto } from '../types/TokenDto';
+import { TokenDto } from '../../types/TokenDto';
 import { HttpClient } from '@angular/common/http';
-import { RegisterDto } from '../types/Register';
+import { RegisterDto } from '../../types/Register';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +11,13 @@ import { RegisterDto } from '../types/Register';
 export class AuthenticationService {
   public isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private client: HttpClient) {}
+  constructor(private client: HttpClient) { }
 
   private readonly Base_URL = "https://localhost:7108/api/User/Register";
 
 
-  AddUser(newUser:RegisterDto){
-console.log(newUser)
+  AddUser(newUser: RegisterDto) {
+    console.log(newUser)
     return this.client.post(this.Base_URL, newUser);
 
   }
