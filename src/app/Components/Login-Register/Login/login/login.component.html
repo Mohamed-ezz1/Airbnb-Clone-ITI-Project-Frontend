@@ -1,0 +1,18 @@
+<div class="container">
+    <form [formGroup]="form">
+      <div>
+        <label>Username</label>
+        <input type="text" formControlName="username" />
+      </div>
+  
+      <div>
+        <label>Password</label>
+        <input type="text" formControlName="password" />
+      </div>
+  
+      <button (click)="handleSubmit($event)" mat-raised-button color="primary">
+        Submit
+      </button>
+    </form>
+  </div>
+          
