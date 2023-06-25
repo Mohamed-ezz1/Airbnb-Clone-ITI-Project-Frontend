@@ -11,6 +11,10 @@ import { HostBookingOrdersComponent } from './Components/User/host-booking-order
 import { HostPropertiesComponent } from './Components/User/host-properties/host-properties.component';
 import { HostPropertyUpdateComponent } from './Components/User/host-property-update/host-property-update.component';
 import { MaterialModule } from './AngularMaterial/material.module';
+import { LoginComponent } from './Components/Login-Register/Login/login/login.component';
+import { RegisterComponent } from './Components/Login-Register/Register/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,12 +26,17 @@ import { MaterialModule } from './AngularMaterial/material.module';
     HostBookingOrdersComponent,
     HostPropertiesComponent,
     HostPropertyUpdateComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

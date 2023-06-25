@@ -1,0 +1,38 @@
+    <div class="container">
+        <form class="form" (submit)="ADDuser(Fname.value,Lname.value,username.value,email.value,pass.value)" >
+            <h2>Sign In</h2>
+            <div class="inputcontainer">
+                <input type="text" required="required" #Fname>
+                <span>First Name</span>
+                <i></i>
+            </div>
+            <div class="inputcontainer">
+                <input type="text" required="required" #Lname>
+                <span>Last Name</span>
+                <i></i>
+            </div>
+            <div class="inputcontainer">
+                <input type="text" required="required" #username>
+                <span>UserName</span>
+                <i></i>
+            </div>
+            <div class="inputcontainer">
+                <input type="email" required="required" #email>
+                <span>Email</span>
+                <i></i>
+            </div>
+            <div class="inputcontainer">
+                <input type="password" required="required" #pass>
+                <span>Password</span>
+                <i></i>
+            </div>
+            <div class="links">
+                
+                <a href="#">Forgot OTP?</a>
+                <a href="#">Login</a>
+            </div>
+            <input type="submit" value="Connect" >
+        </form>
+
+
+</div>
