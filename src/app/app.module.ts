@@ -9,6 +9,7 @@ import { HostDashboardComponent } from './Components/User/host-dashboard/host-da
 import { AddPropertyComponent } from './Components/User/add-property/add-property.component';
 import { HostBookingOrdersComponent } from './Components/User/host-booking-orders/host-booking-orders.component';
 import { HostPropertiesComponent } from './Components/User/host-properties/host-properties.component';
+import { MaterialModule } from './AngularMaterial/material.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HostPropertiesComponent } from './Components/User/host-properties/host-
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
