@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HostService } from 'src/app/Services/Host/host.service';
 import { PropertyAddEditDto } from 'src/app/types/PropertyAddEditDto';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-add-property',
@@ -32,7 +33,10 @@ export class AddPropertyComponent implements OnInit {
         this.listsData = data;
         this.countries = this.listsData.countries;
         this.categories = this.listsData.categories;
-        this.amenities = this.listsData.amenities;
+        this.amenities = this.listsData.amenities.map((amenity: any) => ({
+          id: amenity.id,
+          name: amenity.name
+        }));
       },
       error: (err) => {
         console.log(err);
@@ -48,18 +52,31 @@ export class AddPropertyComponent implements OnInit {
     this.cities = selectedCountry ? selectedCountry.cities : [];
   }
 
-  addProperty(): void {
-    this.property.propertyName = ""; // Assign the value from your form control
-    this.property.ImagesURLs = []; // Assign the value from your form control
-    this.property.MaxNumberOfGuests = 0; // Assign the value from your form control
-    this.property.BedroomsCount = 0; // Assign the value from your form control
-    this.property.BathroomsCount = 0; // Assign the value from your form control
-    this.property.BedCount = 0; // Assign the value from your form control
-    this.property.PricePerNight = 0; // Assign the value from your form control
+  toggleAmenitySelection(amenityId: number): void {
+    const index = this.selectedAmenities.indexOf(amenityId);
+    if (index > -1) {
+      this.selectedAmenities.splice(index, 1);
+    } else {
+      this.selectedAmenities.push(amenityId);
+    }
+  }
+
+  addProperty(propertyForm: NgForm): void {
+    if (propertyForm.invalid) {
+      return;
+    }
+
+    this.property.propertyName = this.property.propertyName.trim();
+    this.property.ImagesURLs = this.property.ImagesURLs.map((url: string) => url.trim());
+    this.property.MaxNumberOfGuests = +this.property.MaxNumberOfGuests;
+    this.property.BedroomsCount = +this.property.BedroomsCount;
+    this.property.BathroomsCount = +this.property.BathroomsCount;
+    this.property.BedCount = +this.property.BedCount;
+    this.property.PricePerNight = +this.property.PricePerNight;
     this.property.CategoryId = +this.selectedCategory;
     this.property.CityId = +this.selectedCity;
-    this.property.Address = ""; // Assign the value from your form control
-    this.property.Description = ""; // Assign the value from your form control
+    this.property.Address = this.property.Address.trim();
+    this.property.Description = this.property.Description.trim();
     this.property.AmenitiesId = this.selectedAmenities;
 
     this.hostService.AddProperty(this.property).subscribe(

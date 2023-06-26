@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-title>Add Property</mat-card-title>
   <mat-card-content>
-    <form #propertyForm="ngForm" (ngSubmit)="addProperty()">
+    <form #propertyForm="ngForm" (ngSubmit)="addProperty(propertyForm)">
       <mat-form-field>
         <mat-label>Country:</mat-label>
         <mat-select
@@ -40,26 +40,29 @@
         <mat-error *ngIf="!selectedCategory">Category is required</mat-error>
       </mat-form-field>
 
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-label>Amenities:</mat-label>
-        <mat-select
-          [(ngModel)]="selectedAmenities"
-          name="amenities"
-          multiple
-          required
-        >
-          <mat-option *ngFor="let amenity of amenities" [value]="amenity.id">
+        <mat-chip-list #chipList>
+          <mat-chip
+            *ngFor="let amenity of amenities"
+            [ngClass]="{
+              'selected-chip': property.AmenitiesId.includes(amenity.id)
+            }"
+            (click)="toggleAmenitySelection(amenity.id)"
+          >
             {{ amenity.name }}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="!selectedAmenities">Amenities are required</mat-error>
-      </mat-form-field>
+          </mat-chip>
+        </mat-chip-list>
+        <mat-error *ngIf="!property.AmenitiesId.length">
+          Select at least one amenity
+        </mat-error>
+      </mat-form-field> -->
 
       <mat-form-field>
         <mat-label>Property Name:</mat-label>
         <input
           matInput
-          [(ngModel)]="property['propertyName']"
+          [(ngModel)]="property.propertyName"
           name="propertyName"
           required
         />
@@ -68,24 +71,24 @@
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field>
+      <!-- <mat-form-field>
         <mat-label>Images URLs:</mat-label>
         <input
           matInput
-          [(ngModel)]="property['ImagesURLs']"
+          [(ngModel)]="property.ImagesURLs"
           name="imagesURLs"
           required
         />
         <mat-error *ngIf="propertyForm.controls['imagesURLs']?.errors">
           Images URLs are required
         </mat-error>
-      </mat-form-field>
+      </mat-form-field> -->
 
       <mat-form-field>
         <mat-label>Max Number of Guests:</mat-label>
         <input
           matInput
-          [(ngModel)]="property['MaxNumberOfGuests']"
+          [(ngModel)]="property.MaxNumberOfGuests"
           name="maxNumberOfGuests"
           type="number"
           required
@@ -95,11 +98,89 @@
         </mat-error>
       </mat-form-field>
 
-      <button
-        mat-raised-button
-        color="primary"
-        [disabled]="propertyForm.invalid"
-      >
+      <mat-form-field>
+        <mat-label>Bedrooms Count:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.BedroomsCount"
+          name="bedroomsCount"
+          type="number"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['bedroomsCount']?.errors">
+          Bedrooms Count is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Bathrooms Count:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.BathroomsCount"
+          name="bathroomsCount"
+          type="number"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['bathroomsCount']?.errors">
+          Bathrooms Count is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Bed Count:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.BedCount"
+          name="bedCount"
+          type="number"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['bedCount']?.errors">
+          Bed Count is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Price per Night:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.PricePerNight"
+          name="pricePerNight"
+          type="number"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['pricePerNight']?.errors">
+          Price per Night is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Address:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.Address"
+          name="address"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['address']?.errors">
+          Address is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Description:</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="property.Description"
+          name="description"
+          required
+        ></textarea>
+        <mat-error *ngIf="propertyForm.controls['description']?.errors">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit">
         Add Property
       </button>
     </form>
