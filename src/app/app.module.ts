@@ -19,7 +19,7 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
 import { AuthenticationInterceptor } from './Components/Interceptors/authentication.interceptor';
 import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/prop-details.component';
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
-
+import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
 
 @NgModule({
   declarations: [
@@ -43,8 +43,7 @@ import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-
-
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor

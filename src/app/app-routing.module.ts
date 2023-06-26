@@ -6,10 +6,18 @@ import { HostBookingOrdersComponent } from './Components/User/host-booking-order
 import { HostPropertiesComponent } from './Components/User/host-properties/host-properties.component';
 import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/prop-details.component';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { AddPropertyComponent } from './Components/User/add-property/add-property.component';
+
 const routes: Routes = [
-  {path:'Register', component:RegisterComponent},
-  {path :'login', component:LoginComponent},
-  {path:'user-profile', component:UserProfileComponent}
+  { path: 'Register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'Register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'hostBooking', component: HostBookingOrdersComponent },
+  { path: 'hostProperty', component: HostPropertiesComponent },
+  { path: 'propertyDetails', component: PropDetailsComponent },
+  { path: 'addProperty', component: AddPropertyComponent }
 
 ];
 
