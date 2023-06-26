@@ -22,10 +22,6 @@ export class AuthenticationService {
 
   }
 
-
-
-
-
   public login(credentials: LoginDto): Observable<TokenDto> {
     return this.client
       .post<TokenDto>('https://localhost:7108/api/User/Login', credentials)
