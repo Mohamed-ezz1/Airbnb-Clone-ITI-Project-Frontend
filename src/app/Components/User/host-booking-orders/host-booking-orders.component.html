@@ -16,9 +16,7 @@
       <ng-container matColumnDef="propertyName">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Name</th>
         <td mat-cell *matCellDef="let row">
-          <a id="name" routerLink="/users/{{ row.id }}">{{
-            row?.propertyName
-          }}</a>
+          <a id="name">{{ row?.propertyName }}</a>
         </td>
       </ng-container>
 
@@ -31,12 +29,16 @@
       <!-- checkInDate Column -->
       <ng-container matColumnDef="checkInDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>check In Date</th>
-        <td mat-cell *matCellDef="let row">{{ row?.checkInDate }}</td>
+        <td mat-cell *matCellDef="let row">
+          {{ row?.checkInDate | date : "dd-MM-yyyy" }}
+        </td>
       </ng-container>
       <!-- checkOutDate Column -->
       <ng-container matColumnDef="checkOutDate">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>checkout Date</th>
-        <td mat-cell *matCellDef="let row">{{ row?.checkOutDate }}</td>
+        <td mat-cell *matCellDef="let row">
+          {{ row?.checkOutDate | date : "dd-MM-yyyy" }}
+        </td>
       </ng-container>
 
       <!-- totalPrice Column -->
