@@ -1,1 +1,42 @@
-<p>host-property-update works!</p>
+<div>
+  <label for="country">Country:</label>
+  <select
+    id="country"
+    [(ngModel)]="selectedCountry"
+    (change)="onCountryChange()"
+  >
+    <option value="">Select Country</option>
+    <option *ngFor="let country of countries" [value]="country.id">
+      {{ country.name }}
+    </option>
+  </select>
+</div>
+
+<div>
+  <label for="city">City:</label>
+  <select id="city" [(ngModel)]="selectedCity">
+    <option value="">Select City</option>
+    <option *ngFor="let city of cities" [value]="city.id">
+      {{ city.name }}
+    </option>
+  </select>
+</div>
+
+<div>
+  <label for="category">Category:</label>
+  <select id="category" [(ngModel)]="selectedCategory">
+    <option value="">Select Category</option>
+    <option *ngFor="let category of categories" [value]="category.id">
+      {{ category.name }}
+    </option>
+  </select>
+</div>
+
+<div>
+  <label for="amenities">Amenities:</label>
+  <select id="amenities" [(ngModel)]="selectedAmenities" multiple>
+    <option *ngFor="let amenity of amenities" [value]="amenity.id">
+      {{ amenity.name }}
+    </option>
+  </select>
+</div>
