@@ -25,8 +25,8 @@ export class HostService {
     return this.myClient.get(this.hostPropertyUrl);
   }
 
-  AddProperty(Property: PropertyAddEditDto) {
-    this.myClient.post(this.hostPropertyAddEditUrl, Property);
+  AddProperty(property: PropertyAddEditDto): Observable<any> {
+    return this.myClient.post<any>(this.hostPropertyAddEditUrl, property);
   }
 
   GetDataToPopulateFormLists() {

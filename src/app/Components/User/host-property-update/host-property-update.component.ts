@@ -7,33 +7,9 @@ import { HostService } from 'src/app/Services/Host/host.service';
   templateUrl: './host-property-update.component.html',
   styleUrls: ['./host-property-update.component.css']
 })
-export class HostPropertyUpdateComponent implements OnInit {
-  constructor(private hostService: HostService,private route: ActivatedRoute  ) { }
+export class HostPropertyUpdateComponent {
 
-  private ListsData: any;
-  private property: any;
-  selectedCity = "";
-  selectedCountry = "";
-  selectedCategory = "";
-  selectedAmenities: string[] = [];
-  cities: any[] = [];
-  countries: any[] = [];
-  categories: any[] = [];
-  amenities: any[] = [];
-
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const id = params.get('id');
-      if (id) {
-        
-      } else {
-        console.log('Invalid property ID');
-      }
-    });
-    // Retrieve the lists data for populating dropdowns
-   this.populateListsData();
-  
-  }
+}
 
 
   getPropertyDataById(id: any) {

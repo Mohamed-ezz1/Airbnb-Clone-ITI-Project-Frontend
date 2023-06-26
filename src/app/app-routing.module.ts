@@ -9,6 +9,7 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
 import { AddPropertyComponent } from './Components/User/add-property/add-property.component';
 import { HostPropertyUpdateComponent } from './Components/User/host-property-update/host-property-update.component';
 
+
 const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+
 })
 export class AppRoutingModule { }
