@@ -15,6 +15,7 @@ import { LoginComponent } from './Components/Login-Register/Login/login/login.co
 import { RegisterComponent } from './Components/Login-Register/Register/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HostPropertyUpdateComponent,
     LoginComponent,
     RegisterComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
 
   ],
   providers: [],
