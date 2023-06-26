@@ -5,6 +5,7 @@ import { LoginComponent } from './Components/Login-Register/Login/login/login.co
 import { HostBookingOrdersComponent } from './Components/User/host-booking-orders/host-booking-orders.component';
 import { HostPropertiesComponent } from './Components/User/host-properties/host-properties.component';
 import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/prop-details.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 const routes: Routes = [
   {path:'Register', component:RegisterComponent},
@@ -17,6 +18,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+
 })
 export class AppRoutingModule { }

@@ -1,4 +1,4 @@
-    <div class="container">
+    <!-- <div class="container">
         <form class="form" (submit)="ADDuser(Fname.value,Lname.value,username.value,email.value,pass.value)" >
             <h2>Sign In</h2>
             <div class="inputcontainer">
@@ -35,4 +35,105 @@
         </form>
 
 
+</div> -->
+
+
+
+
+
+
+
+
+////////////////////
+
+
+
+
+<div class=" col-4 mx-auto mt-50 p-4 grid text-center ">
+
+    <figure><img  height="100px" width="100px" src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png" alt="Avatar"></figure>
+      <form [formGroup]="form"  (submit)="handleSubmit($event)" class="needs-validation "  >
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <label class="form-label d-flex justify-content-start" for="form2Example1">Frist Name </label>
+        <input type="text" id="form2Example1" class="form-control" formControlName="FristName" required="" placeholder="asdasdas"/>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>   <div class="form-outline mb-4">
+        <label class="form-label d-flex justify-content-start" for="form2Example2">Last Name </label>
+        <input type="text" id="form2Example2" class="form-control" formControlName="LastName" required placeholder="asdasdas"/>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    <div class="form-outline mb-4">
+      <label class="form-label d-flex justify-content-start" for="form2Example3">User Name </label>
+      <input type="text" id="form2Example3" class="form-control" formControlName="username" required placeholder="asdasdas"/>
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+
+    <!-- <div class="form-outline mb-4">
+        <label class="form-label d-flex justify-content-start" for="form2Example4">Email</label>
+        <input type="text" id="form2Example4" class="form-control" formControlName="Email" required placeholder="asdasdas"/>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div> -->
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input formControlName="Email" type="email" matInput [formControl]="emailForm" [errorStateMatcher]="matcher"
+               placeholder="Ex. pat@example.com" required >
+        <mat-error *ngIf="emailForm.hasError('email') && !emailForm.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailForm.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label d-flex justify-content-start" for="form2Example5">Password</label>
+      <input type="password" id="form2Example5" class="form-control" formControlName="password" required/>
+    </div>
+  
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+        <div class="form-check">
+          <label class="form-check-label" for="form2Example34"> Remember me </label>
+
+          <input class="form-check-input" type="checkbox" value="" id="form2Example34" unchecked />
+        </div>
+      </div>
+  
+      <div class="col">
+        <!-- Simple link -->
+        <a href="#!">Forgot password?</a>
+      </div>    
+    </div>
+  
+    <!-- Submit button -->
+ 
+    <button type="submit"    [disabled]="form.valid" class="btn btn-danger  btn-block mb-4 col-4" >Sign in</button>
+  
+    <!-- Register buttons -->
+  
+  </form>
+  <div class="text-center">
+    <p>Not a member? <a routerLink="Register" >Register</a></p>
+    <!-- <p>or sign up with:</p>
+    <button type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-google"></i>
+    </button> -->
+  </div> 
 </div>
+
+
