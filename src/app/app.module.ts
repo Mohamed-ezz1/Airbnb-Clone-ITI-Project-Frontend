@@ -13,9 +13,12 @@ import { HostPropertyUpdateComponent } from './Components/User/host-property-upd
 import { MaterialModule } from './AngularMaterial/material.module';
 import { LoginComponent } from './Components/Login-Register/Login/login/login.component';
 import { RegisterComponent } from './Components/Login-Register/Register/register/register.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { AuthenticationInterceptor } from './Components/Interceptors/authentication.interceptor';
+
+
 
 
 @NgModule({
@@ -38,10 +41,14 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    
+
 
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,     //For the interceptor
+    useClass: AuthenticationInterceptor,
+    multi: true,
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

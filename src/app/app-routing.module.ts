@@ -6,10 +6,10 @@ import { HostBookingOrdersComponent } from './Components/User/host-booking-order
 import { HostPropertiesComponent } from './Components/User/host-properties/host-properties.component';
 
 const routes: Routes = [
-  {path:'Register', component:RegisterComponent},
-  {path :'login', component:LoginComponent},
-  {path:'hostBooking',component:HostBookingOrdersComponent},
-  {path:'hostProperty' , component:HostPropertiesComponent}
+  { path: 'Register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'hostBooking', component: HostBookingOrdersComponent },
+  { path: 'hostProperty', component: HostPropertiesComponent }
 
 ];
 
