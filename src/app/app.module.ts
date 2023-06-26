@@ -16,6 +16,8 @@ import { RegisterComponent } from './Components/Login-Register/Register/register
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
+import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/prop-details.component';
+import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
     HostPropertyUpdateComponent,
     LoginComponent,
     RegisterComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    PropDetailsComponent,
+    PropBookingComponent
   ],
   imports: [
     BrowserModule,
