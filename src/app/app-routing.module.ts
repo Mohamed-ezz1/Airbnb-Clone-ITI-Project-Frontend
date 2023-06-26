@@ -8,7 +8,8 @@ import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 const routes: Routes = [
   {path:'Register', component:RegisterComponent},
-  {path :'login', component:LoginComponent}
+  {path :'login', component:LoginComponent},
+  {path:'user-profile', component:UserProfileComponent}
 
 ];
 
