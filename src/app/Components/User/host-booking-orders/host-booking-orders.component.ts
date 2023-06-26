@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HostService } from 'src/app/Services/Host/host.service';
-import { HostBookingsDto } from 'src/app/types/HostBookingsDto';
 
 @Component({
   selector: 'app-host-booking-orders',
