@@ -12,7 +12,7 @@ import { HostService } from 'src/app/Services/Host/host.service';
   styleUrls: ['./host-booking-orders.component.css']
 })
 export class HostBookingOrdersComponent implements OnInit {
-  displayedColumns: string[] = ['propertyName', 'guestName', 'checkInDate', 'checkOutDate', 'totalPrice'];
+  displayedColumns: string[] = ['name', 'email', 'phone', 'address', 'edit', 'delete'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;

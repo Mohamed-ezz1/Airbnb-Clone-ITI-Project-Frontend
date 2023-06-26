@@ -1,42 +1,107 @@
-<div>
-  <label for="country">Country:</label>
-  <select
-    id="country"
-    [(ngModel)]="selectedCountry"
-    (change)="onCountryChange()"
-  >
-    <option value="">Select Country</option>
-    <option *ngFor="let country of countries" [value]="country.id">
-      {{ country.name }}
-    </option>
-  </select>
-</div>
+<mat-card>
+  <mat-card-title>Add Property</mat-card-title>
+  <mat-card-content>
+    <form #propertyForm="ngForm" (ngSubmit)="addProperty()">
+      <mat-form-field>
+        <mat-label>Country:</mat-label>
+        <mat-select
+          [(ngModel)]="selectedCountry"
+          (selectionChange)="onCountryChange()"
+          name="country"
+          required
+        >
+          <mat-option value="">Select Country</mat-option>
+          <mat-option *ngFor="let country of countries" [value]="country.id">
+            {{ country.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!selectedCountry">Country is required</mat-error>
+      </mat-form-field>
 
-<div>
-  <label for="city">City:</label>
-  <select id="city" [(ngModel)]="selectedCity">
-    <option value="">Select City</option>
-    <option *ngFor="let city of cities" [value]="city.id">
-      {{ city.name }}
-    </option>
-  </select>
-</div>
+      <mat-form-field>
+        <mat-label>City:</mat-label>
+        <mat-select [(ngModel)]="selectedCity" name="city" required>
+          <mat-option value="">Select City</mat-option>
+          <mat-option *ngFor="let city of cities" [value]="city.id">
+            {{ city.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!selectedCity">City is required</mat-error>
+      </mat-form-field>
 
-<div>
-  <label for="category">Category:</label>
-  <select id="category" [(ngModel)]="selectedCategory">
-    <option value="">Select Category</option>
-    <option *ngFor="let category of categories" [value]="category.id">
-      {{ category.name }}
-    </option>
-  </select>
-</div>
+      <mat-form-field>
+        <mat-label>Category:</mat-label>
+        <mat-select [(ngModel)]="selectedCategory" name="category" required>
+          <mat-option value="">Select Category</mat-option>
+          <mat-option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!selectedCategory">Category is required</mat-error>
+      </mat-form-field>
 
-<div>
-  <label for="amenities">Amenities:</label>
-  <select id="amenities" [(ngModel)]="selectedAmenities" multiple>
-    <option *ngFor="let amenity of amenities" [value]="amenity.id">
-      {{ amenity.name }}
-    </option>
-  </select>
-</div>
+      <mat-form-field>
+        <mat-label>Amenities:</mat-label>
+        <mat-select
+          [(ngModel)]="selectedAmenities"
+          name="amenities"
+          multiple
+          required
+        >
+          <mat-option *ngFor="let amenity of amenities" [value]="amenity.id">
+            {{ amenity.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="!selectedAmenities">Amenities are required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Property Name:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property['propertyName']"
+          name="propertyName"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['propertyName']?.errors">
+          Property Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Images URLs:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property['ImagesURLs']"
+          name="imagesURLs"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['imagesURLs']?.errors">
+          Images URLs are required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Max Number of Guests:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property['MaxNumberOfGuests']"
+          name="maxNumberOfGuests"
+          type="number"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['maxNumberOfGuests']?.errors">
+          Max Number of Guests is required
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="propertyForm.invalid"
+      >
+        Add Property
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>
