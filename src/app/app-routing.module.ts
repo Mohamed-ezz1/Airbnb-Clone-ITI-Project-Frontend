@@ -5,13 +5,10 @@ import { LoginComponent } from './Components/Login-Register/Login/login/login.co
 import { HostBookingOrdersComponent } from './Components/User/host-booking-orders/host-booking-orders.component';
 import { HostPropertiesComponent } from './Components/User/host-properties/host-properties.component';
 import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/prop-details.component';
-
+import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 const routes: Routes = [
   {path:'Register', component:RegisterComponent},
-  {path :'login', component:LoginComponent},
-  { path: 'hostBooking', component: HostBookingOrdersComponent },
-  { path: 'hostProperty', component: HostPropertiesComponent },
-  { path: 'propertyDetails', component:PropDetailsComponent}
+  {path :'login', component:LoginComponent}
 
 ];
 
