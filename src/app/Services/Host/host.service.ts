@@ -26,6 +26,10 @@ export class HostService {
     this.myClient.post(this.hostPropertyAddEditUrl, Property);
   }
 
+  GetDataToPopulateFormLists() {
+    return this.myClient.get(this.hostPropertyAddEditUrl);
+  }
+
   UpdateProperty(Property: PropertyAddEditDto) {
     this.myClient.put(this.hostPropertyAddEditUrl, Property);
   }

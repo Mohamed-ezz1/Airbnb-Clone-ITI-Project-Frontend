@@ -19,8 +19,12 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
 import { AuthenticationInterceptor } from './Components/Interceptors/authentication.interceptor';
 import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/prop-details.component';
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
+<<<<<<< HEAD
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
+=======
+import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
+>>>>>>> 9c89a0cdf7463ef4e482cf7ee23d63f74e34f97d
 
 @NgModule({
   declarations: [
@@ -44,8 +48,7 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-
-
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
