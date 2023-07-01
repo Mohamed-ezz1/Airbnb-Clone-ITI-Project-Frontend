@@ -11,7 +11,7 @@ const routes: Routes = [
   {path :'login', component:LoginComponent},
   { path: 'hostBooking', component: HostBookingOrdersComponent },
   { path: 'hostProperty', component: HostPropertiesComponent },
-  { path: 'propertyDetails', component:PropDetailsComponent}
+  { path: 'propertyDetails/:id', component:PropDetailsComponent}
 
 ];
 
