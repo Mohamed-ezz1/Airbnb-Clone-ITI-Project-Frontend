@@ -44,11 +44,11 @@ export class PropDetailsComponent implements OnInit {
     // Do something with the selected date range
   }
   
-  dateFilter: MatDatepickerFilter<Date> = (date: Date) => {
-    const startDate = new Date('2023-07-1');
-    const endDate = new Date('2023-07-10');
-    return date < startDate || date > endDate;
-  }
+  // dateFilter: MatDatepickerFilter<Date> = (date: Date) => {
+  //   const startDate = new Date('2023-07-1');
+  //   const endDate = new Date('2023-07-10');
+  //   return date < startDate || date > endDate;
+  // }
 
 }
 
