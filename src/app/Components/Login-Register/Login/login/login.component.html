@@ -1,18 +1,60 @@
-<div class="container">
-    <form [formGroup]="form">
-      <div>
-        <label>Username</label>
-        <input type="text" formControlName="username" />
+ <div class=" col-4 mx-auto mt-50 p-4 grid text-center ">
+
+    <figure><img  height="100px" width="100px" src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png" alt="Avatar"></figure>
+      <form [formGroup]="form" (submit)="handleSubmit($event)" class="needs-validation" novalidate >
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label d-flex justify-content-start" for="form2Example1">User Name </label>
+      <input type="text" id="form2Example1" class="form-control" formControlName="username" required placeholder="asdasdas"/>
+      <div class="invalid-feedback">
+        Please choose a username.
+      </div>
+    </div>
+
+    
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label d-flex justify-content-start" for="form2Example2">Password</label>
+      <input type="password" id="form2Example2" class="form-control" formControlName="password" required/>
+    </div>
+  
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+        <div class="form-check">
+          <label class="form-check-label" for="form2Example34"> Remember me </label>
+
+          <input class="form-check-input" type="checkbox" value="" id="form2Example34" unchecked />
+        </div>
       </div>
   
-      <div>
-        <label>Password</label>
-        <input type="text" formControlName="password" />
+      <div class="col">
+        <!-- Simple link -->
+        <a href="#!">Forgot password?</a>
       </div>
+    </div>
   
-      <button (click)="handleSubmit($event)" mat-raised-button color="primary">
-        Submit
-      </button>
-    </form>
-  </div>
-          
+    <!-- Submit button -->
+    <button type="submit"  class="btn btn-danger  btn-block mb-4 col-4" >Sign in</button>
+  
+    <!-- Register buttons -->
+  
+  </form>
+  <div class="text-center">
+    <p>Not a member? <a routerLink="Register" >Register</a></p>
+    <!-- <p>or sign up with:</p>
+    <button type="button" class="btn btn-secondary btn-floating mx-1">
+      <i class="fab fa-google"></i>
+    </button> -->
+  </div> 
+</div>
+
+<div class="alert alert-danger d-flex justify-content-center "  *ngIf="StatsError" role="alert">
+  credentials Error
+</div>
+
+<div class="alert alert-success d-flex justify-content-center  "  *ngIf="StatsLgin" role="alert">
+  success credentials </div>
+

@@ -1,6 +1,6 @@
 export class PropertyAddEditDto {
   propertyName: string = "";
-  ImagesURLs: [] = [];  //Images is a List
+  ImagesURLs: string[] = [];
   MaxNumberOfGuests: number = 0;
   BedroomsCount: number = 0;
   BathroomsCount: number = 0;
@@ -10,6 +10,5 @@ export class PropertyAddEditDto {
   CityId: number = 0;
   Address: string = "";
   Description: string = "";
-  AmenitiesId: [] = []; //Amenities is a List
+  AmenitiesId: number[] = [];
 }
-

@@ -19,6 +19,9 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
 import { AuthenticationInterceptor } from './Components/Interceptors/authentication.interceptor';
 import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/prop-details.component';
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
+
 
 
 @NgModule({
@@ -31,10 +34,10 @@ import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/
     HostPropertiesComponent,
     HostPropertyUpdateComponent,
     LoginComponent,
-    RegisterComponent,
     UserProfileComponent,
     PropDetailsComponent,
-    PropBookingComponent
+    PropBookingComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -43,14 +46,18 @@ import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-
-
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
     useClass: AuthenticationInterceptor,
     multi: true,
-  },],
+  },
+
+  { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

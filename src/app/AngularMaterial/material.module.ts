@@ -37,6 +37,8 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 
 
+
+
 @NgModule({
   declarations: [],
   exports: [
@@ -75,7 +77,8 @@ import { MatTableModule } from '@angular/material/table';
     MatTooltipModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTableModule
+    MatTableModule,
+
   ]
 })
 export class MaterialModule { }
