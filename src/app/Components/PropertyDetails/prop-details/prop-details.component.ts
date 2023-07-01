@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { MaterialModule } from 'src/app/AngularMaterial/material.module'
 import { FormGroup, FormControl } from '@angular/forms';
-//import { MatDatepickerFilter } from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-prop-details',
@@ -43,12 +42,6 @@ export class PropDetailsComponent implements OnInit {
     console.log(endDate);
     // Do something with the selected date range
   }
-  
-  // dateFilter: MatDatepickerFilter<Date> = (date: Date) => {
-  //   const startDate = new Date('2023-07-1');
-  //   const endDate = new Date('2023-07-10');
-  //   return date < startDate || date > endDate;
-  // }
 
 }
 
