@@ -1,3 +1,128 @@
-<div *ngFor="let d of propDetails">
-    <p>{{d.Name}}</p>
+<div *ngIf="propDetails" class="container">
+
+    <div class="row">
+        <h1 class="">{{propDetails.nameOfProperty}}</h1>
+        <div>
+            <mat-icon style="display: inline; font-size:1.1rem">star</mat-icon>
+            <p class="fs-6" style="display: inline;">{{propDetails.ratingOverroll}}4.8 |
+                <a>{{propDetails.numOfReviews}}6 Reviews</a> |
+                {{propDetails.cityNmae}},
+                {{propDetails.countryNmae}}
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col" *ngFor="let i of propDetails.imgs">
+            <div class="d-flex justify-content-center flex-wrap m-2">
+                <img src="{{i}}" class="rounded" style="height: 15rem; width: 25rem;">
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-8">
+            <div class="row mb-4">
+                <div class="mb-3 d-flex justify-content-between">
+                    <div>
+                        <h1>Hosted by: {{propDetails.userName}}</h1>
+                        <p class="fs-6" style="display: inline;">
+                            Maximum of {{propDetails.maxNumOfGuest}} Guests |
+                            {{propDetails.bedRoomCount}} BedRooms |
+                            {{propDetails.bathRoomCount}} BathRooms</p>
+                    </div>
+                    <img src="{{propDetails.userImage}}" class="rounded-circle" style="height: 4rem;">
+                </div>
+                <hr>
+            </div>
+
+            <div class="row">
+                <div class="col-1">
+                    <p style="display: block;" class="material-icons fs-1"> supervised_user_circle </p>
+                    <p style="display: block;" class="material-icons fs-1"> location_on </p>
+                    <p style="display: block;" class="material-icons fs-1"> key </p>
+                </div>
+                <div class="col-11">
+                    <h4 style="display: inline; font-weight: bold;">Patty And Beckett is a Superhost</h4>
+                    <p style="margin-left: 0.2rem;">Superhosts are experienced, highly rated hosts who are committed to
+                        providing great stays for guests.</p>
+                    <h4 style="display: inline; font-weight: bold;">Great location</h4>
+                    <p style="margin-left: 0.2rem;">100% of recent guests gave the location a 5-star rating.</p>
+                    <h4 style="display: inline; font-weight: bold;">Great check-in experience</h4>
+                    <p style="margin-left: 0.2rem;">100% of recent guests gave the check-in process a 5-star rating.</p>
+                </div>
+            </div>
+            <hr>
+            <div>
+                <h1 class="fs-2"><span style="color: red;">air</span>cover</h1>
+                <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other
+                    issues like trouble checking in.</p>
+            </div>
+            <hr>
+            <div>
+                <p class="fs-6">Westin Kaanapali Ocean Resort Villas North timeshare - Pay resort: $14-20/day, stays
+                    under 7 night $38/res - Inquire about availability, I review then offer/approve if available :) -
+                    READ "The Space" for cleaning/etc AND brief explanation about timeshare reservations - Want
+                    guaranteed view for additional cost? Must be weekly rental, other restrictions - Wheelchair
+                    accessible / ADA, call resort directly to ensure U receive. If U need ADA U MUST inform us BEFORE
+                    booking.</p>
+            </div>
+            <hr>
+
+            <h2 class="fw-bold">What this place offers</h2>
+            <div *ngFor="let a of propDetails.aminties">
+                <p style="display: inline;" class="material-icons fs-3">{{a.icon}}</p>
+                <p style="display: inline;" class="fs-3"> {{a.amintiesName}}</p>
+            </div>
+            <hr>
+
+            <!-- reviews sction -->
+            <div>
+                <div>
+                    <p style="display: inline;" class="material-icons fs-5">star</p>
+                    <p class="fs-5" style="display: inline;">
+                        {{propDetails.ratingOverroll}}4.8 |
+                        {{propDetails.numOfReviews}}6 Reviews</p>
+                </div>
+                <div>
+                    <!-- <img src="{{propDetails.reviews....}}" class="rounded-circle" style="height: 4rem;"> -->
+                </div>
+            </div>
+            <hr>
+        </div>
+
+        <div class="col-4">
+            <div class="row" style="position: sticky; top: 6rem; left: 12rem; 
+            border: lightgray solid 1px; border-radius: 5px; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+            margin-left: 4rem; margin-top: 2rem;">
+                <div class="row">
+                    <div class="d-flex">
+                        <h2 class="me-auto" style="display: inline;">${{propDetails.pricePerNight}} <span
+                                style="font-size:small;">total</span> </h2>
+                        <p style="display: inline;" class="material-icons fs-6 mt-2">star</p>
+                        <p class="fs-6 mt-2" style="display: inline;">
+                            {{propDetails.ratingOverroll}}4.8 |
+                            {{propDetails.numOfReviews}}6 Reviews</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Enter a reservation range</mat-label>
+                        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                          <input matStartDate formControlName="start" placeholder="Start date">
+                          <input matEndDate formControlName="end" placeholder="End date">
+                        </mat-date-range-input>
+                        <mat-hint>Enter the start date first, then the end date</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-date-range-picker #picker [matDatepickerFilter]="dateFilter"></mat-date-range-picker>
+                      </mat-form-field>
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div>
+
 </div>
