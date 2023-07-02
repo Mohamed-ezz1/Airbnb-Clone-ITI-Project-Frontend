@@ -32,6 +32,7 @@ import { PropertyComponent } from './Components/Home/PropertyCard/property/prope
 import { NgIf } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -65,6 +66,7 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatDialogModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf,
     ToastrModule.forRoot({
       positionClass :'toast-bottom-right'

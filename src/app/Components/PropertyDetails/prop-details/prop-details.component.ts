@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { MaterialModule } from 'src/app/AngularMaterial/material.module'
 import { MatDatepickerInputEvent  } from '@angular/material/datepicker';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { PropBookingComponent } from 'src/app/Components/PropertyDetails/prop-booking/prop-booking.component';
 
 @Component({
   selector: 'app-prop-details',
@@ -25,8 +27,8 @@ export class PropDetailsComponent implements OnInit {
   endDate: any;                 //end date of reservation
   range!: FormGroup;
   
-  constructor(myRoute: ActivatedRoute, private propService: PropertyService,
-     private fb: FormBuilder) {
+  constructor(myRoute: ActivatedRoute, private propService: PropertyService, public myRouter:Router,
+     private fb: FormBuilder, private dialog: MatDialog) {
 
     this.ID = myRoute.snapshot.params["id"];
     this.range = this.fb.group({
@@ -65,6 +67,15 @@ export class PropDetailsComponent implements OnInit {
         this.isMDisabled = true;
       }
     }
+  }
+
+  openPopup() {
+    this.dialog.open(PropBookingComponent, {
+      data: {
+        title: 'Popup Title',
+       message: 'Popup message'
+      }
+    });
   }
 
 }
