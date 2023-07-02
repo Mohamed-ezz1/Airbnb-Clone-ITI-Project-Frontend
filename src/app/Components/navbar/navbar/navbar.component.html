@@ -1,0 +1,46 @@
+
+
+
+<nav class="navbar   navbar-light bg-light">
+  <a class="navbar-brand" href="/home">
+    <img src="https://cdn4.iconfinder.com/data/icons/universal-outline/123/Home_airbnb_vacation_neighborhood_rental-256.png" width="100" height="50" class="d-inline-block align-top" alt="">
+  </a>
+ 
+  <button mat-button [matMenuTriggerFor]="menu">|||</button>
+<mat-menu   #menu="matMenu"  class="border-bottom-0   rounded-top  rounded-left rounded-right"   >
+  <div *ngIf="Isloggen">
+  <button  mat-menu-item>profile</button>
+  <button mat-menu-item>sign out</button>
+  <button mat-menu-item>Mytrips</button>
+  <button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Contact</span>
+  </button>
+</div>
+<div *ngIf="!Isloggen">
+  <button mat-menu-item>Sign in </button>
+</div>
+</mat-menu>
+
+
+<mat-form-field>
+  <mat-label>Countries</mat-label>
+  <mat-select   #country   (selectionChange)="getcities(country.value)">
+    <mat-option *ngFor="let Countryandcity of searchCountryandcity" [value]=" Countryandcity.countryId">
+      {{Countryandcity.countryname}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-label>Cities</mat-label>
+  <mat-select    #city   (selectionChange)="changecity(city.value)" >
+    <mat-option *ngFor="let city of cities" [value]=" city.cityId">
+      {{city.cityname}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+</nav>
+
+
+

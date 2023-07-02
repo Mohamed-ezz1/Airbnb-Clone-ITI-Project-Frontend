@@ -8,25 +8,25 @@ import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/
 import { UserProfileComponent } from './Components/user-profile/user-profile.component';
 import { AddPropertyComponent } from './Components/User/add-property/add-property.component';
 import { HostPropertyUpdateComponent } from './Components/User/host-property-update/host-property-update.component';
-
+import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
+import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user-profile', component: UserProfileComponent },
-  { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'hostBooking', component: HostBookingOrdersComponent },
   { path: 'hostProperty', component: HostPropertiesComponent },
   { path: 'propertyDetails/:id', component:PropDetailsComponent},
   { path: 'addProperty', component: AddPropertyComponent },
-  {path:'editProperty/:id' , component: HostPropertyUpdateComponent }
-  
-
+  {path:'editProperty/:id' , component: HostPropertyUpdateComponent },
+  {path:'Property' , component: PropertyComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),],
   exports: [RouterModule],
 
 })

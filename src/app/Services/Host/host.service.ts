@@ -14,7 +14,7 @@ export class HostService {
   private readonly hostPropertyUrl = "https://localhost:7108/api/HostSection/HostProperty";
   private readonly hostPropertyAddEditUrl = "https://localhost:7108/api/HostProperty";
 
-  private readonly hostEditProperty  = "https://localhost:7108/api/HostProperty/GetUpdate";
+  private readonly hostEditProperty = "https://localhost:7108/api/HostProperty/GetUpdate";
 
 
   GetBookingByUserId() {
@@ -26,6 +26,7 @@ export class HostService {
   }
 
   AddProperty(property: PropertyAddEditDto): Observable<any> {
+    console.log('Property JSON:', JSON.stringify(property)); // Log the property object
     return this.myClient.post<any>(this.hostPropertyAddEditUrl, property);
   }
 
@@ -33,11 +34,11 @@ export class HostService {
     return this.myClient.get(this.hostPropertyAddEditUrl);
   }
 
-    UpdateProperty(Property: PropertyAddEditDto) {
-      this.myClient.put(this.hostPropertyAddEditUrl, Property);
-    }
+  UpdateProperty(Property: PropertyAddEditDto) {
+    this.myClient.put(this.hostPropertyAddEditUrl, Property);
+  }
 
-  GetDataToPopulateForm(id:any){
+  GetDataToPopulateForm(id: any) {
     return this.myClient.get(`${this.hostEditProperty}/${id}`);
   }
 
