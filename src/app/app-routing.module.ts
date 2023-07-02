@@ -11,6 +11,7 @@ import { HostPropertyUpdateComponent } from './Components/User/host-property-upd
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
 
 const routes: Routes = [
+
   { path: 'login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'user-profile', component: UserProfileComponent },
