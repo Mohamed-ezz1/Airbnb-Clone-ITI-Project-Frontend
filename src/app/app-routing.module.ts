@@ -11,23 +11,20 @@ import { HostPropertyUpdateComponent } from './Components/User/host-property-upd
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
 
 const routes: Routes = [
-  { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'user-profile', component: UserProfileComponent },
   { path: 'Register', component: RegisterComponent },
+  { path: 'user-profile', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
   { path: 'hostBooking', component: HostBookingOrdersComponent },
   { path: 'hostProperty', component: HostPropertiesComponent },
   { path: 'propertyDetails/:id', component:PropDetailsComponent},
   { path: 'addProperty', component: AddPropertyComponent },
   {path:'editProperty/:id' , component: HostPropertyUpdateComponent },
-  {path:'Property' , component: PropertyComponent }
-
-
+  {path:'Property' , component: PropertyComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes),],
   exports: [RouterModule],
 
 })

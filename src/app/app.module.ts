@@ -45,6 +45,8 @@ import { PropertyComponent } from './Components/Home/PropertyCard/property/prope
     PropDetailsComponent,
     PropBookingComponent,
     PropertyComponent,
+    RegisterComponent
+    
 
   ],
   imports: [
@@ -54,8 +56,17 @@ import { PropertyComponent } from './Components/Home/PropertyCard/property/prope
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
-  ],
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    ToastrModule.forRoot({
+      positionClass :'toast-bottom-right'
+    })
+    
+    
+    
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
     useClass: AuthenticationInterceptor,
