@@ -21,6 +21,8 @@ import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core'; //for date picker
 
 
 
@@ -46,7 +48,9 @@ import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule  //for date picker
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
