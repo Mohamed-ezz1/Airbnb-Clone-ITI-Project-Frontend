@@ -10,8 +10,8 @@ export class PropertyService {
 
   private readonly propertyDetailsUrl = "https://localhost:7108/api/Property";
 
-  GetPropertyById() {
-    return this.myClient.get(this.propertyDetailsUrl);
+  GetPropertyById(ID:any) {
+    return this.myClient.get(this.propertyDetailsUrl+"/"+ID);
   }
 
 }

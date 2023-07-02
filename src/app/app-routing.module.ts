@@ -18,11 +18,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'hostBooking', component: HostBookingOrdersComponent },
   { path: 'hostProperty', component: HostPropertiesComponent },
-  { path: 'propertyDetails', component: PropDetailsComponent },
+  { path: 'propertyDetails/:id', component:PropDetailsComponent},
   { path: 'addProperty', component: AddPropertyComponent },
   {path:'editProperty/:id' , component: HostPropertyUpdateComponent },
   {path:'Property' , component: PropertyComponent }
-  
+
 
 ];
 
