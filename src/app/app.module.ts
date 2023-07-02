@@ -29,6 +29,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
+import { NgIf } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -47,6 +50,8 @@ import { PropertyComponent } from './Components/Home/PropertyCard/property/prope
     PropBookingComponent,
     NavbarComponent,
     PropertyComponent,
+    RegisterComponent
+    
 
   ],
   imports: [
@@ -56,8 +61,18 @@ import { PropertyComponent } from './Components/Home/PropertyCard/property/prope
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
-  ],
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf,
+    ToastrModule.forRoot({
+      positionClass :'toast-bottom-right'
+    })
+    
+    
+    
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
     useClass: AuthenticationInterceptor,
