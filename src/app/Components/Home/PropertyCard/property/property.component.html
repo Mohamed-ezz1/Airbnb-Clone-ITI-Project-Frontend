@@ -1,5 +1,5 @@
 <section class="d-flex justify-content-center flex-wrap "   >
-<div class="card col-md-6 col-lg-4 col-sm-12 d-inline-block m-3" style="width: 18rem;">
+<div *ngFor="let item of Property" class="card col-md-6 col-lg-4 col-sm-12 d-inline-block m-3" style="width: 18rem;">
     
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
         <div class="carousel-indicators">
@@ -9,13 +9,13 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" alt="...">
+            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" >
           </div>
           <div class="carousel-item">
-            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" alt="...">
+            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" >
           </div>
           <div class="carousel-item">
-            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" alt="...">
+            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" >
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
