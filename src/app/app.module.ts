@@ -22,13 +22,12 @@ import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './Components/navbar/navbar/navbar.component';
-import { QueryComponent } from './Services/query/query.component'; // <-- Import FormsModule
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { ToastrModule } from 'ngx-toastr';
+
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
 
 
@@ -47,7 +46,6 @@ import { PropertyComponent } from './Components/Home/PropertyCard/property/prope
     PropDetailsComponent,
     PropBookingComponent,
     NavbarComponent,
-    QueryComponent,
     PropertyComponent,
 
   ],
