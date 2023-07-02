@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { TokenDto } from '../../types/TokenDto';
 import { HttpClient } from '@angular/common/http';
 import { RegisterDto } from '../../types/Register';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +17,7 @@ export class AuthenticationService {
   private readonly Base_URL = "https://localhost:7108/api/User/Register";
 
 
-  AddUser(newUser: RegisterDto) {
+  AddUser(newUser: RegisterDto) :Observable<any> {
     console.log(newUser)
     return this.client.post(this.Base_URL, newUser);
 

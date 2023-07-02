@@ -164,7 +164,7 @@ input[type="submit"]:hover {
     
 } */
 
-.example-form {
+/* .example-form {
     min-width: 150px;
     max-width: 500px;
     width: 100%;
@@ -173,4 +173,14 @@ input[type="submit"]:hover {
   .example-full-width {
     width: 100%;
   }
-  
+   */
+
+   .image{
+    background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)),url(https://news.airbnb.com/wp-content/uploads/sites/4/2020/04/Airbnb_Lockup_Over_Gradient.png) center no-repeat;
+    background-size: cover;
+    height: 70vh;
+   }
+
+   section{
+    height: calc(100vh - 70px);
+   }

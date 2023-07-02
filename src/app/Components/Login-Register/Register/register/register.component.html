@@ -1,139 +1,109 @@
-    <!-- <div class="container">
-        <form class="form" (submit)="ADDuser(Fname.value,Lname.value,username.value,email.value,pass.value)" >
-            <h2>Sign In</h2>
-            <div class="inputcontainer">
-                <input type="text" required="required" #Fname>
-                <span>First Name</span>
-                <i></i>
-            </div>
-            <div class="inputcontainer">
-                <input type="text" required="required" #Lname>
-                <span>Last Name</span>
-                <i></i>
-            </div>
-            <div class="inputcontainer">
-                <input type="text" required="required" #username>
-                <span>UserName</span>
-                <i></i>
-            </div>
-            <div class="inputcontainer">
-                <input type="email" required="required" #email>
-                <span>Email</span>
-                <i></i>
-            </div>
-            <div class="inputcontainer">
-                <input type="password" required="required" #pass>
-                <span>Password</span>
-                <i></i>
-            </div>
-            <div class="links">
-                
-                <a href="#">Forgot OTP?</a>
-                <a href="#">Login</a>
-            </div>
-            <input type="submit" value="Connect" >
-        </form>
+<section class="d-flex justify-content-center align-items-center ">
+  <div class="row g-0 shadow rounded overflow-hidden  w-100 align-items-center bg-danger-subtle">
+    <div class="col-md-7 d-none d-md-block">
 
-
-</div> -->
-
-
-
-
-
-
-
-
-////////////////////
-
-
-
-
-<div class=" col-4 mx-auto mt-50 p-4 grid text-center ">
-
-    <figure><img  height="100px" width="100px" src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png" alt="Avatar"></figure>
-      <form [formGroup]="form"  (submit)="handleSubmit($event)" class="needs-validation "  >
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-        <label class="form-label d-flex justify-content-start" for="form2Example1">Frist Name </label>
-        <input type="text" id="form2Example1" class="form-control" formControlName="FristName" required="" placeholder="asdasdas"/>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-      </div>   <div class="form-outline mb-4">
-        <label class="form-label d-flex justify-content-start" for="form2Example2">Last Name </label>
-        <input type="text" id="form2Example2" class="form-control" formControlName="LastName" required placeholder="asdasdas"/>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-      </div>
-    <div class="form-outline mb-4">
-      <label class="form-label d-flex justify-content-start" for="form2Example3">User Name </label>
-      <input type="text" id="form2Example3" class="form-control" formControlName="username" required placeholder="asdasdas"/>
-      <div class="invalid-feedback">
-        Please choose a username.
-      </div>
+      <div class="image"></div>
     </div>
 
-    <!-- <div class="form-outline mb-4">
-        <label class="form-label d-flex justify-content-start" for="form2Example4">Email</label>
-        <input type="text" id="form2Example4" class="form-control" formControlName="Email" required placeholder="asdasdas"/>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-      </div> -->
+    <div class=" d-block d-md-none d-flex justify-content-center align-items-center">
 
-      <mat-form-field class="example-full-width">
-        <mat-label>Email</mat-label>
-        <input formControlName="Email" type="email" matInput [formControl]="emailForm" [errorStateMatcher]="matcher"
-               placeholder="Ex. pat@example.com" required >
-        <mat-error *ngIf="emailForm.hasError('email') && !emailForm.hasError('required')">
-          Please enter a valid email address
-        </mat-error>
-        <mat-error *ngIf="emailForm.hasError('required')">
-          Email is <strong>required</strong>
-        </mat-error>
-      </mat-form-field>
-
-
-
-    <!-- Password input -->
-    <div class="form-outline mb-4">
-      <label class="form-label d-flex justify-content-start" for="form2Example5">Password</label>
-      <input type="password" id="form2Example5" class="form-control" formControlName="password" required/>
-    </div>
-  
-    <!-- 2 column grid layout for inline styling -->
-    <div class="row mb-4">
-      <div class="col d-flex justify-content-center">
-        <!-- Checkbox -->
-        <div class="form-check">
-          <label class="form-check-label" for="form2Example34"> Remember me </label>
-
-          <input class="form-check-input" type="checkbox" value="" id="form2Example34" unchecked />
-        </div>
+      <figure><img height="100px" width="100px" src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png"></figure>
       </div>
-  
-      <div class="col">
-        <!-- Simple link -->
-        <a href="#!">Forgot password?</a>
-      </div>    
+
+    <div class="col-md-4 ">
+
+      <form class="px-4" [formGroup]="form2" (ngSubmit)="register(form2)">
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>FirstName</mat-label>
+          <input formControlName="FirstName" type="text" matInput placeholder="FirstName" maxlength="10" minlength="3">
+
+          <mat-error *ngIf="form2.get('FirstName')?.hasError('required')">
+            FirstName is <strong>required</strong>
+          </mat-error>
+
+          <mat-error *ngIf="form2.get('FirstName')?.hasError('minlength')">
+            FirstName is <strong>minlenth =3 </strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>LastName</mat-label>
+          <input formControlName="LastName" type="text" matInput placeholder="LastName"  maxlength="10" minlength="3">
+
+          <mat-error *ngIf="form2.get('LastName')?.hasError('required')" >
+            LastName is <strong>required</strong>
+          </mat-error> 
+          <mat-error *ngIf="form2.get('LastName')?.hasError('minlength')">
+            FirstName is <strong>minlenth =3 </strong>
+          </mat-error>
+       
+      
+
+        </mat-form-field>
+
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>UserName</mat-label>
+          <input formControlName="UserName" type="text" matInput placeholder="UserName" maxlength="10" minlength="4" pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,10}[a-zA-Z0-9]$">
+
+          <mat-error *ngIf="form2.get('UserName')?.hasError('required')">
+            UserName is <strong>required</strong>
+          </mat-error>
+
+          <mat-error *ngIf="form2.get('UserName')?.hasError('minlength')">
+            FirstName is <strong>minlenth =4 </strong>
+          </mat-error>
+
+          <mat-error *ngIf="form2.get('UserName')?.hasError('pattern')">
+            UserName not match pattern [<strong>  contain strange char  </strong>]
+          </mat-error>
+       
+        </mat-form-field>
+
+
+
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input formControlName="email" type="email" matInput placeholder="email">
+
+          <mat-error *ngIf="form2.get('email')?.hasError('required')">
+            email is <strong>required</strong>
+          </mat-error>
+
+   
+        </mat-form-field>
+
+
+
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label> password</mat-label>
+          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" pattern='^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$'>
+          <mat-error *ngIf="form2.get('password')?.hasError('required')">
+            password is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="form2.get('password')?.hasError('pattern')">
+            password not match pattern [<strong>  contain Upercase / Lowercase / numbers</strong>]
+          </mat-error>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+
+      
+        </mat-form-field>
+
+
+        <button  mat-raised-button color="primary"  class="w-100">Register </button>
+      </form>
+      <br>
+      <br>
+      <br>
+      <p>Have Account? <a class="btn btn-outline-dark"  routerLink="login">Login</a></p>
+
     </div>
-  
-    <!-- Submit button -->
- 
-    <button type="submit"    [disabled]="form.valid" class="btn btn-danger  btn-block mb-4 col-4" >Sign in</button>
-  
-    <!-- Register buttons -->
-  
-  </form>
-  <div class="text-center">
-    <p>Not a member? <a routerLink="Register" >Register</a></p>
-    <!-- <p>or sign up with:</p>
-    <button type="button" class="btn btn-secondary btn-floating mx-1">
-      <i class="fab fa-google"></i>
-    </button> -->
-  </div> 
-</div>
+
+  </div>
 
 
+</section>
