@@ -21,12 +21,13 @@ import { PropDetailsComponent } from './Components/PropertyDetails/prop-details/
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { FormsModule } from '@angular/forms'; // <-- Import FormsModule
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { ToastrModule } from 'ngx-toastr';
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
-
 
 
 
@@ -53,11 +54,7 @@ import { PropertyComponent } from './Components/Home/PropertyCard/property/prope
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    ToastrModule.forRoot(),
+    FormsModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
