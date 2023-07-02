@@ -23,4 +23,12 @@ export class PropertyService {
     return this.myClient.get('https://localhost:7108/api/Home/Properties')
   }
 
+
+
+  GetPropertySarch(filter :any){
+
+    
+    return this.myClient.post("https://localhost:7108/api/Home/Properties/filter",filter)
+
+  }
 }

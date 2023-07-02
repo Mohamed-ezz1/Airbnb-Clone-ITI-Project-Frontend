@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { async } from 'rxjs';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { QueryService } from 'src/app/Services/query/query.service';
@@ -11,7 +12,10 @@ import { QueryService } from 'src/app/Services/query/query.service';
 })
 export class PropertyComponent {
   slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });
-   Property!: any;
+   Property: any;
+
+   PropertyFilter :any;
+   objectFilter :any;
   query: QueryService
   PropertyService : PropertyService
   constructor(query: QueryService,PropertyService : PropertyService   ,  private router: Router) {
@@ -33,6 +37,8 @@ export class PropertyComponent {
       
       
           });
+
+
       
 ///////
 
@@ -40,11 +46,33 @@ export class PropertyComponent {
       
       next: (value)=>{
 
-        console.log(this.query.query    )
+        console.log(this.query.query)
+        this.objectFilter = this.query.query;
 
       },
       error: ()=> console.log("Asdasdsadsa") 
     });
+
+
+
+
+    ///////////////
+
+    this.PropertyService.GetPropertySarch(this.objectFilter).subscribe({
+      next: (data)=>{
+        console.log("data filter")
+        console.log(data)
+
+        this.PropertyFilter = data;
+
+      },
+      error: ()=> console.log("Asdasdsadsa") 
+      
+      
+          });
+
+    //////
+    
 
     this.slides[0] = {
       src: './assets/img/angular.jpg',

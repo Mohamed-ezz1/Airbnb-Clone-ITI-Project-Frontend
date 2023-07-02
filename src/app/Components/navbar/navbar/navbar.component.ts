@@ -31,7 +31,8 @@ constructor( a:AuthenticationService , SearchboxService :SearchboxService ,query
 this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
-query.setqeury({"cityId": 0})
+query.setqeury({"cityId": 1})
+query.setqeury({"catogreyId": 1  ,"cityId": 11 })
 this.selectedCountry= null ;
 this.selectedCity  = null;
 this.numberOfguets=null;

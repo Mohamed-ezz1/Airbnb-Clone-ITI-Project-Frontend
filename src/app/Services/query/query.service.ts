@@ -15,7 +15,7 @@ export class QueryService {
 
   setqeury(query:any ){
     this.count++;
-    console.log(this.count + " " + query)
+    console.log( query)
     this.query= query;
     }
 
