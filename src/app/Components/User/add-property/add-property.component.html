@@ -1,7 +1,11 @@
 <mat-card>
   <mat-card-title>Add Property</mat-card-title>
   <mat-card-content>
-    <form #propertyForm="ngForm" (ngSubmit)="addProperty(propertyForm)">
+    <form
+      #propertyForm="ngForm"
+      (ngSubmit)="addProperty(propertyForm)"
+      ngNativeValidate
+    >
       <mat-form-field>
         <mat-label>Country:</mat-label>
         <mat-select
@@ -40,23 +44,19 @@
         <mat-error *ngIf="!selectedCategory">Category is required</mat-error>
       </mat-form-field>
 
-      <!-- <mat-form-field>
+      <mat-form-field>
         <mat-label>Amenities:</mat-label>
-        <mat-chip-list #chipList>
-          <mat-chip
-            *ngFor="let amenity of amenities"
-            [ngClass]="{
-              'selected-chip': property.AmenitiesId.includes(amenity.id)
-            }"
-            (click)="toggleAmenitySelection(amenity.id)"
-          >
+        <mat-select
+          #selectList
+          [(ngModel)]="property.AmenitiesId"
+          multiple
+          (selectionChange)="onAmenitySelectionChange($event)"
+        >
+          <mat-option *ngFor="let amenity of amenities" [value]="amenity.id">
             {{ amenity.name }}
-          </mat-chip>
-        </mat-chip-list>
-        <mat-error *ngIf="!property.AmenitiesId.length">
-          Select at least one amenity
-        </mat-error>
-      </mat-form-field> -->
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <mat-form-field>
         <mat-label>Property Name:</mat-label>
@@ -73,12 +73,14 @@
 
       <!-- <mat-form-field>
         <mat-label>Images URLs:</mat-label>
-        <input
+        <textarea
           matInput
           [(ngModel)]="property.ImagesURLs"
           name="imagesURLs"
           required
-        />
+          rows="5"
+          cols="40"
+        ></textarea>
         <mat-error *ngIf="propertyForm.controls['imagesURLs']?.errors">
           Images URLs are required
         </mat-error>

@@ -20,17 +20,10 @@ export class QueryService {
     }
 
 
-
-
+    
     GetQuery(){
       console.log(this.query$)
       return this.query;
     }
-    
 }
-
-
-
-
-
 
