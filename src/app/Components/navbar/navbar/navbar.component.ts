@@ -19,19 +19,29 @@ export class NavbarComponent implements OnInit   {
   Isloggen= true
   searchCountryandcity:any
   query :QueryService
+
+  //search output 
+
+  selectedCountry:any ;
+  selectedCity:any ;
+numberOfguets:any;
+cities:any;
+  
 constructor( a:AuthenticationService , SearchboxService :SearchboxService ,query : QueryService ){
 this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
-query.setqeury({"cityId": 0})
-
+this.query.setqeury({"cityId": 1})
+this.selectedCountry= null ;
+this.selectedCity  = null;
+this.numberOfguets=null;
 
 } 
   ngOnInit(): void {
   this.authenticationService.isLoggedIn$.subscribe({
    
 next: (value)=> {
-  this.Isloggen=true
+  this.Isloggen=value
   console.log(this.Isloggen)
 },
 error: ()=> this.Isloggen=false
@@ -43,6 +53,10 @@ error: ()=> this.Isloggen=false
 
     this.searchCountryandcity=value
     console.log(this.searchCountryandcity)
+    console.log(this.searchCountryandcity.countryId )
+    this.searchCountryandcity.forEach((element:any) => {
+     console.log( element.countryId)
+    });
 
   
   },
@@ -50,10 +64,21 @@ error: ()=> this.Isloggen=false
  })
 
 
-  }
+}
 
 
+getcities( a:any){
+  this.selectedCountry =a 
+  console.log(this.selectedCountry)
+  this.cities=this.searchCountryandcity.find((x:any) =>x.countryId==+this.selectedCountry).navbarCities
+  console.log(this.cities)
+}
+changecity(a :any){
 
+this.selectedCity =a ;
+console.log(this.selectedCity)
+
+}
 
 
 

@@ -9,8 +9,11 @@ import { UserProfileComponent } from './Components/user-profile/user-profile.com
 import { AddPropertyComponent } from './Components/User/add-property/add-property.component';
 import { HostPropertyUpdateComponent } from './Components/User/host-property-update/host-property-update.component';
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
+import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
 
 const routes: Routes = [
+  { path: 'aa', component: PropBookingComponent },
+
   { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user-profile', component: UserProfileComponent },

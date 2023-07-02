@@ -16,5 +16,9 @@ export class QueryService {
   setqeury(query:any ){
     this.query$= query;
     }
+
+    getqeury( ){
+      return this.query$;
+      }
 }
 

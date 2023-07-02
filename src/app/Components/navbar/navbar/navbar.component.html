@@ -16,18 +16,30 @@
     <mat-icon>notifications_off</mat-icon>
     <span>Contact</span>
   </button>
-  
-  
-
 </div>
-
 <div *ngIf="!Isloggen">
   <button mat-menu-item>Sign in </button>
 </div>
 </mat-menu>
 
 
+<mat-form-field>
+  <mat-label>Countries</mat-label>
+  <mat-select   #country   (selectionChange)="getcities(country.value)">
+    <mat-option *ngFor="let Countryandcity of searchCountryandcity" [value]=" Countryandcity.countryId">
+      {{Countryandcity.countryname}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 
+<mat-form-field>
+  <mat-label>Cities</mat-label>
+  <mat-select    #city   (selectionChange)="changecity(city.value)" >
+    <mat-option *ngFor="let city of cities" [value]=" city.cityId">
+      {{city.cityname}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
 </nav>
 
 
