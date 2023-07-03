@@ -1,5 +1,5 @@
-export interface GestProfile{
-  id: string;
+export interface GestToUpdateProfile{
+ // userId: string;
   firstName: string;
   lastName: string;
   email: string;

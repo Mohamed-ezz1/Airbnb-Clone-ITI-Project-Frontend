@@ -3,6 +3,12 @@ import { HostService } from 'src/app/Services/Host/host.service';
 import { PropertyAddEditDto } from 'src/app/types/PropertyAddEditDto';
 import { NgForm } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
+import { forkJoin } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ImagePopupComponent } from '../image-popup/image-popup.component';
+import { HostDashboardComponent } from '../host-dashboard/host-dashboard.component';
 
 @Component({
   selector: 'app-add-property',
@@ -10,7 +16,13 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrls: ['./add-property.component.css']
 })
 export class AddPropertyComponent implements OnInit {
-  constructor(private hostService: HostService) { }
+  constructor(private hostService: HostService,
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog,
+    private hostDashboard: HostDashboardComponent) { }
+
+  // ImageUrl = '';
+  ImageUrls: string[] = [];
 
   private listsData: any;
   selectedCity = "";
@@ -59,20 +71,64 @@ export class AddPropertyComponent implements OnInit {
   onAmenitySelectionChange(event: MatSelectChange): void {
     // Retrieve the selected options
     const selectedOptions = event.value;
-
     // Update the selected amenities array
     this.selectedAmenities = selectedOptions;
-
     // Log the selected amenity IDs
     console.log("Selected Amenities:", this.selectedAmenities);
   }
+
+
+
+  uploadPhotos(e: Event) {
+    const input = e.target as HTMLInputElement;
+    const files = Array.prototype.slice.call(input.files) as File[];
+    if (files.length === 0) return;
+
+    const uploadObservables = files.map((file) => {
+      return this.hostService.Upload(file);
+    });
+
+    // Use forkJoin to join the response from the backend
+    forkJoin(uploadObservables).subscribe(
+      (responses) => {
+        console.log(responses);
+        // Extract the 'url' property from each response object and assign to ImageUrls
+        this.ImageUrls = responses.map((response) => response.url);
+        console.log(this.ImageUrls);
+      },
+      (error) => {
+        console.log("Error uploading photos:", error);
+
+        // Display the error message from the backend in the snackbar
+        this.snackBar.open(error.error.message, "Close", {
+          duration: 4000,
+          verticalPosition: "top",
+        });
+      }
+    );
+  }
+
+
+  openImagePopup(): void {
+    const dialogRef = this.dialog.open(ImagePopupComponent, {
+      data: { imageUrls: this.ImageUrls },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
 
   addProperty(propertyForm: NgForm): void {
     if (propertyForm.invalid) {
       return;
     }
-
+    // Trim whitespace from property name and address
     this.property.propertyName = this.property.propertyName.trim();
+    this.property.Address = this.property.Address.trim();
+    // Convert number fields to numbers
     this.property.MaxNumberOfGuests = +this.property.MaxNumberOfGuests;
     this.property.BedroomsCount = +this.property.BedroomsCount;
     this.property.BathroomsCount = +this.property.BathroomsCount;
@@ -80,20 +136,24 @@ export class AddPropertyComponent implements OnInit {
     this.property.PricePerNight = +this.property.PricePerNight;
     this.property.CategoryId = +this.selectedCategory;
     this.property.CityId = +this.selectedCity;
-    this.property.Address = this.property.Address.trim();
-    this.property.Description = this.property.Description.trim();
-    this.property.AmenitiesId = this.selectedAmenities;
-
-    console.log("Selected Amenities:", this.property.AmenitiesId); // Log the selected amenity IDs
-
+    this.property.AmenitiesId = this.selectedAmenities
+    // Set the ImagesURLs property of the Property object to the ImageUrls array
+    this.property.ImagesURLs = this.ImageUrls;
+    // Add the property using the hostService
     this.hostService.AddProperty(this.property).subscribe(
       () => {
         console.log("Property added successfully");
+        // Navigate to the Host Property tab in the dashboard
+        this.hostDashboard.toggleHostProperty();
+        // Show snackbar message
+        this.snackBar.open('Property added successfully', 'Close', {
+          duration: 4000, // Duration in milliseconds
+          verticalPosition: "top",
+        });
       },
       (error) => {
         console.log("Error adding property:", error);
       }
     );
   }
-
 }
