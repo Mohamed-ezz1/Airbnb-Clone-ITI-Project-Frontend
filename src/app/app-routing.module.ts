@@ -17,18 +17,14 @@ const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user-profile', component: UserProfileComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'user-profile', component: UserProfileComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'hostBooking', component: HostBookingOrdersComponent },
-  { path: 'hostProperty', component: HostPropertiesComponent },
+  { path: 'hostBooking',canActivate :[authenticatonGuard], component: HostBookingOrdersComponent },
+  { path: 'hostProperty', canActivate :[authenticatonGuard],component: HostPropertiesComponent },
   { path: 'propertyDetails/:id', component: PropDetailsComponent },
   { path: 'addProperty',canActivate :[authenticatonGuard], component: AddPropertyComponent },
   { path: 'editProperty/:id', canActivate :[authenticatonGuard],component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
-  { path: 'HostDashboardComponent', component: HostDashboardComponent }
+  { path: 'HostDashboardComponent',canActivate :[authenticatonGuard], component: HostDashboardComponent }
 
 ];
 
