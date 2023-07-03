@@ -138,14 +138,13 @@ changeCatogrey(selected:any){
 }
 
  x:any ={}
-search(){
-this.x.cityId=this.selectedCity;
-this.x.countryId= this.selectedCountry
-this.x.catogreyId=this.selectedCatogrey
-this.x.numberOfguets=5;
-console.log(this.x);
-this.query.setqeury(this.x);
-
+ search(){
+//.x["cityId"]=this.selectedCity;
+//this.x["countryId"]= this.selectedCountry
+//this.x["catogreyId"]=this.selectedCatogrey
+//this.x["numberOfguets"]=5;
+//console.log(this.x);
+ this.query.setqeury({"cityId":this.selectedCity,"countryId":this.selectedCountry,"catogreyId":this.selectedCatogrey,"numberOfguets":5})
 
 }
 }

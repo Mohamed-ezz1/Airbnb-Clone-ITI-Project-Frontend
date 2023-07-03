@@ -72,6 +72,7 @@ console.log(myRoute.snapshot)
         console.log(data)
         console.log("////////////////////")
 
+
         this.PropertyFilter = data;
       },
       error: (e) => console.log(e)
