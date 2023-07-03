@@ -1,7 +1,7 @@
 <section class="d-flex justify-content-center flex-wrap "   >
 <div *ngFor="let item of Property" class="card col-md-6 col-lg-4 col-sm-12 d-inline-block m-3" style="width: 18rem;">
     
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+   <div id="carouselExampleIndicators" class="carousel slide" data-ride="true">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -9,28 +9,30 @@
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" >
+            <img src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg2.jpg" class="d-block w-100" >
           </div>
-          <div class="carousel-item">
-            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" >
+          <div class="carousel-item ">
+            <img src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg2.jpg" class="d-block w-100" >
           </div>
-          <div class="carousel-item">
-            <img src="https://zemez.io/wp-content/uploads/2021/05/boostrap-5-release_featured-840x469.jpg" class="d-block w-100" >
+          <div class="carousel-item ">
+            <img src="https://rawgit.com/creativetimofficial/material-kit/master/assets/img/bg3.jpg" class="d-block w-100" >
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
         </button>
-      </div>
+      </div> 
+
           <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+            <div class="d-flex justify-content-between">
+              <h5 class="card-title ">{{item.cityName}} / {{item.countryName}}</h5>
+              <h2 class="card-title "><mat-icon>grade</mat-icon>{{item.propertyAllRating}} </h2>
+            </div>
+      <p class="card-text">{{item.propertyName}}</p>
+      <h2 class="card-text"><mat-icon> attach_money</mat-icon>{{item.pricePerNight}}</h2>
     </div>
   </div>
 
