@@ -12,19 +12,22 @@ import { PropertyComponent } from './Components/Home/PropertyCard/property/prope
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
 import { HostDashboardComponent } from './Components/User/host-dashboard/host-dashboard.component';
 import { UserProfileUpdateComponent } from './Components/user-profile-update/user-profile-update.component';
+import { authenticatonGuard } from './Components/guards/authenticaton.guard';
+import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
 const routes: Routes = [
-  {path:'Register', component:RegisterComponent},
-  {path :'login', component:LoginComponent},
-  {path:'user-profile', component:UserProfileComponent},
+  { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'hostBooking', component: HostBookingOrdersComponent },
-  { path: 'hostProperty', component: HostPropertiesComponent },
+  { path: 'user-profile', component: UserProfileComponent },
+  { path: 'Register', component: RegisterComponent },
+  { path: 'hostBooking', canActivate: [authenticatonGuard], component: HostBookingOrdersComponent },
+  { path: 'hostProperty', canActivate: [authenticatonGuard], component: HostPropertiesComponent },
   { path: 'propertyDetails/:id', component: PropDetailsComponent },
-  { path: 'addProperty', component: AddPropertyComponent },
-  { path: 'editProperty/:id', component: HostPropertyUpdateComponent },
+  { path: 'addProperty', canActivate: [authenticatonGuard], component: AddPropertyComponent },
+  { path: 'editProperty/:id', canActivate: [authenticatonGuard], component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
-  { path: 'HostDashboardComponent', component: HostDashboardComponent },
-  {path:'update', component:UserProfileUpdateComponent}
+  { path: 'HostDashboardComponent', canActivate: [authenticatonGuard], component: HostDashboardComponent },
+  { path: 'GuestTrips', canActivate: [authenticatonGuard], component: GuestTripsComponent }
+
 ];
 
 @NgModule({
