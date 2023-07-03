@@ -6,6 +6,8 @@ import { MatDatepickerInputEvent  } from '@angular/material/datepicker';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { PropBookingComponent } from 'src/app/Components/PropertyDetails/prop-booking/prop-booking.component';
+import { ReservationService } from 'src/app/Services/Property/reservation.service';
+import { ReservationDto } from 'src/app/types/ReservationDto';
 
 @Component({
   selector: 'app-prop-details',
@@ -18,6 +20,7 @@ export class PropDetailsComponent implements OnInit {
   propDetails: any;             //all details of property
   ID: any;                      //Id of property
   totalPrice: any;              //total price of booking 
+  pricePerNight: any;
   numOfNights: any;             //number of nights the user reserving 
   numOfGuests: any = 2;         // number of guests the user reserving
   isPDisabled!: boolean;        
@@ -26,9 +29,12 @@ export class PropDetailsComponent implements OnInit {
   startDate: any;               //start date of reservation
   endDate: any;                 //end date of reservation
   range!: FormGroup;
+ 
+  
+
   
   constructor(myRoute: ActivatedRoute, private propService: PropertyService, public myRouter:Router,
-     private fb: FormBuilder, private dialog: MatDialog) {
+     private fb: FormBuilder, private dialog: MatDialog, private reservationService : ReservationService) {
 
     this.ID = myRoute.snapshot.params["id"];
     this.range = this.fb.group({
@@ -76,6 +82,14 @@ export class PropDetailsComponent implements OnInit {
        message: 'Popup message'
       }
     });
+    var resDto = new ReservationDto();
+    resDto.numOfGuests = this.numOfGuests;
+    resDto.numOfNights = this.numOfNights;
+    resDto.pricePerNight = this.pricePerNight;
+    resDto.totalPrice = this.totalPrice;
+    resDto.startDate = this.startDate;
+    resDto.endDate = this.endDate;
+    this.reservationService.setReservationDto(resDto);
   }
 
 }

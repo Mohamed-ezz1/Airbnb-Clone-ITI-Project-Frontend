@@ -6,7 +6,7 @@ import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class QueryService {
-  constructor( ) { 
+  constructor( ) {  
   }
 
   public query = new  BehaviorSubject<any>(!null);

@@ -17,7 +17,7 @@ export class AuthenticationService {
   private readonly Base_URL = "https://localhost:7108/api/User/Register";
 
 
-  AddUser(newUser: RegisterDto) :Observable<any> {
+  AddUser(newUser: RegisterDto): Observable<any> {
     console.log(newUser)
     return this.client.post(this.Base_URL, newUser);
 
@@ -32,7 +32,10 @@ export class AuthenticationService {
           localStorage.setItem('token', tokenDto.token);
         })
       );
+
+
   }
+
 }
 
 

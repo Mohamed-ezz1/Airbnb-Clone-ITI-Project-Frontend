@@ -13,8 +13,7 @@ export const authenticatonGuard: CanActivateFn = (route, state) => {
     return true;
 
   }
-  console.log("logout");
+  console.log(authenticationService.isLoggedIn$.value)
   router.navigateByUrl('/login');
-
   return false;
 };

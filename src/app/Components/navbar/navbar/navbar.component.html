@@ -1,29 +1,13 @@
 
 
 
-<nav class="navbar   navbar-light bg-light">
-  <a class="navbar-brand" href="/home">
-    <img src="https://dynamic.brandcrowd.com/preview/logodraft/1899c0a0-7fcc-4e26-9ddb-54237bf8abc1/image/large.png" width="80" height="80" class="d-inline-block align-top" alt="">
+<nav class="navbar   navbar-light bg-light row">
+  <a class="navbar-brand col-1" routerLink="/home">
+    <img src="https://dynamic.brandcrowd.com/preview/logodraft/1899c0a0-7fcc-4e26-9ddb-54237bf8abc1/image/large.png" width="100" height="80" class="d-inline-block align-top" alt="">
   </a>
  
-  <button mat-button [matMenuTriggerFor]="menu">|||</button>
-<mat-menu   #menu="matMenu"  class="border-bottom-0   rounded-top  rounded-left rounded-right"   >
-  <div *ngIf="Isloggen">
-  <button  mat-menu-item>profile</button>
-  <button mat-menu-item>sign out</button>
-  <button mat-menu-item>Mytrips</button>
-  <button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Contact</span>
-  </button>
-</div>
-<div *ngIf="!Isloggen">
-  <button mat-menu-item>Sign in </button>
-</div>
-</mat-menu>
-
-
-<mat-form-field>
+  
+<mat-form-field class="col-2">
   <mat-label>Countries</mat-label>
   <mat-select   #country   (selectionChange)="getcities(country.value)">
     <mat-option *ngFor="let Countryandcity of searchCountryandcity" [value]=" Countryandcity.countryId">
@@ -32,14 +16,38 @@
   </mat-select>
 </mat-form-field>
 
-<mat-form-field>
+<mat-form-field class="col-2">
   <mat-label>Cities</mat-label>
   <mat-select    #city   (selectionChange)="changecity(city.value)" >
     <mat-option *ngFor="let city of cities" [value]=" city.cityId">
       {{city.cityname}}
     </mat-option>
   </mat-select>
+
+
+
 </mat-form-field>
+<div style="width:15%; background-color: aqua;"> 
+
+<button mat-button   style="width: 100% ;"   *ngIf="Isloggen" > Airbnb Your Home</button>
+</div>
+
+
+<button mat-button [matMenuTriggerFor]="menu" style="width: 5%;">|||</button>
+<mat-menu   #menu="matMenu"  class="border-bottom-0   rounded-top  rounded-left rounded-right"   >
+  <div *ngIf="Isloggen">
+  <a  mat-menu-item routerLink="/user-profile">profile</a>
+  <a mat-menu-item  routerLink="/user-profile">sign out</a>
+  <a mat-menu-item routerLink="/user-profile">Mytrips</a>
+</div>
+<div *ngIf="!Isloggen">
+  <a mat-menu-item routerLink="/login">Sign in </a>
+  <a mat-menu-item routerLink="/Register">Register </a>
+
+</div>
+</mat-menu>
+
+
 </nav>
 
 
