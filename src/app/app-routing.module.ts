@@ -25,10 +25,8 @@ const routes: Routes = [
   { path: 'addProperty', canActivate: [authenticatonGuard], component: AddPropertyComponent },
   { path: 'editProperty/:id', canActivate: [authenticatonGuard], component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
-  { path: 'HostDashboardComponent', canActivate: [authenticatonGuard], component: HostDashboardComponent },
-  { path: 'GuestTrips', canActivate: [authenticatonGuard], component: GuestTripsComponent },
-  {path: 'update', component:UserProfileUpdateComponent},
-  { path: 'property/booking', canActivate: [authenticatonGuard], component: PropBookingComponent}
+  { path: 'HostDashboardComponent',canActivate :[authenticatonGuard], component: HostDashboardComponent }
+
 ];
 
 @NgModule({

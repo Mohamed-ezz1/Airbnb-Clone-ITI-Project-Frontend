@@ -46,6 +46,7 @@ this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
 query.setqeury({"cityId": 1})
+query.setqeury({"catogreyId": 1  ,"cityId": 1 })
 query.setqeury({"catogreyId": 1  ,"cityId": 11 })
 this.route=route
 this.selectedCountry= null ;
