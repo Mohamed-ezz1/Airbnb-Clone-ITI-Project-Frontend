@@ -12,45 +12,43 @@ import { QueryService } from 'src/app/Services/query/query.service';
 })
 export class PropertyComponent {
   slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });
-   Property: any;
+  Property: any;
 
-   PropertyFilter :any;
-   objectFilter :any;
+  PropertyFilter: any;
+  objectFilter: any;
   query: QueryService
-  PropertyService : PropertyService
-  constructor(query: QueryService,PropertyService : PropertyService   ,  private router: Router) {
+  PropertyService: PropertyService
+  constructor(query: QueryService, PropertyService: PropertyService, private router: Router) {
     this.query = query;
     this.PropertyService = PropertyService
-    
-
   }
 
   ngOnInit(): void {
 
     this.PropertyService.GetAllPorperty().subscribe({
-      next: (data)=>{
+      next: (data) => {
         this.Property = data;
         console.log(this.Property)
 
       },
-      error: ()=> console.log("Asdasdsadsa") 
-      
-      
-          });
+      error: () => console.log("Asdasdsadsa")
 
 
-      
-///////
+    });
+
+
+
+    ///////
 
     this.query.query$.subscribe({
-      
-      next: (value)=>{
+
+      next: (value) => {
 
         console.log(this.query.query)
         this.objectFilter = this.query.query;
 
       },
-      error: ()=> console.log("Asdasdsadsa") 
+      error: () => console.log("Asdasdsadsa")
     });
 
 
@@ -59,20 +57,19 @@ export class PropertyComponent {
     ///////////////
 
     this.PropertyService.GetPropertySarch(this.objectFilter).subscribe({
-      next: (data)=>{
+      next: (data) => {
         console.log("data filter")
         console.log(data)
 
         this.PropertyFilter = data;
-
       },
-      error: ()=> console.log("Asdasdsadsa") 
-      
-      
-          });
+      error: () => console.log("Asdasdsadsa")
+
+
+    });
 
     //////
-    
+
 
     this.slides[0] = {
       src: './assets/img/angular.jpg',
