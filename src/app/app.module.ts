@@ -34,11 +34,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UserProfileUpdateComponent } from './Components/user-profile-update/user-profile-update.component';
 import { ImagePopupComponent } from './Components/User/image-popup/image-popup.component';
 import { imagePopUpdateComponent } from './Components/User/image-pop-update/image-pop-update.component';
-<<<<<<< HEAD
 
-=======
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
->>>>>>> 59d1bd0bc645d970f29f75bb41c36a1321394ca8
 @NgModule({
   declarations: [
     AppComponent,
@@ -82,11 +79,8 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
     multi: true,
   },
 
-<<<<<<< HEAD
   { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
-=======
     // { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
->>>>>>> 59d1bd0bc645d970f29f75bb41c36a1321394ca8
 
 
 
