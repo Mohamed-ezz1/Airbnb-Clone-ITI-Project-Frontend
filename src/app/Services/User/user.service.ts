@@ -32,7 +32,10 @@ export class AuthenticationService {
           localStorage.setItem('token', tokenDto.token);
         })
       );
+
+
   }
+
 }
 
 

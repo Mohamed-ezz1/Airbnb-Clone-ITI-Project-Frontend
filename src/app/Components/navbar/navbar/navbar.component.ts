@@ -5,6 +5,8 @@ import { from } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { QueryService } from 'src/app/Services/query/query.service';
 
+import { AppRoutingModule } from "src/app/app-routing.module";
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -31,17 +33,13 @@ constructor( a:AuthenticationService , SearchboxService :SearchboxService ,query
 this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
-query.setqeury({"cityId": 0})
-this.selectedCountry= null ;
-this.selectedCity  = null;
-this.numberOfguets=null;
 
 } 
   ngOnInit(): void {
   this.authenticationService.isLoggedIn$.subscribe({
    
 next: (value)=> {
-  this.Isloggen=value
+  this.Isloggen=value;
   console.log(this.Isloggen)
 },
 error: ()=> this.Isloggen=false
