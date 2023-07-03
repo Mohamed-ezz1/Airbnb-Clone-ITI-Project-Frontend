@@ -22,7 +22,7 @@ export class PropertyComponent {
   constructor(myRoute: ActivatedRoute, query: QueryService, PropertyService: PropertyService, private router: Router) {
     this.ID = myRoute.snapshot.params['id'];
     if(this.ID == null ){
-      console.log("null oarams " )
+      console.log("null oarams")
     }
     else{
       console.log(this.ID)
@@ -38,9 +38,6 @@ console.log(myRoute.snapshot)
     this.PropertyService.GetAllPorperty().subscribe({
       next: (data) => {
         this.Property = data;
-        console.log(this.Property)
-        console.log(this.Property[1].imgUrl)
-
       },
       error: () => console.log("Asdasdsadsa")
 
@@ -70,11 +67,14 @@ console.log(myRoute.snapshot)
     this.PropertyService.GetPropertySarch(this.objectFilter).subscribe({
       next: (data) => {
         console.log("data filter")
+
+        console.log("//////////////////////")
         console.log(data)
+        console.log("////////////////////")
 
         this.PropertyFilter = data;
       },
-      error: () => console.log("Asdasdsadsa")
+      error: (e) => console.log(e)
 
 
     });
