@@ -75,6 +75,10 @@ export class PropDetailsComponent implements OnInit {
     }
   }
 
+  onDateChange() {
+    console.log('hhh');
+  }
+
   openPopup() {
     this.dialog.open(PropBookingComponent, {
       data: {

@@ -26,7 +26,8 @@ const routes: Routes = [
   { path: 'editProperty/:id', canActivate: [authenticatonGuard], component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
   { path: 'HostDashboardComponent', canActivate: [authenticatonGuard], component: HostDashboardComponent },
-  { path: 'GuestTrips', canActivate: [authenticatonGuard], component: GuestTripsComponent }
+  { path: 'GuestTrips', canActivate: [authenticatonGuard], component: GuestTripsComponent },
+  { path: 'property/booking', canActivate: [authenticatonGuard], component: PropBookingComponent}
 
 ];
 
