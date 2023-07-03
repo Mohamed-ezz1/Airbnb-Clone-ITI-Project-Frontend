@@ -24,8 +24,9 @@ const routes: Routes = [
   { path: 'addProperty', canActivate: [authenticatonGuard], component: AddPropertyComponent },
   { path: 'editProperty/:id', canActivate: [authenticatonGuard], component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
+  { path: 'Property/:id', component: PropertyComponent },
   { path: 'HostDashboardComponent', component: HostDashboardComponent },
-  {path:'update', component:UserProfileUpdateComponent}
+  { path:'update', component:UserProfileUpdateComponent}
 ];
 
 @NgModule({

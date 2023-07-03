@@ -73,9 +73,6 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-
-
-
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
@@ -83,7 +80,7 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
     multi: true,
   },
 
-  // { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+  { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
 
 
 
