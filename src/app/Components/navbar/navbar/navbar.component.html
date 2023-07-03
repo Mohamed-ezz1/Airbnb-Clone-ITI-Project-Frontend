@@ -2,7 +2,7 @@
 
 
 <nav class="navbar   navbar-light bg-light row">
-  <a class="navbar-brand col-1" routerLink="/home">
+  <a class="navbar-brand col-1" routerLink="/Property">
     <img src="https://dynamic.brandcrowd.com/preview/logodraft/1899c0a0-7fcc-4e26-9ddb-54237bf8abc1/image/large.png" width="100" height="80" class="d-inline-block align-top" alt="">
   </a>
  
@@ -24,12 +24,25 @@
     </mat-option>
   </mat-select>
 
-
-
+  
 </mat-form-field>
+
+<mat-form-field class="col-2">
+  <mat-label>Catogires</mat-label>
+  <mat-select    #Catogrey   (selectionChange)="changeCatogrey(Catogrey.value)" >
+    <mat-option *ngFor="let Catogrey of Catogires" [value]=" Catogrey.categoryId">
+      {{Catogrey.categoryName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
 <div style="width:15%; background-color: aqua;"> 
 
-<button mat-button   style="width: 100% ;"   *ngIf="Isloggen" > Airbnb Your Home</button>
+<button mat-button   style="width: 100% ;"   *ngIf="Isloggen && ishost " routerLink="/hostProperty" >Switch to host</button>
+<button mat-button   style="width: 100% ;"   *ngIf="Isloggen && !ishost " routerLink="/HostDashboardComponent" > Airbnb Your Home</button>
+<button mat-button   style="width: 100% ;"   *ngIf="!Isloggen  " routerLink="/login" > Airbnb Your Home</button>
+
 </div>
 
 
@@ -37,7 +50,7 @@
 <mat-menu   #menu="matMenu"  class="border-bottom-0   rounded-top  rounded-left rounded-right"   >
   <div *ngIf="Isloggen">
   <a  mat-menu-item routerLink="/user-profile">profile</a>
-  <a mat-menu-item  routerLink="/user-profile">sign out</a>
+  <button mat-menu-item  routerLink="/user-profile"  (click)="logout()">sign out</button>
   <a mat-menu-item routerLink="/user-profile">Mytrips</a>
 </div>
 <div *ngIf="!Isloggen">
