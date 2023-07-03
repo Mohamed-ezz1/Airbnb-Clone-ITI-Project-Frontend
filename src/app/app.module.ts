@@ -49,6 +49,11 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
     UserProfileComponent,
     PropDetailsComponent,
     PropBookingComponent,
+    NavbarComponent,
+    PropertyComponent,
+    RegisterComponent,
+    ImagePopupComponent,
+    imagePopUpdateComponent,
     UserProfileUpdateComponent
   ],
   imports: [
@@ -59,6 +64,14 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatDialogModule,
+    FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right'
+    })
 
 
   ],

@@ -15,7 +15,7 @@ import { UserProfileUpdateComponent } from './Components/user-profile-update/use
 const routes: Routes = [
   {path:'Register', component:RegisterComponent},
   {path :'login', component:LoginComponent},
-  {path:'user-profile', component:UserProfileComponent}
+  {path:'user-profile', component:UserProfileComponent},
   { path: 'login', component: LoginComponent },
   { path: 'hostBooking', component: HostBookingOrdersComponent },
   { path: 'hostProperty', component: HostPropertiesComponent },
@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'addProperty', component: AddPropertyComponent },
   { path: 'editProperty/:id', component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
-  { path: 'HostDashboardComponent', component: HostDashboardComponent }
+  { path: 'HostDashboardComponent', component: HostDashboardComponent },
   {path:'update', component:UserProfileUpdateComponent}
 ];
 
