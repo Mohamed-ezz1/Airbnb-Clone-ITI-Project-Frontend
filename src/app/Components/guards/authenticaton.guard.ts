@@ -1,5 +1,5 @@
 import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
+import {  CanActivateFn, Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
 
 export const authenticatonGuard: CanActivateFn = (route, state) => {
@@ -7,8 +7,13 @@ export const authenticatonGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (authenticationService.isLoggedIn$.value) {
+    console.log(authenticationService.isLoggedIn$.value);
+    console.log(authenticationService.isLoggedIn$);
+
     return true;
+
   }
-  router.navigateByUrl('/authentication/login');
+  console.log(authenticationService.isLoggedIn$.value)
+  router.navigateByUrl('/login');
   return false;
 };

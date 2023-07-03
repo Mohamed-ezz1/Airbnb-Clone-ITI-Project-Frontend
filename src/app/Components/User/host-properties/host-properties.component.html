@@ -1,4 +1,5 @@
 <div class="container">
+  <div class="title">HOST PROPERTIES</div>
   <mat-form-field class="col-12 py-3">
     <mat-label>Filter</mat-label>
     <input
@@ -38,8 +39,8 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
         <td mat-cell *matCellDef="let row">{{ row.adress }}</td>
       </ng-container>
-      <!-- Add Column -->
-      <!-- Add Column -->
+
+      <!-- Update Column -->
       <ng-container matColumnDef="Action">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Update</th>
         <td mat-cell *matCellDef="let row">

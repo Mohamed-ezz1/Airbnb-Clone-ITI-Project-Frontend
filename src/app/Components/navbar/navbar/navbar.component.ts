@@ -5,6 +5,8 @@ import { from } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { QueryService } from 'src/app/Services/query/query.service';
 
+import { AppRoutingModule } from "src/app/app-routing.module";
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -42,7 +44,7 @@ this.numberOfguets=null;
   this.authenticationService.isLoggedIn$.subscribe({
    
 next: (value)=> {
-  this.Isloggen=value
+  this.Isloggen=value;
   console.log(this.Isloggen)
 },
 error: ()=> this.Isloggen=false

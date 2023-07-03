@@ -1,12 +1,3 @@
-<head>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet"
-  />
-</head>
-
 <div class="container">
   <div class="title">ADD PROPERTY</div>
   <form #propertyForm="ngForm" (ngSubmit)="addProperty(propertyForm)">
@@ -155,25 +146,8 @@
     </div>
 
     <div class="row my-4">
-      <!--Max numbers of guests field-->
-      <mat-form-field class="col-6 col-md-3" appearance="outline">
-        <mat-label>Max Number of Guests:</mat-label>
-        <input
-          matInput
-          [(ngModel)]="property.MaxNumberOfGuests"
-          name="maxNumberOfGuests"
-          type="number"
-          required
-          max="16"
-          min="1"
-        />
-        <mat-error *ngIf="propertyForm.controls['maxNumberOfGuests']?.errors"
-          >Max Number of Guests must be between 1 and 16.</mat-error
-        >
-      </mat-form-field>
-
       <!--Bedroom count field-->
-      <mat-form-field class="col-6 col-md-3" appearance="outline">
+      <mat-form-field class="col-6 col-md-4" appearance="outline">
         <mat-label>Bedrooms Count:</mat-label>
         <input
           matInput
@@ -188,8 +162,24 @@
         >
       </mat-form-field>
 
+      <!--Bed count field-->
+      <mat-form-field class="col-6 col-md-4" appearance="outline">
+        <mat-label>Bed Count:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.BedCount"
+          name="bedCount"
+          type="number"
+          required
+          min="1"
+        />
+        <mat-error *ngIf="propertyForm.controls['bedCount']?.errors"
+          >Bed Count has a minimum of 1</mat-error
+        >
+      </mat-form-field>
+
       <!--Bathroom count field-->
-      <mat-form-field class="col-6 col-md-3" appearance="outline">
+      <mat-form-field class="col-6 col-md-4" appearance="outline">
         <mat-label>Bathrooms Count:</mat-label>
         <input
           matInput
@@ -200,12 +190,30 @@
           min="1"
         />
         <mat-error *ngIf="propertyForm.controls['bathroomsCount']?.errors"
-          >Bathrooms Count has a minimum of 1</mat-error
+          >Bathrooms Count have a minimum of 1</mat-error
         >
       </mat-form-field>
+    </div>
 
+    <div class="row my-4">
+      <!--Max numbers of guests field-->
+      <mat-form-field class="col-6 col-md-6" appearance="outline">
+        <mat-label>Max Numbers of Guests</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.MaxNumberOfGuests"
+          name="maxNumberOfGuests"
+          type="number"
+          required
+          max="16"
+          min="1"
+        />
+        <mat-error *ngIf="propertyForm.controls['maxNumberOfGuests']?.errors"
+          >Max numbers of guests must be between 1 and 16</mat-error
+        >
+      </mat-form-field>
       <!--Price per night field-->
-      <mat-form-field class="col-6 col-md-3" appearance="outline">
+      <mat-form-field class="col-6 col-md-6" appearance="outline">
         <mat-label>Price per Night:</mat-label>
         <input
           matInput
@@ -213,9 +221,10 @@
           name="pricePerNight"
           type="number"
           required
+          min="5"
         />
         <mat-error *ngIf="propertyForm.controls['pricePerNight']?.errors"
-          >Price per Night is required</mat-error
+          >Price per Night has a minimum of 5</mat-error
         >
       </mat-form-field>
     </div>
