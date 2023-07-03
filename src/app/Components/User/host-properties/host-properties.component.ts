@@ -15,7 +15,7 @@ import { HostService } from 'src/app/Services/Host/host.service';
 export class HostPropertiesComponent implements OnInit {
 
   private hostProperties: any;
-  displayedColumns: string[] = ['propertyName', 'Action', 'MaxNumberOfGuests', 'PricePerNight', 'Address'];
+  displayedColumns: string[] = ['propertyName', 'MaxNumberOfGuests', 'PricePerNight', 'Address', 'Action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
