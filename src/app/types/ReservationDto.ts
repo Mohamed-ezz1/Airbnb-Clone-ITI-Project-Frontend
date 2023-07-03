@@ -5,4 +5,5 @@ export class ReservationDto{
     numOfGuests: any;
     startDate: any;
     endDate: any;
+    propDetails: any;
 }

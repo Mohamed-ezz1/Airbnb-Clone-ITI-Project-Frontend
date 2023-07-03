@@ -111,7 +111,7 @@
                         <mat-label>Enter a reservation range</mat-label>
                         <mat-date-range-input [min]="minDate" [formGroup]="range" [rangePicker]="picker">
                             <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate">
-                            <input matEndDate formControlName="end" placeholder="End date">
+                            <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate">
                         </mat-date-range-input>
                         <mat-hint>Enter the start date first, then the end date
                             <br>Disabled dates are reserved.</mat-hint>
@@ -145,7 +145,7 @@
                 <div class="row">
                     <div class="d-flex">
                         <h2 class="me-auto">Total</h2>
-                        <h3>${{propDetails.pricePerNight}}</h3>
+                        <h3>${{totalPrice}}</h3>
                     </div>
                 </div>
 
