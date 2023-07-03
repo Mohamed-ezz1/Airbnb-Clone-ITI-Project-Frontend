@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HostLandingComponent } from './Components/User/host-landing/host-landing.component';
 import { HostDashboardComponent } from './Components/User/host-dashboard/host-dashboard.component';
 import { AddPropertyComponent } from './Components/User/add-property/add-property.component';
 import { HostBookingOrdersComponent } from './Components/User/host-booking-orders/host-booking-orders.component';
@@ -33,14 +32,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserProfileUpdateComponent } from './Components/user-profile-update/user-profile-update.component';
-
 import { ImagePopupComponent } from './Components/User/image-popup/image-popup.component';
 import { imagePopUpdateComponent } from './Components/User/image-pop-update/image-pop-update.component';
+<<<<<<< HEAD
 
+=======
+import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
+>>>>>>> 59d1bd0bc645d970f29f75bb41c36a1321394ca8
 @NgModule({
   declarations: [
     AppComponent,
-    HostLandingComponent,
     HostDashboardComponent,
     AddPropertyComponent,
     HostBookingOrdersComponent,
@@ -55,7 +56,8 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
     RegisterComponent,
     ImagePopupComponent,
     imagePopUpdateComponent,
-    UserProfileUpdateComponent
+    UserProfileUpdateComponent,
+    GuestTripsComponent
   ],
   imports: [
     BrowserModule,
@@ -80,7 +82,11 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
     multi: true,
   },
 
+<<<<<<< HEAD
   { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+=======
+    // { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+>>>>>>> 59d1bd0bc645d970f29f75bb41c36a1321394ca8
 
 
 
