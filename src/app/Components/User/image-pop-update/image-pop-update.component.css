@@ -1,46 +1,41 @@
-.container {
-  width: 900px;
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+  max-height: 460px;
+  /* Adjust the height according to your needs */
 }
 
-.title {
-  text-align: center;
-  color: red;
-  font-size: 30px;
-  font-family: 'Montserrat', sans-serif;
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
+.image-card {
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
 }
 
-button {
-  width: 200px;
-  height: 50px;
-  border: none;
-  background-color: #4CAF50;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 25px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  margin: auto;
-  font-family: 'Montserrat', sans-serif;
-  font-family: 'Poppins', sans-serif;
+.image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-button:hover {
-  background-color: #3e8e41;
-  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-  transform: translateY(-2px);
+.image-grid-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
 }
 
 
-/*Image Upload*/
+
+/* Image Upload */
 .formbold-main-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 48px;
 
 }
 
@@ -49,6 +44,7 @@ button:hover {
   max-width: 550px;
   width: 100%;
   background: white;
+
 }
 
 .formbold-form-label {
@@ -56,7 +52,7 @@ button:hover {
   font-weight: 500;
   font-size: 16px;
   color: #07074d;
-  margin-bottom: 12px;
+  /* margin-bottom: 12px; */
   font-family: 'Montserrat', sans-serif;
   font-family: 'Poppins', sans-serif;
 }
@@ -64,6 +60,7 @@ button:hover {
 .formbold-form-label-2 {
   font-weight: 600;
   font-size: 20px;
+  /* margin-bottom: 20px; */
 
 }
 
@@ -92,7 +89,7 @@ button:hover {
   text-align: center;
   font-size: 16px;
   border-radius: 6px;
-  padding: 14px 32px;
+  /* padding: 14px 32px; */
   border: none;
   font-weight: 600;
   background-color: #6a64f1;
@@ -109,10 +106,10 @@ button:hover {
   margin-right: -12px;
 }
 
-.formbold-px-3 {
+/* .formbold-px-3 {
   padding-left: 12px;
   padding-right: 12px;
-}
+} */
 
 .flex {
   display: flex;
@@ -130,7 +127,7 @@ button:hover {
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .formbold-file-input {
@@ -142,11 +139,11 @@ button:hover {
   position: relative;
   border: 1px dashed #e0e0e0;
   border-radius: 6px;
-  min-height: 200px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 48px;
+  /* padding: 48px; */
   text-align: center;
 }
 
@@ -180,4 +177,14 @@ button:hover {
   border-radius: 4px;
   font-family: 'Montserrat', sans-serif;
   font-family: 'Poppins', sans-serif;
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
