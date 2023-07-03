@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'hostBooking',canActivate :[authenticatonGuard], component: HostBookingOrdersComponent },
   { path: 'hostProperty', canActivate :[authenticatonGuard],component: HostPropertiesComponent },
   { path: 'propertyDetails/:id', component: PropDetailsComponent },
-  { path: 'addProperty',canActivate :[authenticatonGuard], component: AddPropertyComponent },
+  { path: 'HostDashboardComponent/addProperty',canActivate :[authenticatonGuard], component: AddPropertyComponent },
   { path: 'editProperty/:id', canActivate :[authenticatonGuard],component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
   { path: 'HostDashboardComponent',canActivate :[authenticatonGuard], component: HostDashboardComponent }
