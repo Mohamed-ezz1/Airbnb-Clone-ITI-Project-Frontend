@@ -36,6 +36,7 @@ import { UserProfileUpdateComponent } from './Components/user-profile-update/use
 
 import { ImagePopupComponent } from './Components/User/image-popup/image-popup.component';
 import { imagePopUpdateComponent } from './Components/User/image-pop-update/image-pop-update.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +72,8 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
-    })
+    }),
+
 
 
   ],

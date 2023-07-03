@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { async } from 'rxjs';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
@@ -13,12 +13,22 @@ import { QueryService } from 'src/app/Services/query/query.service';
 export class PropertyComponent {
   slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });
   Property: any;
+  ID :any;
 
   PropertyFilter: any;
   objectFilter: any;
   query: QueryService
   PropertyService: PropertyService
-  constructor(query: QueryService, PropertyService: PropertyService, private router: Router) {
+  constructor(myRoute: ActivatedRoute, query: QueryService, PropertyService: PropertyService, private router: Router) {
+    this.ID = myRoute.snapshot.params['id'];
+    if(this.ID == null ){
+      console.log("null oarams " )
+    }
+    else{
+      console.log(this.ID)
+    }
+    
+console.log(myRoute.snapshot)
     this.query = query;
     this.PropertyService = PropertyService
   }
@@ -29,6 +39,7 @@ export class PropertyComponent {
       next: (data) => {
         this.Property = data;
         console.log(this.Property)
+        console.log(this.Property[1].imgUrl)
 
       },
       error: () => console.log("Asdasdsadsa")
