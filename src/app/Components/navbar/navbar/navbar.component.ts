@@ -10,7 +10,9 @@ import { Route, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import{PropertyService} from 'src/app/Services/Property/property.service';
 import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
-
+import { NgModule } from '@angular/core';
+import { Directive, Input } from '@angular/core';
+// import { MatMenuTrigger, _MatMenu } from '@angular/material'
 
 @Component({
   selector: 'app-navbar',
@@ -132,5 +134,17 @@ console.log(this.selectedCity)
 }
 changeCatogrey(selected:any){
   this.selectedCatogrey = selected
+}
+
+ x:any ={}
+search(){
+this.x.cityId=this.selectedCity;
+this.x.countryId= this.selectedCountry
+this.x.catogreyId=this.selectedCatogrey
+this.x.numberOfguets=5;
+console.log(this.x);
+this.query.setqeury(this.x);
+
+
 }
 }

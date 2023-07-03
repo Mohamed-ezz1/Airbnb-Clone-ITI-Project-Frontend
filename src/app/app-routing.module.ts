@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'user-profile', canActivate: [authenticatonGuard],component: UserProfileComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'hostBooking', canActivate: [authenticatonGuard], component: HostBookingOrdersComponent },
-  { path: 'hostProperty', canActivate: [authenticatonGuard], component: HostPropertiesComponent },
+  { path: 'HostDashboardComponent/hostProperty', canActivate: [authenticatonGuard], component: HostPropertiesComponent },
   { path: 'propertyDetails/:id', component: PropDetailsComponent },
   { path: 'addProperty', canActivate: [authenticatonGuard], component: AddPropertyComponent },
   { path: 'editProperty/:id', canActivate: [authenticatonGuard], component: HostPropertyUpdateComponent },
