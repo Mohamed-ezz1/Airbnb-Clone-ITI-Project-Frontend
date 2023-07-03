@@ -11,11 +11,11 @@ import { HostPropertyUpdateComponent } from './Components/User/host-property-upd
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
 import { HostDashboardComponent } from './Components/User/host-dashboard/host-dashboard.component';
+import { UserProfileUpdateComponent } from './Components/user-profile-update/user-profile-update.component';
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'Register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'user-profile', component: UserProfileComponent },
+  {path:'Register', component:RegisterComponent},
+  {path :'login', component:LoginComponent},
+  {path:'user-profile', component:UserProfileComponent},
   { path: 'login', component: LoginComponent },
   { path: 'hostBooking', component: HostBookingOrdersComponent },
   { path: 'hostProperty', component: HostPropertiesComponent },
@@ -23,8 +23,8 @@ const routes: Routes = [
   { path: 'addProperty', component: AddPropertyComponent },
   { path: 'editProperty/:id', component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
-  { path: 'HostDashboardComponent', component: HostDashboardComponent }
-
+  { path: 'HostDashboardComponent', component: HostDashboardComponent },
+  {path:'update', component:UserProfileUpdateComponent}
 ];
 
 @NgModule({
