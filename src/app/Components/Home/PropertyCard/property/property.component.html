@@ -1,9 +1,9 @@
-<section class="d-flex justify-content-center flex-wrap  "   >
-<div class="card  col-md-6 col-lg-4 col-sm-12 d-inline-block m-3 border border-light bg-success p-2 text-dark bg-opacity-10 " style="width: 18rem;">
+<!-- <section class="d-flex justify-content-center flex-wrap  "   >
+<div *ngFor="let item of Property index as A" class="card  col-md-6 col-lg-4 col-sm-12 d-inline-block m-3 border border-light bg-success p-2 text-dark bg-opacity-10 " style="width: 18rem;">
     
-   <!-- <div id="{'carouselExampleIndicators' + A}" class="carousel slide " data-ride="true">
+    <div id="{'carouselExampleIndicators' + A}" class="carousel slide " data-ride="true">
         <div class="carousel-indicators">
-          <button *ngFor="let img of Property[A].imgUrl index as ii;" type="button" data-bs-target="#{'carouselExampleIndicators' + A}" data-bs-slide-to=ii [ngClass]="{  }" aria-current="true" aria-label="Slide"></button>
+          <button *ngFor="let img of Property[A].imgUrl index as ii;" type="button" data-bs-target="#{'carouselExampleIndicators' + A}" data-bs-slide-to=ii class="active" aria-current="true" aria-label="Slide"></button>
           
         </div>
         <div *ngFor="let img of Property[A].imgUrl  index as i" class="carousel-inner">
@@ -19,77 +19,7 @@
         <button class="carousel-control-next" type="button" data-bs-target="#{'carouselExampleIndicators' + A}" data-bs-slide="next">
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
         </button>
-      </div>  -->
-<!-- Carousel wrapper -->
-<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
-  <!-- Indicators -->
-  <div class="carousel-indicators">
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="0"
-      aria-current="true"
-      aria-label="Slide 1"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-
-      data-mdb-slide-to="1"
-      aria-label="Slide 2"
-    ></button>
-    <button
-      type="button"
-      data-mdb-target="#carouselBasicExample"
-      data-mdb-slide-to="2"
-      aria-label="Slide 3"
-    ></button>
-  </div>
-
-  <!-- Inner -->
-  <div class="carousel-inner">
-    <!-- Single item -->
-    <div class="carousel-item active">
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(15).webp" class="d-block w-100" alt="Sunset Over the City"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item">
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(22).webp" class="d-block w-100" alt="Canyon at Nigh"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-    </div>
-
-    <!-- Single item -->
-    <div class="carousel-item">
-      <img src="https://mdbcdn.b-cdn.net/img/Photos/Slides/img%20(23).webp" class="d-block w-100" alt="Cliff Above a Stormy Sea"/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-      </div>
-    </div>
-  </div>
-  <!-- Inner -->
-
-  <!-- Controls -->
-  <button class="carousel-control-prev" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
-<!-- Carousel wrapper -->
-
+      </div>  
 
       
 
@@ -97,7 +27,7 @@
 
       
 
-            <!-- <div class="card-body">
+            <div class="card-body">
             <div class="d-flex justify-content-between">
               <h5 class="card-title ">{{item.cityName}} / {{item.countryName}}</h5>
               <h2 class="card-title "><mat-icon>grade</mat-icon>{{item.propertyAllRating}} </h2>
@@ -106,10 +36,46 @@
       <h2 class="card-text"><mat-icon> attach_money</mat-icon>{{item.pricePerNight}}</h2>
     </div>
   </div>
- -->
+
+
+
+
+
 
 
 
 </section>
 
-
+ -->
+ <!-- <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).webp" alt="First slide">
+      <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Light mask</h3>
+      <p>First text</p>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).webp" alt="Second slide">
+      <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Strong mask</h3>
+      <p>Secondary text</p>
+    </div>
+  </mdb-carousel-item>
+  <mdb-carousel-item>
+    <div class="view w-100">
+      <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).webp" alt="Third slide">
+      <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
+    </div>
+    <div class="carousel-caption">
+      <h3 class="h3-responsive">Slight mask</h3>
+      <p>Third text</p>
+    </div>
+  </mdb-carousel-item>
+</mdb-carousel> -->
