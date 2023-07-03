@@ -11,19 +11,21 @@ import { HostPropertyUpdateComponent } from './Components/User/host-property-upd
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
 import { HostDashboardComponent } from './Components/User/host-dashboard/host-dashboard.component';
+import { authenticatonGuard } from './Components/guards/authenticaton.guard';
+
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'user-profile', component: UserProfileComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'hostBooking', component: HostBookingOrdersComponent },
-  { path: 'hostProperty', component: HostPropertiesComponent },
+  { path: 'hostBooking', component: HostBookingOrdersComponent},
+  { path: 'hostProperty',canActivate :[authenticatonGuard], component: HostPropertiesComponent },
   { path: 'propertyDetails/:id', component: PropDetailsComponent },
-  { path: 'addProperty', component: AddPropertyComponent },
-  { path: 'editProperty/:id', component: HostPropertyUpdateComponent },
+  { path: 'addProperty',canActivate :[authenticatonGuard], component: AddPropertyComponent },
+  { path: 'editProperty/:id', canActivate :[authenticatonGuard],component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
-  { path: 'HostDashboardComponent', component: HostDashboardComponent }
+  { path: 'HostDashboardComponent',canActivate :[authenticatonGuard],component: HostDashboardComponent }
 
 ];
 

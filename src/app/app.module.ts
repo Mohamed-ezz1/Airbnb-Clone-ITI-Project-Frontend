@@ -82,7 +82,7 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
     multi: true,
   },
 
-  { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+  // { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
 
 
 
