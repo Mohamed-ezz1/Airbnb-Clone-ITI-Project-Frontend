@@ -50,7 +50,7 @@ export class HostService {
 
 
   //This takes a file and return UploadFileDto
-  public Upload(file: File): Observable<UploadFileDto> {
+    public Upload(file: File): Observable<UploadFileDto> {
     // To send our data as a form data not a json
     var form = new FormData();
     form.append("file", file) //Like we did in post man the key is file and value is the image file itself

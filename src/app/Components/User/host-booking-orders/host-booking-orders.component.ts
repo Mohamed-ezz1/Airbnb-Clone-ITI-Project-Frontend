@@ -29,7 +29,7 @@ export class HostBookingOrdersComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       },
       error: (error) => { console.log(error) },
-      complete: () => { console.log("Get Host Property Completed") }
+      complete: () => { console.log("Get Host Booking Completed") }
     })
   }
   applyFilter(event: Event) {

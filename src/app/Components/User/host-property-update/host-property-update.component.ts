@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HostService } from 'src/app/Services/Host/host.service';
 import { PropertyAddEditDto } from 'src/app/types/PropertyAddEditDto';
 import { NgForm } from '@angular/forms';
@@ -28,7 +28,7 @@ export class HostPropertyUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private dialog: MatDialog,
-
+    private router: Router
   ) { }
 
   private listsData: any;
@@ -253,6 +253,12 @@ export class HostPropertyUpdateComponent implements OnInit {
     this.hostService.UpdateProperty(updatedProperty).subscribe(
       () => {
         console.log('Property updated successfully');
+        this.router.navigate(['HostDashboardComponent'], { queryParams: { showHostProperty: true } });
+        // Show snackbar message
+        this.snackBar.open('Property added successfully', 'Close', {
+          duration: 4000, // Duration in milliseconds
+          verticalPosition: "top",
+        });
       },
       (error) => {
         console.log('Error updating property:', error);

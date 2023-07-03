@@ -1,7 +1,7 @@
 <style>
     #popup {
         position: fixed;
-        top: 30%;
+        top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
         border: 1px solid;
@@ -14,6 +14,48 @@
 <div class="container" id="popup">
     <div class="row">
         <h2 class="fw-bold mt-3">One Last Step</h2>
-        <p>Dear {{resDto.pricePerNight}}</p>
+        <p>Dear {{0}},<br>In order to complete your reservation, please confirm your trip details</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <h3 class="fw-bold mt-1">Reservation details</h3>
+            <h3 style="margin: 0px;" class="fw-bold">Trip dates:</h3>
+            <p style="margin: 0px;">{{resDto.startDate | date:'EEEE, MMMM d, y'}} 
+                <span style="color: red;">to</span> {{resDto.endDate | date:'EEEE, MMMM d, y'}}</p>
+            <h3 style="margin: 0px;" class="fw-bold mt-1">Gusts:</h3>
+            <p style="margin: 0px;">{{resDto.numOfGuests}}</p>
+            <hr>
+            <h3 style="margin: 0px;" class="fw-bold mt-1">Price details</h3>
+
+            <div class="d-flex">
+                <h4 style="margin: 0px;" class="me-auto">Number of nights</h4>
+                <p style="margin: 0px;">{{resDto.numOfNights}}</p>
+            </div>
+            <div class="d-flex">
+                <h4 style="margin: 0px;" class="me-auto">Price per night</h4>
+                <p style="margin: 0px;">${{resDto.propDetails.pricePerNight}}</p>
+            </div>
+            <hr>
+            <div class="d-flex">
+                <h4 style="margin: 0px;" class="fw-bold me-auto">Total</h4>
+                <p style="margin: 0px;">${{resDto.totalPrice}}</p>
+            </div>
+            
+        </div>
+        <div class="col-6">
+            <mat-card class="example-card shadow-lg p-3 mb-5 bg-white rounded" style="width: 100%; height: 90%;" >
+                <img mat-card-image src="{{resDto.propDetails.imgs[0]}}" style="height: 80%;">
+                <mat-card-content>
+                  <h2 style="text-align: center;">{{resDto.propDetails.nameOfProperty}}</h2>
+                </mat-card-content>
+              </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="m-3 d-flex justify-content-center">
+            <button class="btn btn-danger mx-3" style="width: 10rem;" (click)="addBooking()">Confirm</button>
+            <button class="btn btn-secondary mx-3" style="width: 10rem;" (click)="close()">Cancel</button>
+        </div>
     </div>
 </div>
