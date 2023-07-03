@@ -24,8 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from './Components/navbar/navbar/navbar.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import {MatInputModule} from '@angular/material/input';
-import {MatIconModule} from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
@@ -34,8 +34,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrModule } from 'ngx-toastr';
 import { MatDialogModule } from '@angular/material/dialog';
 
-
-
+import { ImagePopupComponent } from './Components/User/image-popup/image-popup.component';
+import { imagePopUpdateComponent } from './Components/User/image-pop-update/image-pop-update.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,8 +51,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     PropBookingComponent,
     NavbarComponent,
     PropertyComponent,
-    RegisterComponent
-    
+    RegisterComponent,
+    ImagePopupComponent,
+    imagePopUpdateComponent
 
   ],
   imports: [
@@ -69,19 +70,20 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDialogModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf,
     ToastrModule.forRoot({
-      positionClass :'toast-bottom-right'
+      positionClass: 'toast-bottom-right'
     })
-    
-    
-    
-    ],
+
+
+
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
     useClass: AuthenticationInterceptor,
     multi: true,
   },
 
-  { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
+  { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+
 
 
   ],

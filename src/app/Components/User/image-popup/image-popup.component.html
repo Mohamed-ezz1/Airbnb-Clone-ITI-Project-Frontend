@@ -1,0 +1,11 @@
+<h2 mat-dialog-title style="text-align: center">Uploaded Images</h2>
+<div mat-dialog-content>
+  <div class="image-grid">
+    <div class="image-card" *ngFor="let imageUrl of imageUrls">
+      <img [src]="imageUrl" />
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions style="justify-content: center">
+  <button color="warn" mat-button [mat-dialog-close]="true">Close</button>
+</div>
