@@ -59,7 +59,8 @@ export class PropertyComponent {
     this.PropertyService.GetPropertySarch(this.objectFilter).subscribe({
       next: (data) => {
         console.log("data filter")
-        console.log(data)
+        console.log("///////////////")
+        console.log(data )
 
         this.PropertyFilter = data;
       },
