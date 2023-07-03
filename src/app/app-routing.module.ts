@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'addProperty', component: AddPropertyComponent },
   { path: 'editProperty/:id', component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
+  { path: 'Property/:id', component: PropertyComponent },
   { path: 'HostDashboardComponent', component: HostDashboardComponent },
   {path:'update', component:UserProfileUpdateComponent}
 ];
