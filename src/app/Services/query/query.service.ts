@@ -6,7 +6,6 @@ import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
   providedIn: 'root'
 })
 export class QueryService {
-   count : any =0
   constructor( ) { 
   }
 
@@ -14,15 +13,13 @@ export class QueryService {
   public query$ = this.query.asObservable(); //Has a $ 
 
   setqeury(query:any ){
-    this.count++;
-    console.log( query)
     this.query= query;
     }
 
 
     
     GetQuery(){
-      console.log(this.query$)
+     
       return this.query;
     }
 }

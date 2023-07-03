@@ -1,12 +1,85 @@
-<mat-card>
-  <mat-card-title>Add Property</mat-card-title>
-  <mat-card-content>
-    <form
-      #propertyForm="ngForm"
-      (ngSubmit)="addProperty(propertyForm)"
-      ngNativeValidate
-    >
-      <mat-form-field>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet"
+  />
+</head>
+
+<div class="container">
+  <div class="title">ADD PROPERTY</div>
+  <form #propertyForm="ngForm" (ngSubmit)="addProperty(propertyForm)">
+    <!--Property name field-->
+    <div class="row mt-4">
+      <mat-form-field appearance="outline" class="col-12">
+        <mat-label>Property Name:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.propertyName"
+          name="propertyName"
+          required
+          #propertyName="ngModel"
+        />
+        <mat-error *ngIf="propertyName.invalid"
+          >Property Name is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <!--Image Upload-->
+    <div class="formbold-main-wrapper">
+      <div class="formbold-form-wrapper">
+        <div class="mb-6 pt-4">
+          <label
+            class="formbold-form-label formbold-form-label-2"
+            style="text-align: center"
+          >
+            Upload Property Images
+          </label>
+
+          <div class="formbold-mb-5 formbold-file-input">
+            <input
+              type="file"
+              name="file"
+              id="file"
+              multiple
+              accept="image/*"
+              max="5"
+              (change)="uploadPhotos($event)"
+            />
+            <label for="file">
+              <div id>
+                <span class="formbold-drop-file"> Drop files here </span>
+                <span class="formbold-or"> Or </span>
+                <span class="formbold-browse"> Browse </span>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--Image View-->
+    <!-- <div class="image-grid">
+      <div class="image-card" *ngFor="let imageUrl of ImageUrls">
+        <img [src]="imageUrl" />
+      </div>
+    </div> -->
+    <div class="row mt-4">
+      <button
+        mat-raised-button
+        color="warn"
+        type="button"
+        (click)="openImagePopup()"
+      >
+        View Images
+      </button>
+    </div>
+
+    <div class="row my-4">
+      <!--Country field-->
+      <mat-form-field class="col-12 col-md-6 col-lg-4" appearance="outline">
         <mat-label>Country:</mat-label>
         <mat-select
           [(ngModel)]="selectedCountry"
@@ -22,7 +95,8 @@
         <mat-error *ngIf="!selectedCountry">Country is required</mat-error>
       </mat-form-field>
 
-      <mat-form-field>
+      <!--City field-->
+      <mat-form-field class="col-12 col-md-6 col-lg-4" appearance="outline">
         <mat-label>City:</mat-label>
         <mat-select [(ngModel)]="selectedCity" name="city" required>
           <mat-option value="">Select City</mat-option>
@@ -33,60 +107,56 @@
         <mat-error *ngIf="!selectedCity">City is required</mat-error>
       </mat-form-field>
 
-      <mat-form-field>
+      <!--Address field-->
+      <mat-form-field class="col-12 col-md-6 col-lg-4" appearance="outline">
+        <mat-label>Address:</mat-label>
+        <input
+          matInput
+          [(ngModel)]="property.Address"
+          name="address"
+          required
+        />
+        <mat-error *ngIf="propertyForm.controls['address']?.errors"
+          >Address is required</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="row my-4">
+      <!--Category field-->
+      <mat-form-field class="col-12 col-md-6 col-lg-6" appearance="outline">
         <mat-label>Category:</mat-label>
         <mat-select [(ngModel)]="selectedCategory" name="category" required>
           <mat-option value="">Select Category</mat-option>
-          <mat-option *ngFor="let category of categories" [value]="category.id">
-            {{ category.name }}
-          </mat-option>
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category.id"
+            >{{ category.name }}</mat-option
+          >
         </mat-select>
         <mat-error *ngIf="!selectedCategory">Category is required</mat-error>
       </mat-form-field>
 
-      <mat-form-field>
+      <!--Amenities field-->
+      <mat-form-field class="col-12 col-md-6 col-lg-6" appearance="outline">
         <mat-label>Amenities:</mat-label>
         <mat-select
           #selectList
           [(ngModel)]="property.AmenitiesId"
           multiple
           (selectionChange)="onAmenitySelectionChange($event)"
+          name="AmenitiesId"
         >
           <mat-option *ngFor="let amenity of amenities" [value]="amenity.id">
             {{ amenity.name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
+    </div>
 
-      <mat-form-field>
-        <mat-label>Property Name:</mat-label>
-        <input
-          matInput
-          [(ngModel)]="property.propertyName"
-          name="propertyName"
-          required
-        />
-        <mat-error *ngIf="propertyForm.controls['propertyName']?.errors">
-          Property Name is required
-        </mat-error>
-      </mat-form-field>
-
-      <!-- <mat-form-field>
-        <mat-label>Images URLs:</mat-label>
-        <textarea
-          matInput
-          [(ngModel)]="property.ImagesURLs"
-          name="imagesURLs"
-          required
-          rows="5"
-          cols="40"
-        ></textarea>
-        <mat-error *ngIf="propertyForm.controls['imagesURLs']?.errors">
-          Images URLs are required
-        </mat-error>
-      </mat-form-field> -->
-
-      <mat-form-field>
+    <div class="row my-4">
+      <!--Max numbers of guests field-->
+      <mat-form-field class="col-6 col-md-3" appearance="outline">
         <mat-label>Max Number of Guests:</mat-label>
         <input
           matInput
@@ -94,13 +164,16 @@
           name="maxNumberOfGuests"
           type="number"
           required
+          max="16"
+          min="1"
         />
-        <mat-error *ngIf="propertyForm.controls['maxNumberOfGuests']?.errors">
-          Max Number of Guests is required
-        </mat-error>
+        <mat-error *ngIf="propertyForm.controls['maxNumberOfGuests']?.errors"
+          >Max Number of Guests must be between 1 and 16.</mat-error
+        >
       </mat-form-field>
 
-      <mat-form-field>
+      <!--Bedroom count field-->
+      <mat-form-field class="col-6 col-md-3" appearance="outline">
         <mat-label>Bedrooms Count:</mat-label>
         <input
           matInput
@@ -108,13 +181,15 @@
           name="bedroomsCount"
           type="number"
           required
+          min="1"
         />
-        <mat-error *ngIf="propertyForm.controls['bedroomsCount']?.errors">
-          Bedrooms Count is required
-        </mat-error>
+        <mat-error *ngIf="propertyForm.controls['bedroomsCount']?.errors"
+          >Bedrooms has a minimum of 1</mat-error
+        >
       </mat-form-field>
 
-      <mat-form-field>
+      <!--Bathroom count field-->
+      <mat-form-field class="col-6 col-md-3" appearance="outline">
         <mat-label>Bathrooms Count:</mat-label>
         <input
           matInput
@@ -122,27 +197,15 @@
           name="bathroomsCount"
           type="number"
           required
+          min="1"
         />
-        <mat-error *ngIf="propertyForm.controls['bathroomsCount']?.errors">
-          Bathrooms Count is required
-        </mat-error>
+        <mat-error *ngIf="propertyForm.controls['bathroomsCount']?.errors"
+          >Bathrooms Count has a minimum of 1</mat-error
+        >
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Bed Count:</mat-label>
-        <input
-          matInput
-          [(ngModel)]="property.BedCount"
-          name="bedCount"
-          type="number"
-          required
-        />
-        <mat-error *ngIf="propertyForm.controls['bedCount']?.errors">
-          Bed Count is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
+      <!--Price per night field-->
+      <mat-form-field class="col-6 col-md-3" appearance="outline">
         <mat-label>Price per Night:</mat-label>
         <input
           matInput
@@ -151,25 +214,15 @@
           type="number"
           required
         />
-        <mat-error *ngIf="propertyForm.controls['pricePerNight']?.errors">
-          Price per Night is required
-        </mat-error>
+        <mat-error *ngIf="propertyForm.controls['pricePerNight']?.errors"
+          >Price per Night is required</mat-error
+        >
       </mat-form-field>
+    </div>
 
-      <mat-form-field>
-        <mat-label>Address:</mat-label>
-        <input
-          matInput
-          [(ngModel)]="property.Address"
-          name="address"
-          required
-        />
-        <mat-error *ngIf="propertyForm.controls['address']?.errors">
-          Address is required
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field>
+    <div class="row mt-3">
+      <!--Description field-->
+      <mat-form-field class="col-12" appearance="outline">
         <mat-label>Description:</mat-label>
         <textarea
           matInput
@@ -177,14 +230,15 @@
           name="description"
           required
         ></textarea>
-        <mat-error *ngIf="propertyForm.controls['description']?.errors">
-          Description is required
-        </mat-error>
+        <mat-error *ngIf="propertyForm.controls['description']?.errors"
+          >Description is required</mat-error
+        >
       </mat-form-field>
+    </div>
 
-      <button mat-raised-button color="primary" type="submit">
-        Add Property
-      </button>
-    </form>
-  </mat-card-content>
-</mat-card>
+    <!--add property Button-->
+    <div class="row mt-3">
+      <button mat-raised-button color="warn" type="submit">Add Property</button>
+    </div>
+  </form>
+</div>

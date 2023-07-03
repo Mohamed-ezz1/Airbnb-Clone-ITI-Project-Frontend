@@ -10,7 +10,7 @@ import { AddPropertyComponent } from './Components/User/add-property/add-propert
 import { HostPropertyUpdateComponent } from './Components/User/host-property-update/host-property-update.component';
 import { PropertyComponent } from './Components/Home/PropertyCard/property/property.component';
 import { PropBookingComponent } from './Components/PropertyDetails/prop-booking/prop-booking.component';
-
+import { HostDashboardComponent } from './Components/User/host-dashboard/host-dashboard.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'Register', component: RegisterComponent },
@@ -19,10 +19,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'hostBooking', component: HostBookingOrdersComponent },
   { path: 'hostProperty', component: HostPropertiesComponent },
-  { path: 'propertyDetails/:id', component:PropDetailsComponent},
+  { path: 'propertyDetails/:id', component: PropDetailsComponent },
   { path: 'addProperty', component: AddPropertyComponent },
-  {path:'editProperty/:id' , component: HostPropertyUpdateComponent },
-  {path:'Property' , component: PropertyComponent },
+  { path: 'editProperty/:id', component: HostPropertyUpdateComponent },
+  { path: 'Property', component: PropertyComponent },
+  { path: 'HostDashboardComponent', component: HostDashboardComponent }
+
 ];
 
 @NgModule({

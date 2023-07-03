@@ -99,37 +99,58 @@
                 <div class="row">
                     <div class="d-flex">
                         <h2 class="me-auto" style="display: inline;">${{propDetails.pricePerNight}} <span
-                                style="font-size:small;">total</span> </h2>
+                                style="font-size:small;">per night</span> </h2>
                         <p style="display: inline;" class="material-icons fs-6 mt-2">star</p>
                         <p class="fs-6 mt-2" style="display: inline;">
                             {{propDetails.ratingOverroll}}4.8 |
                             {{propDetails.numOfReviews}}6 Reviews</p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin: auto;">
                     <mat-form-field>
                         <mat-label>Enter a reservation range</mat-label>
-                        <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-                          <input matStartDate formControlName="start" placeholder="Start date" >
-                          <input matEndDate formControlName="end" placeholder="End date">
+                        <mat-date-range-input [min]="minDate" [formGroup]="range" [rangePicker]="picker">
+                            <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate">
+                            <input matEndDate formControlName="end" placeholder="End date">
                         </mat-date-range-input>
-                        <mat-hint>Enter the start date first, then the end date</mat-hint>
+                        <mat-hint>Enter the start date first, then the end date
+                            <br>Disabled dates are reserved.</mat-hint>
                         <mat-datepicker-toggle matIconSuffix [for]="picker">
-                            <mat-calendar [dateFilter]="dateFilter"></mat-calendar>
                         </mat-datepicker-toggle>
-                        <mat-date-range-picker #picker></mat-date-range-picker>
-                      </mat-form-field>
+                        <mat-date-range-picker #picker matDatepickerFilter="myFilter"></mat-date-range-picker>
+                    </mat-form-field>
                 </div>
 
-                <div class="row" style="margin: auto; margin-top: 1rem;">
+                <div class="row" style="margin: auto; margin-top: 2rem;">
                     <div class="d-flex" style="border: black solid 1px; border-radius: 5px;">
-                        <h3>Guests</h3>
-                        
+                        <h3 class="me-auto mt-3">Guests</h3>
+                        <button mat-icon-button color="primary" aria-label="" class="mt-1" [disabled]="isPDisabled"
+                            (click)="pButton()">
+                            <mat-icon>add_circle</mat-icon></button>
+                        <h4 class="pt-2" class="mt-3">{{numOfGuests}}</h4>
+                        <button mat-icon-button color="primary" aria-label="" class="mt-1" [disabled]="isMDisabled"
+                            (click)="mButton()">
+                            <mat-icon>remove_circle</mat-icon></button>
                     </div>
                 </div>
-                
+                <div class="row" style="margin: auto; margin-top: 1rem;">
+                    <button mat-raised-button color="warn" (click)="openPopup()">Reserve</button>
+                </div>
+
+                <div class="row">
+                    <h3>You won't be charged yet.</h3>
+                    <p>Price shown is the total trip price, including additional fees and taxes.</p>
+                    <hr class="m-2">
+                </div>
+                <div class="row">
+                    <div class="d-flex">
+                        <h2 class="me-auto">Total</h2>
+                        <h3>${{propDetails.pricePerNight}}</h3>
+                    </div>
+                </div>
+
             </div>
-            
+
         </div>
 
     </div>

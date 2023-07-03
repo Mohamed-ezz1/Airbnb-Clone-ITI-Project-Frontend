@@ -4,6 +4,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { HostService } from 'src/app/Services/Host/host.service';
 
 @Component({
@@ -20,17 +21,17 @@ export class HostPropertiesComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private hostService: HostService ,  private dialog: MatDialog,private snackBar: MatSnackBar ) {
+  constructor(private hostService: HostService, private dialog: MatDialog, private snackBar: MatSnackBar, private router: Router) {
 
   }
 
   ngOnInit(): void {
     this.hostService.GetPropertyByUserId().subscribe({
-      next: (data :any) => {
+      next: (data: any) => {
         this.dataSource = new MatTableDataSource(data);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        },
+      },
       error: (error) => { console.log(error) },
       complete: () => { console.log("complete") }
     })
@@ -46,5 +47,8 @@ export class HostPropertiesComponent implements OnInit {
     }
   }
 
+  navigateToEdit(propertyId: string): void {
+    this.router.navigate(['/editProperty', propertyId]);
+  }
 
 }
