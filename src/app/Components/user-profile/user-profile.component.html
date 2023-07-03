@@ -1,20 +1,47 @@
-<h1>user-profile</h1>
-<div>
-   <h2>FirstName</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-center" >
+    <h1>user-profile</h1>
+    </div>
+    <div class="col-md-12 m-2">
+      <h2>FirstName</h2>
+    <p>{{ userProfile.firstName }} </p>
+    </div>
+    <div class="col-md-12 m-2">
+      <h2>LastName</h2>
+    <p>{{ userProfile.lastName }}</p>
+    </div>
+    <div class="col-md-12 m-2">
+      <h2>Email</h2>
+    <p>{{ userProfile.email }}</p>
+    </div>
+    <div class="col-md-12 m-2">
+      <h2>PhoneNumber</h2>
+    <p>{{ userProfile.phoneNumber }}</p>
+    </div>
+    <div class="col-md-12 m-2">
+      <h2>About</h2>
+      <p>{{ userProfile.about }}</p>
+    </div>
+    <div>
+    <a routerLink="/update" class="btn btn-secondary">edit</a>
+  </div>
+</div>
+<!-- <div>
+   <h3>FirstName</h3>
     <p>{{ userProfile.firstName }} </p>
 
-   <h2>LastName</h2>
+   <h3>LastName</h3>
     <p>{{ userProfile.lastName }}</p>
 
-   <h2>Email</h2>
+   <h3>Email</h3>
     <p>{{ userProfile.email }}</p>
 
-    <h2>UserName</h2>
-    <p>{{ userProfile.username }}</p>
-
-    <h2>PhoneNumber</h2>
+    <h3>PhoneNumber</h3>
     <p>{{ userProfile.phoneNumber }}</p>
     
-    <h2>About</h2>
+    <h3>About</h3>
     <p>{{ userProfile.about }}</p>
-  </div>
+
+    <a routerLink="/update" class="btn btn-secondary">edit</a>
+  </div> -->
