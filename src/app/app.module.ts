@@ -69,6 +69,8 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
     MatIconModule,
     MatInputModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'

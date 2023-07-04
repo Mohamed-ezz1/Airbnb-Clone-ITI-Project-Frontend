@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { MaterialModule } from 'src/app/AngularMaterial/material.module'
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { PropBookingComponent } from 'src/app/Components/PropertyDetails/prop-booking/prop-booking.component';
@@ -10,6 +11,7 @@ import { ReservationService } from 'src/app/Services/Property/reservation.servic
 import { ReservationDto } from 'src/app/types/ReservationDto';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-prop-details',
@@ -32,13 +34,21 @@ export class PropDetailsComponent implements OnInit {
   totalPrice: any;             //total price of booking
   range!: FormGroup;
 
-
-
+  myHolidayDates = [
+    new Date("7/10/2023"),
+    new Date("7/11/2023"),
+    new Date("7/12/2023"),
+    new Date("7/13/2023")
+];
+myHolidayFilter = (d: Date): boolean => {
+  const time=d.getTime();
+  return !this.myHolidayDates.find(x=>x.getTime()==time);
+}
 
   constructor(myRoute: ActivatedRoute, private propService: PropertyService, public myRouter: Router,
-    private fb: FormBuilder, private authService: AuthenticationService,
+    private fb: FormBuilder, private authService: AuthenticationService, private dateAdapter: DateAdapter<Date>,
     private dialog: MatDialog, private snackBar: MatSnackBar, private reservationService: ReservationService) {
-
+      this.dateAdapter.setLocale('en-GB');
     this.propId = myRoute.snapshot.params["id"];
     this.range = this.fb.group({
       start: null,
@@ -53,6 +63,7 @@ export class PropDetailsComponent implements OnInit {
       complete: () => { console.log("complete"); }
     })
   }
+
 
   // plus button function
   pButton() {
