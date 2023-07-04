@@ -14,7 +14,7 @@ export class PropertyComponent {
   slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });
   Property: any;
   ID :any;
-
+///cahnge\\\
   PropertyFilter: any;
   objectFilter: any;
   query: QueryService
