@@ -4,7 +4,7 @@ import { ReservationService } from 'src/app/Services/Property/reservation.servic
 import { ReservationDto } from 'src/app/types/ReservationDto';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { PropertyBookingDto } from 'src/app/types/PropertyBookingDto';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -18,11 +18,9 @@ export class PropBookingComponent implements OnInit {
   propId :any;
   constructor(
     private dialogRef: MatDialogRef<PropBookingComponent>, private reservationService : ReservationService,
-    public myServic:PropertyService, myRoute:ActivatedRoute, private snackBar: MatSnackBar,
+    public myServic:PropertyService, myRoute:ActivatedRoute,public myRouter: Router, private snackBar: MatSnackBar,
      @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string }
   ) {
-    this.propId=myRoute.snapshot;
-    console.log(this.propId);
   }
 
   ngOnInit(): void {
@@ -43,6 +41,8 @@ export class PropBookingComponent implements OnInit {
 
     this.myServic.PostPropertyBooking(this.newBooking).subscribe(
       (next)=>{ 
+        this.myRouter.navigate(['/Property']);
+        this.close();
         this.snackBar.open('Reserved succefully!', 'Ok', {
           duration: 4000, // Duration in milliseconds
           verticalPosition: "top",
