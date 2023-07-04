@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NotFoundError } from 'rxjs';
+import { BehaviorSubject, NotFoundError } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { PropertyAddEditDto } from 'src/app/types/PropertyAddEditDto';
@@ -12,21 +12,23 @@ import { UploadFileDto } from 'src/app/types/UploadFileDto';
 export class UsertypeService {
 
 
-  constructor(private myclient : HttpClient) { 
+  constructor(private myclient: HttpClient) {
 
   }
+
+  public usertype$ = new BehaviorSubject<any>(null);
 
   private readonly Usertype = "https://localhost:7108/api/UserDetails/UserType/";
 
   getusertype() {
 
-   
-    
+
+
     console.log(this.myclient.get(this.Usertype))
     return this.myclient.get(this.Usertype);
 
- 
-}
+
+  }
 
 
 }
