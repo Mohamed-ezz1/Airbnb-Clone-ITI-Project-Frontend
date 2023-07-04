@@ -22,13 +22,13 @@ export class NavbarComponent implements OnInit   {
   searchCountryandcity:any
   query :QueryService
 
-  //search output 
+  //search output
 
   selectedCountry:any ;
   selectedCity:any ;
 numberOfguets:any;
 cities:any;
-  
+
 constructor( a:AuthenticationService , SearchboxService :SearchboxService ,query : QueryService ){
 this.authenticationService=a;
 this.SearchboxService = SearchboxService;
@@ -39,20 +39,20 @@ this.selectedCountry= null ;
 this.selectedCity  = null;
 this.numberOfguets=null;
 
-} 
+}
   ngOnInit(): void {
   this.authenticationService.isLoggedIn$.subscribe({
-   
+
 next: (value)=> {
   this.Isloggen=value;
   console.log(this.Isloggen)
 },
 error: ()=> this.Isloggen=false
      })
- 
- 
+
+
  this.SearchboxService.Searchbarinformation().subscribe({
-  next:(value) =>{ 
+  next:(value) =>{
 
     this.searchCountryandcity=value
     console.log(this.searchCountryandcity)
@@ -61,9 +61,9 @@ error: ()=> this.Isloggen=false
      console.log( element.countryId)
     });
 
-  
+
   },
-  
+
  })
 
 
@@ -71,7 +71,7 @@ error: ()=> this.Isloggen=false
 
 
 getcities( a:any){
-  this.selectedCountry =a 
+  this.selectedCountry =a
   console.log(this.selectedCountry)
   this.cities=this.searchCountryandcity.find((x:any) =>x.countryId==+this.selectedCountry).navbarCities
   console.log(this.cities)
