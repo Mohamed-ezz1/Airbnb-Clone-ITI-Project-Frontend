@@ -34,6 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UserProfileUpdateComponent } from './Components/user-profile-update/user-profile-update.component';
 import { ImagePopupComponent } from './Components/User/image-popup/image-popup.component';
 import { imagePopUpdateComponent } from './Components/User/image-pop-update/image-pop-update.component';
+
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
 @NgModule({
   declarations: [
@@ -70,9 +71,7 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
-    })
-
-
+    }),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
@@ -80,6 +79,7 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
     multi: true,
   },
 
+  { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
     // { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
 
 

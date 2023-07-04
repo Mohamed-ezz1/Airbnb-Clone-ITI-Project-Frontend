@@ -34,4 +34,15 @@ export class PropertyService {
     return this.myClient.post("https://localhost:7108/api/Home/Properties/filter",filter)
 
   }
+
+
+  ////
+
+  Getallcatogrey(){
+
+    
+    return this.myClient.get("https://localhost:7108/api/Home/Categories")
+
+  }
+
 }

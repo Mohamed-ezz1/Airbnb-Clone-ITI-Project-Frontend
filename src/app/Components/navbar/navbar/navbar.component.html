@@ -1,5 +1,5 @@
 <nav class="navbar   navbar-light bg-light row">
-  <a class="navbar-brand col-1" routerLink="/home">
+  <a class="navbar-brand col-1" routerLink="/Property">
     <img src="https://dynamic.brandcrowd.com/preview/logodraft/1899c0a0-7fcc-4e26-9ddb-54237bf8abc1/image/large.png" width="100" height="80" class="d-inline-block align-top" alt="">
   </a>
 
@@ -22,25 +22,41 @@
   </mat-select>
 
 
+</mat-form-field>
 
+<mat-form-field class="col-2">
+  <mat-label>Catogires</mat-label>
+  <mat-select    #Catogrey   (selectionChange)="changeCatogrey(Catogrey.value)" >
+    <mat-option *ngFor="let Catogrey of Catogires" [value]=" Catogrey.categoryId">
+      {{Catogrey.categoryName}}
+    </mat-option>
+  </mat-select>
 </mat-form-field>
 <div style="width:15%; background-color: aqua;">
 
-<button mat-button   style="width: 100% ;"   *ngIf="Isloggen" > Airbnb Your Home</button>
 </div>
 
 
-<button mat-button [matMenuTriggerFor]="menu" style="width: 5%;">|||</button>
+<button   mat-button  [matMenuTriggerFor]="menu" style="width: 5%"><mat-icon  >menu</mat-icon>
+</button>
 <mat-menu   #menu="matMenu"  class="border-bottom-0   rounded-top  rounded-left rounded-right"   >
   <div *ngIf="Isloggen">
-  <a  mat-menu-item routerLink="/user-profile">profile</a>
-  <a mat-menu-item  routerLink="/user-profile">sign out</a>
-  <a mat-menu-item routerLink="/user-profile">Mytrips</a>
+  <a  mat-menu-item routerLink="/user-profile"> <mat-icon>person</mat-icon>
+    profile</a>
+  <button mat-menu-item  routerLink="/Property"  (click)="logout()"> <mat-icon>reply</mat-icon>sign out</button>
+  <a mat-menu-item routerLink="/user-profile"> <mat-icon>airplanemode_active</mat-icon>
+     Mytrips</a>
 </div>
 <div *ngIf="!Isloggen">
-  <a mat-menu-item routerLink="/login">Sign in </a>
-  <a mat-menu-item routerLink="/Register">Register </a>
+  <a mat-menu-item routerLink="/login" > <mat-icon>login</mat-icon>
+    login </a>
+  <a mat-menu-item routerLink="/Register"> <mat-icon>note_add</mat-icon>
+    Register </a>
 
 </div>
+
+
 </mat-menu>
+
+
 </nav>
