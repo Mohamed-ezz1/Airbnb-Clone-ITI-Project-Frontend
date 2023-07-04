@@ -6,6 +6,7 @@ import { GestProfile } from 'src/app/types/ProfileOfUser';
   templateUrl: './user-profile.component.html',
   styleUrls: ['./user-profile.component.css']
 })
+
 export class UserProfileComponent implements OnInit {
   userProfile: any = {};
 
@@ -20,7 +21,7 @@ export class UserProfileComponent implements OnInit {
           }
           this.userProfile = data
         },
-        error: (error) => { console.log("mohamed") }
+        error: (error) => { console.log("error") }
 
       })
   }

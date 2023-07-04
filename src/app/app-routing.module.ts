@@ -17,7 +17,7 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
 const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'user-profile', canActivate: [authenticatonGuard],component: UserProfileComponent },
+  { path: 'user-profile', canActivate: [authenticatonGuard], component: UserProfileComponent },
   { path: 'Register', component: RegisterComponent },
   { path: 'hostBooking', canActivate: [authenticatonGuard], component: HostBookingOrdersComponent },
   { path: 'HostDashboardComponent/hostProperty', canActivate: [authenticatonGuard], component: HostPropertiesComponent },
@@ -26,12 +26,13 @@ const routes: Routes = [
   { path: 'editProperty/:id', canActivate: [authenticatonGuard], component: HostPropertyUpdateComponent },
   { path: 'Property', component: PropertyComponent },
   { path: 'HostDashboardComponent',canActivate :[authenticatonGuard], component: HostDashboardComponent },
-  {path: 'GuestTrips',canActivate:[authenticatonGuard],component:GuestTripsComponent}
+  {path: 'GuestTrips',canActivate:[authenticatonGuard],component:GuestTripsComponent},
+  { path: 'updateProfile', canActivate: [authenticatonGuard], component: UserProfileUpdateComponent }
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes),],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 
 })
