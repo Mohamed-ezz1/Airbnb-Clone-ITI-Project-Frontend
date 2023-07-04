@@ -34,6 +34,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UserProfileUpdateComponent } from './Components/user-profile-update/user-profile-update.component';
 import { ImagePopupComponent } from './Components/User/image-popup/image-popup.component';
 import { imagePopUpdateComponent } from './Components/User/image-pop-update/image-pop-update.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
 @NgModule({
@@ -72,6 +73,8 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
+    MDBBootstrapModule.forRoot()
+
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
