@@ -83,12 +83,10 @@ this.UsertypeService.getusertype().subscribe({
   next:(value:any) =>{
      if (value.userType=="Guest"){
       console.log(value.userType)
-      this.ishost=false
-
-      this.ishost=false
+      this.ishost=false;
      }else  if (value.userType=="Host"){
       console.log(value.userType)
-      this.ishost=true
+      this.ishost=true;
      }
 
   },
