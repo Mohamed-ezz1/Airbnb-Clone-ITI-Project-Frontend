@@ -1,47 +1,99 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-12 d-flex justify-content-center" >
-    <h1>user-profile</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-12 d-flex justify-content-center">
+      <div class="title">MY PROFILE</div>
     </div>
-    <div id="l1" class="col-md-12 m-2">
-      <h2>FirstName</h2>
-    <p>{{ userProfile.firstName }} </p>
+    <div class="col-md-8 m-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+              <img
+                src="https://via.placeholder.com/150"
+                alt="Profile Picture"
+                class="rounded-circle img-fluid"
+              />
+            </div>
+            <div class="col-md-12 d-flex justify-content-center mt-3">
+              <h2 class="card-title font-weight-bold">
+                {{ userProfile.firstName }} {{ userProfile.lastName }}
+              </h2>
+            </div>
+            <div class="col-md-12 mt-3">
+              <p class="card-text">{{ userProfile.about }}</p>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <div class="row">
+            <div class="col-md-6">
+              <p class="card-text">
+                <strong>Email:</strong> {{ userProfile.email }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="card-text">
+                <strong>Phone Number:</strong> {{ userProfile.phoneNumber }}
+              </p>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <div class="row mt-3">
+            <button mat-raised-button color="warn" routerLink="/update">
+              Edit Profile
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div id="l2"  class="col-md-12 m-2">
-      <h2>LastName</h2>
-    <p>{{ userProfile.lastName }}</p>
-    </div>
-    <div id="l3"  class="col-md-12 m-2">
-      <h2>Email</h2>
-    <p>{{ userProfile.email }}</p>
-    </div>
-    <div id="l4"  class="col-md-12 m-2">
-      <h2>PhoneNumber</h2>
-    <p>{{ userProfile.phoneNumber }}</p>
-    </div>
-    <div id="l5"  class="col-md-12 m-2">
-      <h2>About</h2>
-      <p>{{ userProfile.about }}</p>
-    </div>
-    <div>
-    <a routerLink="/update" class="btn btn-secondary">edit</a>
   </div>
 </div>
-<!-- <div>
-   <h3>FirstName</h3>
-    <p>{{ userProfile.firstName }} </p>
 
-   <h3>LastName</h3>
-    <p>{{ userProfile.lastName }}</p>
-
-   <h3>Email</h3>
-    <p>{{ userProfile.email }}</p>
-
-    <h3>PhoneNumber</h3>
-    <p>{{ userProfile.phoneNumber }}</p>
-    
-    <h3>About</h3>
-    <p>{{ userProfile.about }}</p>
-
-    <a routerLink="/update" class="btn btn-secondary">edit</a>
-  </div> -->
+<!-- <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-12 d-flex justify-content-center">
+      <h1>User Profile</h1>
+    </div>
+    <div class="col-md-8 m-2">
+      <div class="card shadow">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+              <img
+                src="{{ userProfile.profilePicture }}"
+                alt="Profile Picture"
+                class="rounded-circle img-fluid"
+              />
+            </div>
+            <div class="col-md-12 d-flex justify-content-center mt-3">
+              <h2 class="card-title font-weight-bold">
+                {{ userProfile.firstName }} {{ userProfile.lastName }}
+              </h2>
+            </div>
+            <div class="col-md-12 mt-3">
+              <p class="card-text">{{ userProfile.about }}</p>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <div class="row">
+            <div class="col-md-6">
+              <p class="card-text">
+                <strong>Email:</strong> {{ userProfile.email }}
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="card-text">
+                <strong>Phone Number:</strong> {{ userProfile.phoneNumber }}
+              </p>
+            </div>
+          </div>
+          <hr class="my-4" />
+          <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+              <a routerLink="/update" class="btn btn-danger">Edit Profile</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
