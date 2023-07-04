@@ -37,7 +37,6 @@ UsertypeService:UsertypeService
   selectedCity:any ;
   selectedCatogrey:any ;
   ishost:any
-
 numberOfguets:any;
 cities:any;
 Catogires :any;  
@@ -145,6 +144,6 @@ changeCatogrey(selected:any){
 //this.x["numberOfguets"]=5;
 //console.log(this.x);
   await this.query.setqeury({"cityId":this.selectedCity,"countryId":this.selectedCountry,"catogreyId":this.selectedCatogrey})
- await this.route.navigate(["/Property"])
+  await this.route.navigate(["/Property"])
 }
 }
