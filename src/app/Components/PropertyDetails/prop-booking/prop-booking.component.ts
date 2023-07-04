@@ -4,6 +4,8 @@ import { ReservationService } from 'src/app/Services/Property/reservation.servic
 import { ReservationDto } from 'src/app/types/ReservationDto';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { PropertyBookingDto } from 'src/app/types/PropertyBookingDto';
+import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-prop-booking',
@@ -13,10 +15,15 @@ import { PropertyBookingDto } from 'src/app/types/PropertyBookingDto';
 export class PropBookingComponent implements OnInit {
   resDto = new ReservationDto();
   newBooking = new PropertyBookingDto;
+  propId :any;
   constructor(
     private dialogRef: MatDialogRef<PropBookingComponent>, private reservationService : ReservationService,
-    public myServic:PropertyService, @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string }
-  ) {}
+    public myServic:PropertyService, myRoute:ActivatedRoute, private snackBar: MatSnackBar,
+     @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string }
+  ) {
+    this.propId=myRoute.snapshot;
+    console.log(this.propId);
+  }
 
   ngOnInit(): void {
     this.resDto = this.reservationService.getReservationDto();
@@ -25,15 +32,23 @@ export class PropBookingComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+    console.log(this.resDto.numOfGuests)
   }
 
-  addBooking(){
-    this.newBooking.CheckInDate = this.resDto.startDate;
-    this.newBooking.CheckOutDate = this.resDto.endDate;
-    this.newBooking.BookingDate = new Date();
-    this.newBooking.NumberOfGuests = this.resDto.numOfGuests;
-    this.newBooking.TotalPrice = this.resDto.totalPrice;
+  addBooking():void{
+    this.newBooking.StartDate = this.resDto.StartDate;
+    this.newBooking.EndDate = this.resDto.EndDate;
+    this.newBooking.NumOfGuest = this.resDto.numOfGuests;
+    this.newBooking.PropertyId = this.resDto.propId;
 
-    this.myServic.PostPropertyBooking(this.newBooking);
+    this.myServic.PostPropertyBooking(this.newBooking).subscribe(
+      (next)=>{ 
+        this.snackBar.open('Reserved succefully!', 'Ok', {
+          duration: 4000, // Duration in milliseconds
+          verticalPosition: "top",
+        });
+    },
+    (error) => { console.log("Error adding booking:", error);}
+    )
   }
 }

@@ -7,20 +7,21 @@ import { GestProfile } from 'src/app/types/ProfileOfUser';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  userProfile:any={} ;
+  userProfile: any = {};
 
-  constructor(private profileService: ProfileService) {}
+  constructor(private profileService: ProfileService) { }
 
   ngOnInit() {
     this.profileService.getUserProfile()
       .subscribe({
-        next: (data) => { 
+        next: (data) => {
           if (data) {
             this.userProfile = data;
           }
-         this.userProfile = data },
+          this.userProfile = data
+        },
         error: (error) => { console.log("mohamed") }
-        
+
       })
   }
 }

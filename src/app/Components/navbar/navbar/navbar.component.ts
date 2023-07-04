@@ -37,7 +37,6 @@ UsertypeService:UsertypeService
   selectedCity:any ;
   selectedCatogrey:any ;
   ishost:any
-
 numberOfguets:any;
 cities:any;
 Catogires :any;  

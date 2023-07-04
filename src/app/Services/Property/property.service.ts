@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { PropertyBookingDto } from 'src/app/types/PropertyBookingDto';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class PropertyService {
     return this.myClient.get(this.propertyDetailsUrl+"/"+ID);
   }
 
-  PostPropertyBooking(newBooking:any){
+  PostPropertyBooking(newBooking:PropertyBookingDto): Observable<any>{
+    console.log('Property JSON:', JSON.stringify(newBooking));
     return this.myClient.post(this.propertyBookingUrl, newBooking);
   }
 

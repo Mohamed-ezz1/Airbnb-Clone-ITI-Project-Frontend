@@ -20,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PropDetailsComponent implements OnInit {
 
   propDetails: any;             //all details of property
-  ID: any;                      //Id of property 
+  propId: any;                      //Id of property 
   pricePerNight!: any;
   numOfGuests: any = 2;         // number of guests the user reserving
   isPDisabled!: boolean;
@@ -39,7 +39,7 @@ export class PropDetailsComponent implements OnInit {
     private fb: FormBuilder, private authService: AuthenticationService,
     private dialog: MatDialog, private snackBar: MatSnackBar, private reservationService: ReservationService) {
 
-    this.ID = myRoute.snapshot.params["id"];
+    this.propId = myRoute.snapshot.params["id"];
     this.range = this.fb.group({
       start: null,
       end: null
@@ -47,7 +47,7 @@ export class PropDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.propService.GetPropertyById(this.ID).subscribe({
+    this.propService.GetPropertyById(this.propId).subscribe({
       next: (data) => { this.propDetails = data; console.log(data); },
       error: (error) => { console.log(error) },
       complete: () => { console.log("complete"); }
@@ -59,7 +59,6 @@ export class PropDetailsComponent implements OnInit {
     if (this.numOfGuests < this.propDetails.maxNumOfGuest) {
       this.numOfGuests += 1;
       this.isMDisabled = false;
-      console.log(this.numOfGuests)
       if (this.numOfGuests == this.propDetails.maxNumOfGuest) {
         this.isPDisabled = true;
       }
@@ -68,11 +67,9 @@ export class PropDetailsComponent implements OnInit {
 
   // minus button function
   mButton() {
-    //this.isMDisabled = true;
     if (this.numOfGuests > 1) {
       this.numOfGuests -= 1;
       this.isPDisabled = false;
-      console.log(this.numOfGuests)
       if (this.numOfGuests == 1) {
         this.isMDisabled = true;
       }
@@ -101,11 +98,12 @@ export class PropDetailsComponent implements OnInit {
       var resDto = new ReservationDto();
       resDto.numOfGuests = this.numOfGuests;
       resDto.pricePerNight = this.pricePerNight;
-      resDto.startDate = this.startDate;
-      resDto.endDate = this.endDate;
+      resDto.StartDate = this.startDate;
+      resDto.EndDate = this.endDate;
       resDto.numOfNights = this.numOfNights;
       resDto.totalPrice = this.totalPrice;
       resDto.propDetails = this.propDetails;
+      resDto.propId = this.propId;
       this.reservationService.setReservationDto(resDto);
     } else if (this.startDate == null || this.endDate == null) {
       this.snackBar.open('Please select a reservation range first!', 'Close', {
