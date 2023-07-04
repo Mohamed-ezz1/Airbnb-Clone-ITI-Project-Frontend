@@ -28,10 +28,12 @@ export class NavbarComponent implements OnInit   {
   Isloggen= true
   searchCountryandcity:any
   query :QueryService
+
+  //search output
 route: Router
 PropertyService:PropertyService
 UsertypeService:UsertypeService
-  //search output 
+  //search output
 
   selectedCountry:any ;
   selectedCity:any ;
@@ -39,8 +41,8 @@ UsertypeService:UsertypeService
   ishost:any
 numberOfguets:any;
 cities:any;
-Catogires :any;  
-constructor( a:AuthenticationService , SearchboxService :SearchboxService ,query : QueryService ,route: Router  , PropertyService:PropertyService,UsertypeService:UsertypeService){
+
+constructor( a:AuthenticationService , SearchboxService :SearchboxService ,query : QueryService ){
 this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
@@ -54,29 +56,36 @@ this.numberOfguets=null;
 this.PropertyService=PropertyService
 this.UsertypeService=UsertypeService
 
-} 
+}
   ngOnInit(): void {
   this.authenticationService.isLoggedIn$.subscribe({
-   
+
 next: (value)=> {
   this.Isloggen=value;
   console.log(this.Isloggen)
 },
 error: ()=> this.Isloggen=false
      })
- 
- 
+
+
  this.SearchboxService.Searchbarinformation().subscribe({
-  next:(value) =>{ 
+  next:(value) =>{
 
     this.searchCountryandcity=value
+    console.log(this.searchCountryandcity)
+    console.log(this.searchCountryandcity.countryId )
+    this.searchCountryandcity.forEach((element:any) => {
+     console.log( element.countryId)
+    });
+
+
   },
-  
+
  })
 
  this.PropertyService.Getallcatogrey().subscribe({
   next: (value)=> this.Catogires=value
-  
+
  })
 
 this.UsertypeService.getusertype().subscribe({
@@ -97,16 +106,16 @@ this.UsertypeService.getusertype().subscribe({
     console.log("not found user ")
   }}
   )
-  
+
 }
- 
+
 
 
 
 
 
 getcities( a:any){
-  this.selectedCountry =a 
+  this.selectedCountry =a
   console.log(this.selectedCountry)
   this.cities=this.searchCountryandcity.find((x:any) =>x.countryId==+this.selectedCountry).navbarCities
   console.log(this.cities)
@@ -119,7 +128,7 @@ console.log(this.selectedCity)
 }
 
  logout(){
- 
+
 
        if (localStorage.getItem('token')) {
           localStorage.removeItem('token')
@@ -129,7 +138,7 @@ console.log(this.selectedCity)
 
 
   }
-  
+
 
 }
 changeCatogrey(selected:any){

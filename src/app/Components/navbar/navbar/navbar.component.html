@@ -1,12 +1,9 @@
-
-
-
 <nav class="navbar   navbar-light bg-light row">
   <a class="navbar-brand col-1" routerLink="/Property">
     <img src="https://dynamic.brandcrowd.com/preview/logodraft/1899c0a0-7fcc-4e26-9ddb-54237bf8abc1/image/large.png" width="100" height="80" class="d-inline-block align-top" alt="">
   </a>
- 
-  
+
+
 <mat-form-field class="col-2">
   <mat-label>Countries</mat-label>
   <mat-select   #country   (selectionChange)="getcities(country.value)">
@@ -24,7 +21,7 @@
     </mat-option>
   </mat-select>
 
-  
+
 </mat-form-field>
 
 <mat-form-field class="col-2">
@@ -35,14 +32,7 @@
     </mat-option>
   </mat-select>
 </mat-form-field>
-
-<button mat-button   class="rounded-pill" style="width: 10% ;"   (click)="search()" >search</button>
-
-<div style="width:15%; "> 
-
-<button mat-button   class="rounded-pill" style="width: 100% ;"   *ngIf="Isloggen && ishost " routerLink="HostDashboardComponent/hostProperty" >Switch to host</button>
-<button mat-button   style="width: 100% ;"   *ngIf="Isloggen && !ishost " routerLink="/HostDashboardComponent" > Airbnb Your Home</button>
-<button mat-button   style="width: 100% ;"   *ngIf="!Isloggen  " routerLink="/login" > Airbnb Your Home</button>
+<div style="width:15%; background-color: aqua;">
 
 </div>
 
@@ -68,7 +58,5 @@
 
 </mat-menu>
 
+
 </nav>
-
-
-
