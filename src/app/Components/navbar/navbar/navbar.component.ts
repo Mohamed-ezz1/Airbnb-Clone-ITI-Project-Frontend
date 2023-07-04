@@ -41,7 +41,7 @@ UsertypeService:UsertypeService
 numberOfguets:any;
 cities:any;
 Catogires :any;  
-constructor( a:AuthenticationService , SearchboxService :SearchboxService ,query : QueryService ,route: Router  , PropertyService:PropertyService,UsertypeService:UsertypeService){
+constructor    ( a:AuthenticationService , SearchboxService :SearchboxService ,query : QueryService ,route: Router  , PropertyService:PropertyService,UsertypeService:UsertypeService){
 this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
@@ -133,18 +133,25 @@ console.log(this.selectedCity)
   
 
 }
+
+
+redirectTo(uri: string) {
+  this.route.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+  this.route.navigate([uri]));
+}
 changeCatogrey(selected:any){
   this.selectedCatogrey = selected
 }
 
  x:any ={}
- search(){
+ async search(){
 //.x["cityId"]=this.selectedCity;
 //this.x["countryId"]= this.selectedCountry
 //this.x["catogreyId"]=this.selectedCatogrey
 //this.x["numberOfguets"]=5;
 //console.log(this.x);
- this.query.setqeury({"cityId":this.selectedCity,"countryId":this.selectedCountry,"catogreyId":this.selectedCatogrey,"numberOfguets":5})
+await this.query.setqeury({"cityId":this.selectedCity,"countryId":this.selectedCountry,"catogreyId":this.selectedCatogrey,})
+this.redirectTo("/Property")
 
 }
 }
