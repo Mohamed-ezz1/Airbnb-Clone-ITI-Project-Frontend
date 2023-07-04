@@ -3,7 +3,8 @@ export class ReservationDto{
     pricePerNight: any;
     numOfNights: any;
     numOfGuests: any;
-    startDate: any;
-    endDate: any;
+    StartDate: any;
+    EndDate: any;
     propDetails: any;
+    propId: any;
 }
