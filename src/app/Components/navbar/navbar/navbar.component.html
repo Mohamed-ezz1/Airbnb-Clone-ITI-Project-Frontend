@@ -36,30 +36,37 @@
   </mat-select>
 </mat-form-field>
 
+<button mat-button   class="rounded-pill" style="width: 10% ;"   (click)="search()" >search</button>
 
-<div style="width:15%; background-color: aqua;"> 
+<div style="width:15%; "> 
 
-<button mat-button   style="width: 100% ;"   *ngIf="Isloggen && ishost " routerLink="/hostProperty" >Switch to host</button>
+<button mat-button   class="rounded-pill" style="width: 100% ;"   *ngIf="Isloggen && ishost " routerLink="HostDashboardComponent/hostProperty" >Switch to host</button>
 <button mat-button   style="width: 100% ;"   *ngIf="Isloggen && !ishost " routerLink="/HostDashboardComponent" > Airbnb Your Home</button>
 <button mat-button   style="width: 100% ;"   *ngIf="!Isloggen  " routerLink="/login" > Airbnb Your Home</button>
 
 </div>
 
 
-<button mat-button [matMenuTriggerFor]="menu" style="width: 5%;">|||</button>
+<button   mat-button  [matMenuTriggerFor]="menu" style="width: 5%"><mat-icon  >menu</mat-icon>
+</button>
 <mat-menu   #menu="matMenu"  class="border-bottom-0   rounded-top  rounded-left rounded-right"   >
   <div *ngIf="Isloggen">
-  <a  mat-menu-item routerLink="/user-profile">profile</a>
-  <button mat-menu-item  routerLink="/user-profile"  (click)="logout()">sign out</button>
-  <a mat-menu-item routerLink="/user-profile">Mytrips</a>
+  <a  mat-menu-item routerLink="/user-profile"> <mat-icon>person</mat-icon>
+    profile</a>
+  <button mat-menu-item  routerLink="/Property"  (click)="logout()"> <mat-icon>reply</mat-icon>sign out</button>
+  <a mat-menu-item routerLink="/GuestTrips"> <mat-icon>airplanemode_active</mat-icon>
+     Mytrips</a>
 </div>
 <div *ngIf="!Isloggen">
-  <a mat-menu-item routerLink="/login">Sign in </a>
-  <a mat-menu-item routerLink="/Register">Register </a>
+  <a mat-menu-item routerLink="/login" > <mat-icon>login</mat-icon>
+    login </a>
+  <a mat-menu-item routerLink="/Register"> <mat-icon>note_add</mat-icon>
+    Register </a>
 
 </div>
-</mat-menu>
 
+
+</mat-menu>
 
 </nav>
 

@@ -10,7 +10,9 @@ import { Route, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
 import{PropertyService} from 'src/app/Services/Property/property.service';
 import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
-
+import { NgModule } from '@angular/core';
+import { Directive, Input } from '@angular/core';
+// import { MatMenuTrigger, _MatMenu } from '@angular/material'
 
 @Component({
   selector: 'app-navbar',
@@ -35,7 +37,6 @@ UsertypeService:UsertypeService
   selectedCity:any ;
   selectedCatogrey:any ;
   ishost:any
-
 numberOfguets:any;
 cities:any;
 Catogires :any;  
@@ -44,6 +45,7 @@ this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
 query.setqeury({"cityId": 1})
+query.setqeury({"catogreyId": 1  ,"cityId": 1 })
 query.setqeury({"catogreyId": 1  ,"cityId": 11 })
 this.route=route
 this.selectedCountry= null ;
@@ -132,5 +134,16 @@ console.log(this.selectedCity)
 }
 changeCatogrey(selected:any){
   this.selectedCatogrey = selected
+}
+
+ x:any ={}
+  async search(){
+//.x["cityId"]=this.selectedCity;
+//this.x["countryId"]= this.selectedCountry
+//this.x["catogreyId"]=this.selectedCatogrey
+//this.x["numberOfguets"]=5;
+//console.log(this.x);
+  await this.query.setqeury({"cityId":this.selectedCity,"countryId":this.selectedCountry,"catogreyId":this.selectedCatogrey})
+  await this.route.navigate(["/Property"])
 }
 }

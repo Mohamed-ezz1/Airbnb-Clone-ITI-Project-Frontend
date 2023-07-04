@@ -1,38 +1,131 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <div class="form">
-        <div class="col-md-12 d-flex justify-content-center m-3" >
-          <h1>user-profile</h1>
+      <div class="title">EDIT PROFILE</div>
+      <form (ngSubmit)="onUpdateUserProfile(profileForm)" #profileForm="ngForm">
+        <!--Image Upload-->
+        <div class="formbold-main-wrapper mb-5">
+          <div class="formbold-form-wrapper">
+            <div class="mb-6 pt-4">
+              <label
+                class="formbold-form-label formbold-form-label-2"
+                style="text-align: center"
+              >
+                Upload Your Image
+              </label>
+
+              <div class="formbold-mb-5 formbold-file-input">
+                <input
+                  type="file"
+                  name="file"
+                  id="file"
+                  accept="image/*"
+                  max="5"
+                  (change)="uploadPhoto($event)"
+                />
+                <label for="file">
+                  <div id>
+                    <span class="formbold-drop-file"> Drop files here </span>
+                    <span class="formbold-or"> Or </span>
+                    <span class="formbold-browse"> Browse </span>
+                  </div>
+                </label>
+              </div>
+            </div>
           </div>
-        <form (ngSubmit)="onUpdateUserProfile()" #profileForm="ngForm">
-          <div class="form-group d-flex m-2">
-            <label class="col-2" for="firstName">FirstName:</label>
-            <input class="form-control" type="text" id="firstName" name="firstName" maxlength="15" [(ngModel)]="userProfile.firstName" required />
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                type="text"
+                id="firstName"
+                name="firstName"
+                [(ngModel)]="userProfile.firstName"
+                required
+              />
+              <mat-error *ngIf="profileForm.controls['firstName'].invalid">
+                First Name is required
+              </mat-error>
+            </mat-form-field>
           </div>
-          <div class="form-group d-flex m-2">
-            <label class="col-2" for="lastName">LastName:</label>
-            <input class="form-control" type="text" id="lastName" name="lastName" maxlength="15" [(ngModel)]="userProfile.lastName" required />
+          <div class="mb-3 col-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                type="text"
+                id="lastName"
+                name="lastName"
+                [(ngModel)]="userProfile.lastName"
+                required
+              />
+              <mat-error *ngIf="profileForm.controls['lastName'].invalid">
+                Last Name is required
+              </mat-error>
+            </mat-form-field>
           </div>
-          <div class="form-group d-flex m-2">
-            <label class="col-2" for="email">Email:</label>
-            <input class="form-control" type="email" id="email" name="email" [(ngModel)]="userProfile.email" required />
+        </div>
+        <div class="row">
+          <div class="mb-3 col-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                type="email"
+                id="email"
+                name="email"
+                [(ngModel)]="userProfile.email"
+                required
+              />
+              <mat-error *ngIf="profileForm.controls['email'].invalid">
+                Invalid Email
+              </mat-error>
+            </mat-form-field>
           </div>
-          <div class="form-group d-flex m-2">
-            <label class="col-2" for="phoneNumber">PhoneNumber:</label>
-            <input class="form-control" type="phoneNumber" id="phoneNumber" name="phoneNumber" [(ngModel)]="userProfile.phoneNumber" required />
+          <div class="mb-3 col-6">
+            <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Phone Number</mat-label>
+              <input
+                matInput
+                type="phoneNumber"
+                id="phoneNumber"
+                name="phoneNumber"
+                [(ngModel)]="userProfile.phoneNumber"
+                required
+              />
+              <mat-error
+                *ngIf="
+                  profileForm.controls['phoneNumber'] &&
+                  profileForm.controls['phoneNumber'].invalid
+                "
+              >
+                Phone Number is required
+              </mat-error>
+            </mat-form-field>
           </div>
-          <div class="form-group d-flex m-2">
-            <label class="col-2" for="about">About:</label>
-            <input class="form-control" type="text" id="about" name="about" [(ngModel)]="userProfile.about" required />
-          </div>
-          <div class="form-group d-flex m-3 justify-content-center">
-            <button class="btn btn-outline-dark" type="submit" [disabled]="!profileForm.valid">
-              Update Profile
-            </button>
-          </div>
-        </form>
-      </div>
+        </div>
+        <div class="mb-3">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>About</mat-label>
+            <textarea
+              matInput
+              rows="5"
+              id="about"
+              name="about"
+              [(ngModel)]="userProfile.about"
+            ></textarea>
+          </mat-form-field>
+        </div>
+        <div class="row mt-3">
+          <button mat-raised-button color="warn" type="submit">
+            Update Profile
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
