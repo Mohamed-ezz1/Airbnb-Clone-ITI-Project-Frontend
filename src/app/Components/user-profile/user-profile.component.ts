@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ProfileService } from 'src/app/Services/UserProfile/profile.service';
 import { GestProfile } from 'src/app/types/ProfileOfUser';
 import { TabsService } from 'src/app/Services/tabs/tabs.service';
-import { Router } from '@angular/router';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
@@ -14,11 +13,12 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private profileService: ProfileService,
     private tabService: TabsService,
-  private route: Router
-    ) { }
+  
+  
+    ) { this.tabService.tab$.next("User")
+  }
 
   ngOnInit() {
-    this.tabService.tab$.next(this.route.url)
 
     this.profileService.getUserProfile()
       .subscribe({
