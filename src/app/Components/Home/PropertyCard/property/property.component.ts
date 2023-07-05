@@ -31,9 +31,7 @@ export class PropertyComponent {
 
   jedi(id:string){
     console.log(id)
-    this.router.navigateByUrl('propertyDetails/'+id)
-
-
+    this.router.navigateByUrl("propertyDetails/"+id)
       }
 
   ngOnInit(): void {

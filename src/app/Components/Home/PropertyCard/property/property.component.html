@@ -1,31 +1,32 @@
-<section class="d-flex justify-content-center flex-wrap  ">
+<section class="d-flex justify-content-center flex-wrap ">
 
-  <div *ngIf="ID ==null">
+  <div *ngIf="ID ==null" class="d-flex justify-content-center flex-wrap col-12  ">
     <div *ngFor="let item of  Property index as A"
-      class="card col-md-6 col-lg-4 col-sm-12 d-inline-block m-3 border border-light xx text-dark  "
-      style="width: 18rem;">
+      class="card col-md-6 col-lg-2 col-sm-12 d-inline-block m-3 border border-light xx text-dark  "
+      >
 
-      <div id="carouselExampleIndicators + A" class="carousel slide " data-ride="true"  (click)="jedi(item.propertyId)" >
+      <div id="carouselExampleIndicators + A" class="carousel slide " data-ride="true"  >
         <div class="carousel-indicators ">
           <button *ngFor="let img of Property[A].imgUrl index as ii;" type="button" [class.active]="ii===0"
             data-bs-target="#carouselExampleIndicators + A" data-bs-slide-to=ii aria-current="true"
             aria-label="'Slide' + ii "></button>
         </div>
 
-
         <mdb-carousel class="carousel slide carousel-inner " interval="0" [isControls]=false>
           <mdb-carousel-item *ngFor="let img of Property[A].imgUrl">
-            <div class="view w-100">
+            <div class="view w-100"  (click)="jedi(item.propertyId)">
               <img class="d-block w-100" src="{{img}}">
               <div class=" rgba-black-light waves-light" mdbWavesEffect></div>
             </div>
 
           </mdb-carousel-item>
-          <button class="xxx carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators + A"
+
+          <button class="xxx carousel-control-prev " type="button" data-bs-target="#carouselExampleIndicators + A"
             data-bs-slide="prev">
             <span class=" carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
           </button>
+
           <button class="xxx2 carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators + A"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
@@ -66,11 +67,10 @@
 
   </div>
 
-  <div *ngIf="ID == 1">
-
+  <!-- <div *ngIf="ID == 1"  class="d-flex justify-content-center flex-wrap  "> 
     <div *ngFor="let item of  PropertyFilter index as A"
-      class="card  col-md-6 col-lg-4 col-sm-12 d-inline-block m-3 border border-light  p-2 text-dark  "
-      style="width: 18rem;">
+    class="card col-md-6 col-lg-2 col-sm-12 d-inline-block m-3 border border-light xx text-dark  "
+    >
 
       <div id="carouselExampleIndicators + A" class="carousel slide " data-ride="true"  (click)="jedi(item.propertyId)"  >
         <div class="carousel-indicators ">
@@ -131,6 +131,70 @@
     </div>
 
 
-  </div>
+  </div> -->
 
+  <div *ngIf="ID == 1" class="d-flex justify-content-center flex-wrap col-12">
+    <div *ngFor="let item of  PropertyFilter index as A"
+      class="card col-md-6 col-lg-2 col-sm-12 d-inline-block m-3 border border-light xx text-dark  "
+      >
+
+      <div id="carouselExampleIndicators + A" class="carousel slide " data-ride="true"  (click)="jedi(item.propertyId)" >
+        <div class="carousel-indicators ">
+          <button *ngFor="let img of Property[A].imgUrl index as ii;" type="button" [class.active]="ii===0"
+            data-bs-target="#carouselExampleIndicators + A" data-bs-slide-to=ii aria-current="true"
+            aria-label="'Slide' + ii "></button>
+        </div>
+
+        <mdb-carousel class="carousel slide carousel-inner " interval="0" [isControls]=false>
+          <mdb-carousel-item *ngFor="let img of Property[A].imgUrl">
+            <div class="view w-100">
+              <img class="d-block w-100" src="{{img}}">
+              <div class=" rgba-black-light waves-light" mdbWavesEffect></div>
+            </div>
+
+          </mdb-carousel-item>
+          <button class="xxx carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators + A"
+            data-bs-slide="prev">
+            <span class=" carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="xxx2 carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators + A"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </mdb-carousel>
+
+
+
+
+      </div>
+
+
+
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <h5 class="card-title fs-5 fw-bold">{{item.cityName}} / {{item.countryName}}</h5>
+          <h2 class="card-title fs-4"><mat-icon>grade</mat-icon>{{item.propertyAllRating}} </h2>
+        </div>
+        <p class="card-text fs-5 bg-opacity-10 fw-normal">{{item.propertyName}}</p>
+
+        <div class="d-flex flex-row justify-content-between">
+          <div>
+            <h2 class="card-text"><mat-icon class="fs-3"> attach_money</mat-icon>{{item.pricePerNight}} <span
+                class="bg-danger bg-opacity-10 fs-6"> Night</span> </h2>
+          </div>
+
+          <div>
+          <button class="btn btn-outline-dark" (click)="jedi(item.propertyId)"><mat-icon class="fs-3">arrow_right_alt</mat-icon> </button>  
+
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+  </div>
 </section>
