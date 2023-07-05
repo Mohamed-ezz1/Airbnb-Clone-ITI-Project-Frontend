@@ -108,16 +108,21 @@
                 </div>
                 <div class="row" style="margin: auto;">
                     <mat-form-field>
-                        <mat-label>Enter a reservation range</mat-label>
-                        <mat-date-range-input [min]="minDate" [formGroup]="range" [rangePicker]="picker">
-                            <input matStartDate formControlName="start" placeholder="Start date" [(ngModel)]="startDate">
-                            <input matEndDate formControlName="end" placeholder="End date" [(ngModel)]="endDate" (dateInput)="onDateRangeChange()">
-                        </mat-date-range-input>
-                        <mat-hint>Enter the start date first, then the end date
-                            <br>Disabled dates are reserved.</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="picker">
-                        </mat-datepicker-toggle>
-                        <mat-date-range-picker #picker ></mat-date-range-picker>
+                        <mat-label>Choose a check-in date</mat-label>
+                        <input matInput [min]="minDate" [matDatepickerFilter]="myFilter" [matDatepicker]="checkInPicker"
+                            placeholder="Check-in" (dateInput)="onCheckInDateChange()" [(ngModel)]="startDate">
+                        <mat-hint>Disabled dates are reserved.</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #checkInPicker></mat-datepicker>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Choose a check-out date</mat-label>
+                        <input matInput [matDatepicker]="checkOutPicker" [min]="minCheckOutDate" [max]="maxCheckOutDate"
+                            placeholder="Check-out" (dateInput)="onDateRangeChange()" [(ngModel)]="endDate">
+                        <mat-hint>Disabled dates are reserved.</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #checkOutPicker></mat-datepicker>
                     </mat-form-field>
                 </div>
 
