@@ -10,7 +10,9 @@
       .card{
         border-radius: 20px;
       }
-      
+      mdb-carousel .carousel-indicators {
+        display: none;
+      }
       .carousel-item {
         padding: 3px;
 
@@ -27,7 +29,7 @@
       }
      
     
-/*       
+      
       .carousel-indicators li {
         display: inline-block;
         width: 10px;
@@ -40,11 +42,11 @@
         margin: 2px;
         position: relative;
         top: 30px;
-      } */
-      /* .carousel-indicators li.active {
+      } 
+       .carousel-indicators li.active {
         background: #000;
       }
-       */
+      
   
       @media only screen and (max-width: 650px) {
         .carousel-item img {

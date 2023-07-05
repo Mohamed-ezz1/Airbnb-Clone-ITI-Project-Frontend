@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { async } from 'rxjs';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
@@ -11,24 +12,22 @@ import { QueryService } from 'src/app/Services/query/query.service';
   styleUrls: ['./property.component.css']
 })
 export class PropertyComponent {
-  slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });
   Property: any;
-  ID :any;
+  ID  = null;
 ///cahnge\\\
   PropertyFilter: any;
   objectFilter: any;
   query: QueryService
   PropertyService: PropertyService
-  constructor(myRoute: ActivatedRoute, query: QueryService, PropertyService: PropertyService, private router: Router) {
+  constructor( private myRoute: ActivatedRoute, query: QueryService, PropertyService: PropertyService, private router: Router ,private toastr: ToastrService) {
     this.ID = myRoute.snapshot.params['id'];
-    if(this.ID == null ){
-      console.log("null oarams")
-    }
-    else{
-      console.log(this.ID)
-    }
-    
-console.log(myRoute.snapshot)
+    // if(this.ID == null ){
+    //   console.log("null oarams")
+    // }
+    // else{
+    //   console.log(this.ID) 
+    // }
+// console.log(myRoute.snapshot)
     this.query = query;
     this.PropertyService = PropertyService
   }
@@ -75,7 +74,14 @@ console.log(myRoute.snapshot)
 
         this.PropertyFilter = data;
       },
-      error: (e) => console.log(e)
+      error: (e) => {
+        
+        console.log(this.objectFilter)
+
+        this.router.navigateByUrl('Property')
+        this.toastr.warning("No Data Match")
+
+        console.log(e)}
 
 
     });
@@ -83,15 +89,7 @@ console.log(myRoute.snapshot)
     //////
 
 
-    this.slides[0] = {
-      src: './assets/img/angular.jpg',
-    };
-    this.slides[1] = {
-      src: './assets/img/react.jpg',
-    }
-    this.slides[2] = {
-      src: './assets/img/vue.jpg',
-    }
+
   }
 
 

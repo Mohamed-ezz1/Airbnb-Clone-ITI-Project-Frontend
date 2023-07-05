@@ -46,9 +46,10 @@ this.SearchboxService = SearchboxService;
 this.query = query;
 query.setqeury({"cityId": 1})
 query.setqeury({"catogreyId": 1  ,"cityId": 1 })
-query.setqeury({"catogreyId": 1  ,"cityId": 11 })
+query.setqeury({"catogreyId": 2  ,"cityId": 11 })
 this.route=route
 this.selectedCountry= null ;
+this.selectedCatogrey =null;
 this.selectedCity  = null;
 this.numberOfguets=null;
 this.PropertyService=PropertyService
@@ -150,7 +151,9 @@ changeCatogrey(selected:any){
 //this.x["numberOfguets"]=5;
 //console.log(this.x);
 await this.query.setqeury({"cityId":this.selectedCity,"countryId":this.selectedCountry,"catogreyId":this.selectedCatogrey,})
-this.redirectTo("/Property")
+
+
+this.redirectTo("/Property/1")
 
 }
 }
