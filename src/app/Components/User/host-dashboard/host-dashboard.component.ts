@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { Location } from '@angular/common';
 import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 import { HostService } from 'src/app/Services/Host/host.service';
@@ -8,20 +8,17 @@ import { HostService } from 'src/app/Services/Host/host.service';
   templateUrl: './host-dashboard.component.html',
   styleUrls: ['./host-dashboard.component.css']
 })
-export class HostDashboardComponent implements OnInit  {
+export class HostDashboardComponent  {
   showAddProperty: boolean = true;
   showHostProperty: boolean = false;
   showHostBookings: boolean = false;
 
-  constructor(private location: Location , private usertype: UsertypeService,private hostservice: HostService) { }
-  ngOnInit(): void {
-    this.usertype.getusertype().subscribe((user: any) => {
-      let Type = user.userType;
-      alert ("dashborad" + Type);
-      this.hostservice.isHost$.next(Type);
+  constructor(private location: Location , private usertype: UsertypeService,private hostservice: HostService) { this.usertype.getusertype().subscribe((user: any) => {
+    let Type = user.userType;
+    this.hostservice.isHost$.next(Type);
 
-    });
-  }
+  });}
+
 
   toggleAddProperty() {
     this.showAddProperty = true;
