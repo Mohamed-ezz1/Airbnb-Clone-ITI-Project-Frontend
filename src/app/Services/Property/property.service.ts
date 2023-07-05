@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PropertyBookingDto } from 'src/app/types/PropertyBookingDto';
+import { PropertyDtos } from 'src/app/types/Property';
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +31,8 @@ export class PropertyService {
 
 
 
-  GetPropertySarch(filter :any){
+  GetPropertySarch(filter :any):Observable<object>{
 
-    
     return this.myClient.post("https://localhost:7108/api/Home/Properties/filter",filter)
 
   }
