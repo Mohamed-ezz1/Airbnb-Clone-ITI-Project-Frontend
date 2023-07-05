@@ -13,6 +13,9 @@ export class QueryService {
   public query$ = this.query.asObservable(); //Has a $ 
 
   setqeury(query:any ){
+    console.log("///////////////");
+
+    console.log(query)
     this.query= query;
     }
 

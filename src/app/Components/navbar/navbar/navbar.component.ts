@@ -66,8 +66,8 @@ url:any
     this.route=route
     this.PropertyService = PropertyService
     this.UsertypeService = UsertypeService
+    this.selectedCatogrey=null
 
-    this.url =  new BehaviorSubject<string>(this.route.url)
 
   }
 
@@ -83,14 +83,7 @@ url:any
     this.hostService.isHost$.subscribe((data: any) => {
       this.ishost = data;
     });
-    // this.UsertypeService.getusertype().subscribe((data: any) => {
-    //   console.log(data)
-    //   if (data == "Host")
-    //     this.ishost = "Host";
-    //   else
-    //     this.ishost = "Guest"
-    // });
-
+   
     this.authenticationService.isLoggedIn$.subscribe({
 
       next: (value) => {
@@ -161,27 +154,28 @@ console.log(this.route.url)
   }
   changeCatogrey(selected: any) {
     this.selectedCatogrey = selected
+    console.log(this.selectedCatogrey)
   }
 
   x: any = {}
-  async search() {
+   search() {
     
     if (this.selectedCountry==0){
       this.selectedCountry=null
 
     }
-    if (this.selectedCity=0){
+    if (this.selectedCity==0){
       this.selectedCity=null
 
     }
-    if (this.selectedCatogrey=0){
+    if (this.selectedCatogrey==0){
       this.selectedCatogrey=null
 
     }
 
 
-    await this.query.setqeury({ "cityId": this.selectedCity, "countryId": this.selectedCountry, "catogreyId": this.selectedCatogrey,"numberOfGuests":this.numberOfguets })
-    this.redirectTo("/Property")
+     this.query.setqeury({ "cityId": this.selectedCity, "countryId": this.selectedCountry, "catogreyId": this.selectedCatogrey,"numberOfGuests":this.numberOfguets })
+    this.route.navigateByUrl("/Property/filter")
 
   }
 

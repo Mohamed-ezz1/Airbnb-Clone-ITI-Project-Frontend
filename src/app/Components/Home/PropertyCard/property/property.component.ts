@@ -36,7 +36,11 @@ export class PropertyComponent {
 
   ngOnInit(): void {
 
-
+if (this.router.url=="/Property/filter"){
+  console.log("ha ha ha ha ha ha ha ha ");
+}else{
+  console.log("lalalalalalal")
+}
 
 
     this.PropertyService.GetAllPorperty().subscribe({

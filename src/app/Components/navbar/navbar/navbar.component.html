@@ -115,8 +115,7 @@
         <mat-label>Cities</mat-label>
         <mat-select #city (selectionChange)="changecity(city.value)">
           <mat-option
-          [value]="0"
-        >
+          [value]="0">
         ALL Cities
         </mat-option>
           <mat-option *ngFor="let city of cities" [value]="city.cityId">
@@ -128,6 +127,11 @@
       <mat-form-field appearance="outline" style="width: 22%; margin-right: 1%;">
         <mat-label>Catogires</mat-label>
         <mat-select #Catogrey (selectionChange)="changeCatogrey(Catogrey.value)">
+          <mat-option
+          [value]="0"
+        >
+        ALL Catogries
+        </mat-option>
           <mat-option
             *ngFor="let Catogrey of Catogires"
             [value]="Catogrey.categoryId"
