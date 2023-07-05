@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ImagePopupComponent } from '../image-popup/image-popup.component';
 import { HostDashboardComponent } from '../host-dashboard/host-dashboard.component';
+import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 
 @Component({
   selector: 'app-add-property',
@@ -19,7 +20,10 @@ export class AddPropertyComponent implements OnInit {
   constructor(private hostService: HostService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private hostDashboard: HostDashboardComponent) { }
+    private hostDashboard: HostDashboardComponent,
+    private usertype: UsertypeService, private hostservice: HostService) {
+
+  }
 
   // ImageUrl = '';
   ImageUrls: string[] = [];
