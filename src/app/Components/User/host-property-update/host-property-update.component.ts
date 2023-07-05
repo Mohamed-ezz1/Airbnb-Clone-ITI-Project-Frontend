@@ -255,7 +255,7 @@ export class HostPropertyUpdateComponent implements OnInit {
         console.log('Property updated successfully');
         this.router.navigate(['HostDashboardComponent'], { queryParams: { showHostProperty: true } });
         // Show snackbar message
-        this.snackBar.open('Property added successfully', 'Close', {
+        this.snackBar.open('Property Updated successfully', 'Close', {
           duration: 4000, // Duration in milliseconds
           verticalPosition: "top",
         });
