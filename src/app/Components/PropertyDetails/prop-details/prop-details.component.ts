@@ -41,10 +41,10 @@ myFilter = (date: Date | null): boolean => {        //filter of check in date
   if (!date) {
     return false;
   }
-  const timestamp = date.getDate();
+  const timestamp = date.toLocaleDateString();
   for (const booking of this.propDetails.bookingDates) {
-    const checkIn = new Date(booking.checkInDate).getDate();
-    const checkOut = new Date(booking.checkOutDate).getDate();
+    const checkIn = new Date(booking.checkInDate).toLocaleDateString();
+    const checkOut = new Date(booking.checkOutDate).toLocaleDateString();
     if (timestamp >= checkIn && timestamp <= checkOut) {
       return false;
     }
@@ -67,7 +67,8 @@ getNextBooking(checkInDate: Date): { checkInDate: string, checkOutDate: string }
 }
 
 onDateRangeChange() {
-  this.numOfNights = (this.endDate.getDate()) - (this.startDate.getDate());
+  const differenceInMs = this.endDate.getTime() - this.startDate.getTime();
+  this.numOfNights = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
   this.totalPrice = (this.numOfNights) * (this.propDetails.pricePerNight);
 }
 
