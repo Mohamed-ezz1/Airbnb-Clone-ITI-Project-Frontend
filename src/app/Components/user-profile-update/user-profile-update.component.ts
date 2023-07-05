@@ -22,10 +22,10 @@ export class UserProfileUpdateComponent implements OnInit {
     private route: Router,
     private snackBar: MatSnackBar,
     private tabService: TabsService
-    ) { }
+    ) { this.tabService.tab$.next("User")
+  }
 
   ngOnInit(): void {
-    this.tabService.tab$.next(this.route.url)
     this.userService.getUserProfile().subscribe({
       next: (Profile) => {
         this.userProfile = Profile;
