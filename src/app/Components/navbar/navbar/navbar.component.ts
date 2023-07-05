@@ -175,7 +175,8 @@ console.log(this.route.url)
 
 
      this.query.setqeury({ "cityId": this.selectedCity, "countryId": this.selectedCountry, "catogreyId": this.selectedCatogrey,"numberOfGuests":this.numberOfguets })
-    this.route.navigateByUrl("/Property/filter")
+    // this.route.navigateByUrl("Property/1")
+    this.redirectTo("Property/1")
 
   }
 

@@ -24,6 +24,7 @@ export class PropertyComponent {
     private router: Router, private toastr: ToastrService,
     private usertype: UsertypeService, private hostservice: HostService) {
     this.ID = myRoute.snapshot.params['id'];
+    console.log(this.ID)
     this.usertype.getusertype().subscribe((user: any) => {
       let Type = user.userType;
       this.hostservice.isHost$.next(Type);
