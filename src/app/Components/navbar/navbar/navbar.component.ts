@@ -64,7 +64,7 @@ url:any
     this.query = query;
     this.selectedCountry = null;
     this.selectedCity = null;
-    this.numberOfguets = null;
+    this.numberOfguets = 1;
     this.route=route
     this.PropertyService = PropertyService
     this.UsertypeService = UsertypeService
@@ -166,6 +166,8 @@ console.log(this.route.url)
     
     if (this.selectedCountry==0){
       this.selectedCountry=null
+      this.selectedCity=null
+
 
     }
     if (this.selectedCity==0){
