@@ -81,7 +81,6 @@ url:any
     console.log("onDestroy");
   }
   ngOnInit(): void {
-this.TabsService.tab$.next(this.route.url)
 console.log(this.route.url)
 
 
