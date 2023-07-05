@@ -1,53 +1,58 @@
+.xx {
+  background: linear-gradient(to bottom, #f4f3f3 0%, #f9fcfc 100%);
+}
 
-      .xx{
-        background: linear-gradient(to bottom, #f8eaea 0%, #f9fcfc 100%);
-      }
-      .xxx{
-        background: rgba(250, 249, 249, 0.3);
-        border-top-right-radius: 100%;
-        border-bottom-right-radius: 100%;
-      }
-      .xxx2{
-        background: rgba(250, 249, 249, 0.3);
-        border-top-left-radius: 100%;
-        border-bottom-left-radius: 100%;
-      }
-      .card{
-        border-radius: 20px;
-      }
-  
-      .carousel-item {
+.xxx {
+  background: rgba(250, 249, 249, 0.3);
+  border-top-right-radius: 100%;
+  border-bottom-right-radius: 100%;
+}
 
-        cursor:pointer;
-      }
-      .carousel-item img {
-        border-radius: 10px;
-        height: 400px;
-        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.21);
-        transition: 0.25s linear;
-      }
-      .carousel-item:hover img {
-        transform: translatey(-1%);
-      }
-     
-    
-      
-      .carousel-indicators li {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        text-indent: -999px;
-        cursor: pointer;
-        background-color: rgba(0, 0, 0, 0);
-        border: 1px solid #000;
-        border-radius: 10px;
-        margin: 2px;
-        position: relative;
-        top: 30px;
-      } 
-       .carousel-indicators li.active {
-        background: #000;
-      }
-      
-  
-      
+.xxx2 {
+  background: rgba(250, 249, 249, 0.3);
+  border-top-left-radius: 100%;
+  border-bottom-left-radius: 100%;
+}
+
+.card {
+  border-radius: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: none;
+}
+
+.carousel-item {
+
+  cursor: pointer;
+}
+
+.carousel-item img {
+  border-radius: 10px;
+  height: 50vh;
+  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.21);
+  transition: 0.25s linear;
+}
+
+.carousel-item:hover img {
+  transform: translatey(-1%);
+}
+
+
+
+.carousel-indicators li {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  text-indent: -999px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  border: 1px solid #000;
+  border-radius: 10px;
+  margin: 2px;
+  position: relative;
+  top: 30px;
+}
+
+.carousel-indicators li.active {
+  background: #000;
+}
