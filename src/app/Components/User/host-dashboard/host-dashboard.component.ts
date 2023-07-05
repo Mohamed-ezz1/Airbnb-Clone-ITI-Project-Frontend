@@ -13,11 +13,10 @@ export class HostDashboardComponent  {
   showHostProperty: boolean = false;
   showHostBookings: boolean = false;
 
-  constructor(private location: Location , private usertype: UsertypeService,private hostservice: HostService) { this.usertype.getusertype().subscribe((user: any) => {
-    let Type = user.userType;
-    this.hostservice.isHost$.next(Type);
+  constructor(private location: Location , private usertype: UsertypeService,private hostservice: HostService) 
+  { 
 
-  });}
+  }
 
 
   toggleAddProperty() {

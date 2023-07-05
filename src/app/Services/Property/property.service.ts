@@ -32,6 +32,8 @@ export class PropertyService {
 
 
   GetPropertySarch(filter :any):Observable<object>{
+    console.log("kokokokokokokokokoko")
+    console.log(this.myClient.post("https://localhost:7108/api/Home/Properties/filter",filter))
 
     return this.myClient.post("https://localhost:7108/api/Home/Properties/filter",filter)
 

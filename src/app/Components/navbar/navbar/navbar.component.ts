@@ -14,6 +14,7 @@ import { NgModule } from '@angular/core';
 import { Directive, Input } from '@angular/core';
 import { HostService } from 'src/app/Services/Host/host.service';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 // import { MatMenuTrigger, _MatMenu } from '@angular/material'
 
@@ -52,7 +53,8 @@ url:any
       PropertyService: PropertyService,
        UsertypeService: UsertypeService,
         private hostService: HostService,
-        private  ActivatedRoute:ActivatedRoute) 
+        private  ActivatedRoute:ActivatedRoute,
+        private TabsService:TabsService) 
          
          
          {
@@ -68,17 +70,20 @@ url:any
     this.UsertypeService = UsertypeService
     this.selectedCatogrey=null
 
+    this.UsertypeService.getusertype().subscribe((user: any) => {
+      let Type = user.userType;
+      this.hostService.isHost$.next(Type);
 
+    });
   }
 
   ngOnDestroy(): void {
     console.log("onDestroy");
   }
   ngOnInit(): void {
+this.TabsService.tab$.next(this.route.url)
+console.log(this.route.url)
 
-
-
-  
 
     this.hostService.isHost$.subscribe((data: any) => {
       this.ishost = data;

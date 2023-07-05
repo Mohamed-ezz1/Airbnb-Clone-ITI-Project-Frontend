@@ -25,11 +25,7 @@ export class PropertyComponent {
     private usertype: UsertypeService, private hostservice: HostService) {
     this.ID = myRoute.snapshot.params['id'];
     console.log(this.ID)
-    this.usertype.getusertype().subscribe((user: any) => {
-      let Type = user.userType;
-      this.hostservice.isHost$.next(Type);
-
-    });
+    
     //     if(this.ID == null ){
     //       console.log("null oarams")
     //     }
@@ -84,9 +80,8 @@ if (this.router.url=="/Property/filter"){
   search() {
     this.PropertyService.GetPropertySarch(this.objectFilter).subscribe({
       next: (data) => {
-        console.log("data filter")
 
-        console.log("//////////////////////")
+        console.log("kokkokokokooko")
         console.log(data)
         console.log("////////////////////")
 
@@ -94,10 +89,10 @@ if (this.router.url=="/Property/filter"){
         this.PropertyFilter = data;
       },
       error: (e) => {
-
+console.log("momomomomomomomomomo")
         console.log(this.objectFilter)
 
-        this.router.navigateByUrl('Property')
+       // this.router.navigateByUrl('Property')
 
         this.toastr.warning("No Data Match")
 
