@@ -38,6 +38,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
 import { from } from 'rxjs';
+import { FooterComponent } from './Components/Footer/footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +57,8 @@ import { from } from 'rxjs';
     ImagePopupComponent,
     imagePopUpdateComponent,
     UserProfileUpdateComponent,
-    GuestTripsComponent
+    GuestTripsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
