@@ -38,6 +38,9 @@ export class PropertyComponent {
 
   ngOnInit(): void {
 
+
+
+
     this.PropertyService.GetAllPorperty().subscribe({
       next: (data) => {
         this.Property = data;
