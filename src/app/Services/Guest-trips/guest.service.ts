@@ -16,7 +16,7 @@ export class GuestService {
   }
 
   deleteByBookingId(bookingId: string) {
-    if (confirm('Are you sure you want to delete this student')) {
+    if (confirm('Are you sure you want to delete this Booking')) {
       return this.myClient.delete(`${this.guestDeleteBooking}/${bookingId}`);
 
     }
