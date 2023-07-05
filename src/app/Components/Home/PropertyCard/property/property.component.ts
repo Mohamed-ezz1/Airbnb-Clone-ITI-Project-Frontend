@@ -37,11 +37,11 @@ export class PropertyComponent {
 
   ngOnInit(): void {
 
-    // this.usertype.getusertype().subscribe((user: any) => {
-    //   let Type = user.userType;
-    //   this.hostservice.isHost$.next(Type);
+    this.usertype.getusertype().subscribe((user: any) => {
+      let Type = user.userType;
+      this.hostservice.isHost$.next(Type);
 
-    // });
+    });
 
 
     this.PropertyService.GetAllPorperty().subscribe({
