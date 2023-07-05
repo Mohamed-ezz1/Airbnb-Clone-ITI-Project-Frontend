@@ -16,7 +16,7 @@ export class HostDashboardComponent {
   showHostBookings: boolean = false;
 
   constructor(private location: Location, private usertype: UsertypeService, private hostservice: HostService, private tab: TabsService, private route: Router) {
-    this.tab.tab$.next(this.route.url);
+    this.tab.tab$.next("Host");
 
   }
 

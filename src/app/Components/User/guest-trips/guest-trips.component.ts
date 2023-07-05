@@ -4,6 +4,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { GuestService } from 'src/app/Services/Guest-trips/guest.service';
 import { HostService } from 'src/app/Services/Host/host.service';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 @Component({
   selector: 'app-guest-trips',
@@ -18,7 +19,8 @@ export class GuestTripsComponent {
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private guestDataService: GuestService) {
+  constructor(private guestDataService: GuestService,private tabService : TabsService ) {
+    this.tabService.tab$.next("User");
   }
 
   ngOnInit(): void {
