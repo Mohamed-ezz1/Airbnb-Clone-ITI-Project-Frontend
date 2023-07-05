@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { async } from 'rxjs';
+import { HostService } from 'src/app/Services/Host/host.service';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
+import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 import { QueryService } from 'src/app/Services/query/query.service';
 
 @Component({
@@ -13,26 +15,34 @@ import { QueryService } from 'src/app/Services/query/query.service';
 })
 export class PropertyComponent {
   Property: any;
-  ID  = null;
+  ID :any;
 ///cahnge\\\
   PropertyFilter: any;
   objectFilter: any;
   query: QueryService
   PropertyService: PropertyService
-  constructor( private myRoute: ActivatedRoute, query: QueryService, PropertyService: PropertyService, private router: Router ,private toastr: ToastrService) {
+  constructor( private myRoute: ActivatedRoute, query: QueryService, PropertyService: PropertyService, private router: Router ,private toastr: ToastrService, private usertype: UsertypeService, private hostservice: HostService) {
     this.ID = myRoute.snapshot.params['id'];
-    // if(this.ID == null ){
-    //   console.log("null oarams")
-    // }
-    // else{
-    //   console.log(this.ID) 
-    // }
+//     if(this.ID == null ){
+//       console.log("null oarams")
+//     }
+//     else{
+//       console.log(this.ID)
+//     }
+    
 // console.log(myRoute.snapshot)
     this.query = query;
     this.PropertyService = PropertyService
   }
 
   ngOnInit(): void {
+
+    // this.usertype.getusertype().subscribe((user: any) => {
+    //   let Type = user.userType;
+    //   this.hostservice.isHost$.next(Type);
+
+    // });
+
 
     this.PropertyService.GetAllPorperty().subscribe({
       next: (data) => {

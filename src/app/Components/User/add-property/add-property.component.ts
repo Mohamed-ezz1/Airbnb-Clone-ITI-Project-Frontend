@@ -143,6 +143,7 @@ export class AddPropertyComponent implements OnInit {
     this.hostService.AddProperty(this.property).subscribe(
       () => {
         console.log("Property added successfully");
+        // this.hostService.isHost$.next(true);
         // Navigate to the Host Property tab in the dashboard
         this.hostDashboard.toggleHostProperty();
         // Show snackbar message

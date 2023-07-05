@@ -3,6 +3,8 @@ import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { LoginDto } from 'src/app/types/LoginDto';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
+import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
+import { HostService } from 'src/app/Services/Host/host.service';
 
 
 @Component({
@@ -10,15 +12,17 @@ import { FormControl, FormGroup } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent  {
+export class LoginComponent {
 
 
-  public StatsLgin:boolean =false;
-  public StatsError:boolean = false;
+  public StatsLgin: boolean = false;
+  public StatsError: boolean = false;
 
   constructor(
     private authService: AuthenticationService,
-    private router: Router
+    private router: Router,
+    private Usertype: UsertypeService,
+    private hostservice: HostService
   ) { }
 
   form = new FormGroup({
@@ -29,7 +33,7 @@ export class LoginComponent  {
 
 
 
-  
+
   handleSubmit(e: Event) {
     e.preventDefault();
 
@@ -37,37 +41,44 @@ export class LoginComponent  {
     credentials.userName = this.form.controls.username.value ?? '';
     credentials.password = this.form.controls.password.value ?? '';
 
-    this.authService.login(credentials).subscribe( {
-      
-        next: (data) => {
-          console.log(data);
-          this.StatsLgin=true;
-          this.StatsError=false;
-          setTimeout(() =>{ this.StatsError=false  ;
-          
-            this.router.navigateByUrl('')
+    this.authService.login(credentials).subscribe({
 
-          }, 2000)
+      next: (data) => {
+        console.log(data);
+        this.StatsLgin = true;
+        this.StatsError = false;
 
-    
-        },
-        error: (err) => { console.log(err)
-        
-          this.StatsError=true;
-          setTimeout(() => this.StatsError=false, 4000)
+        this.StatsError = false;
+        this.Usertype.getusertype().subscribe((user: any) => {
+          let Type = user.userType;
+          this.hostservice.isHost$.next(Type);
+
+        });
+        this.router.navigate(['/Property']);
+        // this.router.navigateByUrl('', { skipLocationChange: false }).then(() =>
+        //   window.location.reload());
 
 
-        }
-      
+
+      },
+      error: (err) => {
+        console.log(err)
+
+        this.StatsError = true;
+        setTimeout(() => this.StatsError = false, 4000)
+
+
+      }
+
     }
-    
-    
 
-    
+
+
+
     );
-    
+
   }
 
 
-  
+
 }

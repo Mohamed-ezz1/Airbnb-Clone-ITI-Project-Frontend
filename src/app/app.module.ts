@@ -37,6 +37,7 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
+import { from } from 'rxjs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,6 +70,8 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
     MatIconModule,
     MatInputModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'

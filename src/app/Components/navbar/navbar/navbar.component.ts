@@ -1,6 +1,6 @@
-import { Component,OnInit   ,ElementRef, ViewChild } from '@angular/core';
-import{ AuthenticationService  }  from 'src/app/Services/User/user.service';
-import{ SearchboxService  }  from 'src/app/Services/search/searchbox.service';
+import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
+import { AuthenticationService } from 'src/app/Services/User/user.service';
+import { SearchboxService } from 'src/app/Services/search/searchbox.service';
 import { from } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { QueryService } from 'src/app/Services/query/query.service';
@@ -8,10 +8,11 @@ import { QueryService } from 'src/app/Services/query/query.service';
 import { AppRoutingModule } from "src/app/app-routing.module";
 import { Route, Router } from '@angular/router';
 import { AppComponent } from 'src/app/app.component';
-import{PropertyService} from 'src/app/Services/Property/property.service';
+import { PropertyService } from 'src/app/Services/Property/property.service';
 import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 import { NgModule } from '@angular/core';
 import { Directive, Input } from '@angular/core';
+import { HostService } from 'src/app/Services/Host/host.service';
 // import { MatMenuTrigger, _MatMenu } from '@angular/material'
 
 @Component({
@@ -20,18 +21,18 @@ import { Directive, Input } from '@angular/core';
   styles: [
   ]
 })
-export class NavbarComponent implements OnInit   {
+export class NavbarComponent implements OnInit, OnDestroy {
 
 
-  authenticationService : AuthenticationService ;
-  SearchboxService:SearchboxService
-  Isloggen= true
-  searchCountryandcity:any
-  query :QueryService
-route: Router
-PropertyService:PropertyService
-UsertypeService:UsertypeService
-  //search output 
+  authenticationService: AuthenticationService;
+  SearchboxService: SearchboxService
+  Isloggen = true
+  searchCountryandcity: any
+  query: QueryService
+  route: Router
+  PropertyService: PropertyService
+  UsertypeService: UsertypeService
+  //search output
 
   selectedCountry:any ;
   selectedCity:any ;
@@ -46,102 +47,130 @@ this.SearchboxService = SearchboxService;
 this.query = query;
 query.setqeury({"cityId": 1})
 query.setqeury({"catogreyId": 1  ,"cityId": 1 })
-query.setqeury({"catogreyId": 2  ,"cityId": 11 })
+query.setqeury({"catogreyId": 1  ,"cityId": 11 })
 this.route=route
 this.selectedCountry= null ;
-this.selectedCatogrey =null;
 this.selectedCity  = null;
 this.numberOfguets=null;
 this.PropertyService=PropertyService
 this.UsertypeService=UsertypeService
 
-} 
+  }
+  ngOnDestroy(): void {
+    console.log("onDestroy");
+  }
   ngOnInit(): void {
-  this.authenticationService.isLoggedIn$.subscribe({
-   
-next: (value)=> {
-  this.Isloggen=value;
-  console.log(this.Isloggen)
-},
-error: ()=> this.Isloggen=false
-     })
- 
- 
- this.SearchboxService.Searchbarinformation().subscribe({
-  next:(value) =>{ 
-
-    this.searchCountryandcity=value
-  },
-  
- })
-
- this.PropertyService.Getallcatogrey().subscribe({
-  next: (value)=> this.Catogires=value
-  
- })
-
-this.UsertypeService.getusertype().subscribe({
-  next:(value:any) =>{
-     if (value.userType=="Guest"){
-      console.log(value.userType)
-      this.ishost=false
-
-      this.ishost=false
-     }else  if (value.userType=="Host"){
-      console.log(value.userType)
-      this.ishost=true
-     }
-
-  },
-  error : ()=>{
-
-    console.log("not found user ")
-  }}
-  )
-  
-}
- 
+    // this.hostService.isHost$.subscribe((data: any) => {
+    //   alert("navbar :" + data);
+    //   if (data == true)
+    //     this.ishost = "Host";
+    //   else
+    //     this.ishost = "Guest"
 
 
+    // });
+
+    this.hostService.isHost$.subscribe((data: any) => {
+      this.ishost = data;
+    });
+    // this.UsertypeService.getusertype().subscribe((data: any) => {
+    //   console.log(data)
+    //   if (data == "Host")
+    //     this.ishost = "Host";
+    //   else
+    //     this.ishost = "Guest"
+    // });
+
+    this.authenticationService.isLoggedIn$.subscribe({
+
+      next: (value) => {
+        this.Isloggen = value;
+        console.log(this.Isloggen)
+      },
+      error: () => this.Isloggen = false
+    })
+
+
+    this.SearchboxService.Searchbarinformation().subscribe({
+      next: (value) => {
+
+        this.searchCountryandcity = value
+      },
+
+    })
+
+    this.PropertyService.Getallcatogrey().subscribe({
+      next: (value) => this.Catogires = value
+
+    })
+
+    // this.UsertypeService.getusertype().subscribe({
+    //   next: (value: any) => {
+    //     if (value.userType == "Guest") {
+    //       console.log(value.userType)
+    //       // this.hostService.isHost$.next(false);
+    //       // console.log("is aguest", this.hostService.isHost$.subscribe((data: any) => this.ishost = "Guest")
+    //       // );
+    //       this.ishost = false;
+    //     } else if (value.userType == "Host") {
+    //       console.log(value.userType)
+    //       this.ishost = true;
+    //       // this.hostService.isHost$.subscribe((data: any) => this.ishost = "Host");
+    //       // console.log("is ahost", this.hostService.isHost$.subscribe((data: any) => this.ishost = "Host"));
+
+    //     }
+
+    //     },
+    //     error: () => {
+
+    //       console.log("not found user ")
+    //     }
+    //   }
+    //   )
+
+  }
 
 
 
-getcities( a:any){
-  this.selectedCountry =a 
-  console.log(this.selectedCountry)
-  this.cities=this.searchCountryandcity.find((x:any) =>x.countryId==+this.selectedCountry).navbarCities
-  console.log(this.cities)
-}
-changecity(a :any){
 
-this.selectedCity =a ;
-console.log(this.selectedCity)
 
-}
 
- logout(){
- 
+  getcities(a: any) {
+    this.selectedCountry = a
+    console.log(this.selectedCountry)
+    this.cities = this.searchCountryandcity.find((x: any) => x.countryId == +this.selectedCountry).navbarCities
+    console.log(this.cities)
+  }
+  changecity(a: any) {
 
-       if (localStorage.getItem('token')) {
-          localStorage.removeItem('token')
-          this.authenticationService.isLoggedIn$.next(false);
+    this.selectedCity = a;
+    console.log(this.selectedCity)
 
-         this.route.navigate(['/Property'])
+  }
+
+  logout() {
+
+
+    if (localStorage.getItem('token')) {
+      localStorage.removeItem('token')
+      this.authenticationService.isLoggedIn$.next(false);
+
+      this.route.navigate(['/Property'])
+
+
+    }
 
 
   }
-  
-
-}
 
 
-redirectTo(uri: string) {
-  this.route.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-  this.route.navigate([uri]));
-}
-changeCatogrey(selected:any){
-  this.selectedCatogrey = selected
-}
+  redirectTo(uri: string) {
+    this.route.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.route.navigate([uri]));
+  }
+  changeCatogrey(selected: any) {
+    this.selectedCatogrey = selected
+  }
 
  x:any ={}
  async search(){
@@ -151,9 +180,7 @@ changeCatogrey(selected:any){
 //this.x["numberOfguets"]=5;
 //console.log(this.x);
 await this.query.setqeury({"cityId":this.selectedCity,"countryId":this.selectedCountry,"catogreyId":this.selectedCatogrey,})
+this.redirectTo("/Property")
 
-
-this.redirectTo("/Property/1")
-
-}
+  }
 }

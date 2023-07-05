@@ -5,6 +5,7 @@ import { TokenDto } from '../../types/TokenDto';
 import { HttpClient } from '@angular/common/http';
 import { RegisterDto } from '../../types/Register';
 import { FormGroup } from '@angular/forms';
+import { UsertypeService } from '../UserType/usertype.service';
 
 @Injectable({
   providedIn: 'root',
@@ -12,13 +13,14 @@ import { FormGroup } from '@angular/forms';
 export class AuthenticationService {
   public isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
-  constructor(private client: HttpClient) { }
+  constructor(private client: HttpClient, private UsertypeService: UsertypeService) { }
 
   private readonly Base_URL = "https://localhost:7108/api/User/Register";
 
 
   AddUser(newUser: RegisterDto): Observable<any> {
     console.log(newUser)
+
     return this.client.post(this.Base_URL, newUser);
 
   }
@@ -29,6 +31,7 @@ export class AuthenticationService {
       .pipe(
         tap((tokenDto) => {
           this.isLoggedIn$.next(true);
+          this.UsertypeService.usertype$.next(this.UsertypeService.getusertype())
           localStorage.setItem('token', tokenDto.token);
         })
       );
