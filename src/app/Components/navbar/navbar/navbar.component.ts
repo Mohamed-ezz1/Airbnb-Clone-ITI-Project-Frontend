@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { SearchboxService } from 'src/app/Services/search/searchbox.service';
-import { from } from 'rxjs';
+import { BehaviorSubject, distinctUntilChanged, from, map } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { QueryService } from 'src/app/Services/query/query.service';
 
@@ -13,6 +13,8 @@ import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 import { NgModule } from '@angular/core';
 import { Directive, Input } from '@angular/core';
 import { HostService } from 'src/app/Services/Host/host.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+
 // import { MatMenuTrigger, _MatMenu } from '@angular/material'
 
 @Component({
@@ -33,6 +35,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   PropertyService: PropertyService
   UsertypeService: UsertypeService
   //search output
+numbers=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+
 
   selectedCountry: any;
   selectedCity: any;
@@ -41,34 +45,40 @@ export class NavbarComponent implements OnInit, OnDestroy {
   numberOfguets: any;
   cities: any;
   Catogires: any;
-  constructor(a: AuthenticationService, SearchboxService: SearchboxService, query: QueryService, route: Router, PropertyService: PropertyService, UsertypeService: UsertypeService, private hostService: HostService) {
+url:any
+  constructor(a: AuthenticationService,
+     SearchboxService: SearchboxService, 
+     query: QueryService, route: Router,
+      PropertyService: PropertyService,
+       UsertypeService: UsertypeService,
+        private hostService: HostService,
+        private  ActivatedRoute:ActivatedRoute) 
+         
+         
+         {
     this.authenticationService = a;
+
     this.SearchboxService = SearchboxService;
     this.query = query;
-    query.setqeury({ "cityId": 1 })
-    query.setqeury({ "catogreyId": 1, "cityId": 1 })
-    query.setqeury({ "catogreyId": 1, "cityId": 11 })
-    this.route = route
     this.selectedCountry = null;
     this.selectedCity = null;
     this.numberOfguets = null;
+    this.route=route
     this.PropertyService = PropertyService
     this.UsertypeService = UsertypeService
 
+    this.url =  new BehaviorSubject<string>(this.route.url)
+
   }
+
   ngOnDestroy(): void {
     console.log("onDestroy");
   }
   ngOnInit(): void {
-    // this.hostService.isHost$.subscribe((data: any) => {
-    //   alert("navbar :" + data);
-    //   if (data == true)
-    //     this.ishost = "Host";
-    //   else
-    //     this.ishost = "Guest"
 
 
-    // });
+
+  
 
     this.hostService.isHost$.subscribe((data: any) => {
       this.ishost = data;
@@ -90,7 +100,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
       error: () => this.Isloggen = false
     })
 
-
     this.SearchboxService.Searchbarinformation().subscribe({
       next: (value) => {
 
@@ -104,30 +113,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     })
 
-    // this.UsertypeService.getusertype().subscribe({
-    //   next: (value: any) => {
-    //     if (value.userType == "Guest") {
-    //       console.log(value.userType)
-    //       // this.hostService.isHost$.next(false);
-    //       // console.log("is aguest", this.hostService.isHost$.subscribe((data: any) => this.ishost = "Guest")
-    //       // );
-    //       this.ishost = false;
-    //     } else if (value.userType == "Host") {
-    //       console.log(value.userType)
-    //       this.ishost = true;
-    //       // this.hostService.isHost$.subscribe((data: any) => this.ishost = "Host");
-    //       // console.log("is ahost", this.hostService.isHost$.subscribe((data: any) => this.ishost = "Host"));
-
-    //     }
-
-    //     },
-    //     error: () => {
-
-    //       console.log("not found user ")
-    //     }
-    //   }
-    //   )
-
+  
   }
 
 
@@ -136,11 +122,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
 
   getcities(a: any) {
+    
+if(a==0){
+  this.cities=null
+}else{
+    
     this.selectedCountry = a
     console.log(this.selectedCountry)
     this.cities = this.searchCountryandcity.find((x: any) => x.countryId == +this.selectedCountry).navbarCities
     console.log(this.cities)
-  }
+  }}
   changecity(a: any) {
 
     this.selectedCity = a;
@@ -157,7 +148,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
       this.route.navigate(['/Property'])
 
-
+console.log(this.route.url)
     }
 
 
@@ -174,13 +165,28 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   x: any = {}
   async search() {
-    //.x["cityId"]=this.selectedCity;
-    //this.x["countryId"]= this.selectedCountry
-    //this.x["catogreyId"]=this.selectedCatogrey
-    //this.x["numberOfguets"]=5;
-    //console.log(this.x);
-    await this.query.setqeury({ "cityId": this.selectedCity, "countryId": this.selectedCountry, "catogreyId": this.selectedCatogrey, })
+    
+    if (this.selectedCountry==0){
+      this.selectedCountry=null
+
+    }
+    if (this.selectedCity=0){
+      this.selectedCity=null
+
+    }
+    if (this.selectedCatogrey=0){
+      this.selectedCatogrey=null
+
+    }
+
+
+    await this.query.setqeury({ "cityId": this.selectedCity, "countryId": this.selectedCountry, "catogreyId": this.selectedCatogrey,"numberOfGuests":this.numberOfguets })
     this.redirectTo("/Property")
+
+  }
+
+  changenumberofguests(numberofguest:any){
+this.numberOfguets= numberofguest
 
   }
 }
