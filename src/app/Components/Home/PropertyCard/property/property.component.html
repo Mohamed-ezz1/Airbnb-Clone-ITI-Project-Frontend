@@ -1,8 +1,8 @@
 <section class="d-flex justify-content-center flex-wrap ">
 
-  <div *ngIf="ID ==null" class="d-flex justify-content-center flex-wrap col-12  ">
+  <div *ngIf="ID ==null" class="d-flex justify-content-center flex-wrap   ">
     <div *ngFor="let item of  Property index as A"
-      class="card col-md-6 col-lg-2 col-sm-12 d-inline-block m-3 border border-light xx text-dark  "
+      class="card col-md-6 col-lg-4 col-sm-6 d-inline-block m-3  border-light xx text-dark  "
       >
 
       <div id="carouselExampleIndicators + A" class="carousel slide " data-ride="true"  >
@@ -133,9 +133,9 @@
 
   </div> -->
 
-  <div *ngIf="ID == 1" class="d-flex justify-content-center flex-wrap col-12">
+  <div *ngIf="ID == 1" class="d-flex justify-content-center flex-wrap ">
     <div *ngFor="let item of  PropertyFilter index as A"
-      class="card col-md-6 col-lg-2 col-sm-12 d-inline-block m-3 border border-light xx text-dark  "
+      class="card col-md-6 col-lg-4 col-sm-6 d-inline-block m-3 border border-light xx text-dark  "
       >
 
       <div id="carouselExampleIndicators + A" class="carousel slide " data-ride="true"  (click)="jedi(item.propertyId)" >
