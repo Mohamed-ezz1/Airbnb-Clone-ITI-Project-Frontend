@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { HostService } from 'src/app/Services/Host/host.service';
 import { UserProfileUpdateService } from 'src/app/Services/UserProfileUpdate/user-profile-update.service';
 import { GestToUpdateProfile } from 'src/app/types/ProfileOfUserDTO';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 @Component({
   selector: 'app-user-profile-update',
@@ -19,7 +20,10 @@ export class UserProfileUpdateComponent implements OnInit {
   constructor(private userService: UserProfileUpdateService,
     private imageService: HostService,
     private route: Router,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private tabService: TabsService
+    ) { this.tabService.tab$.next("User")
+  }
 
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe({

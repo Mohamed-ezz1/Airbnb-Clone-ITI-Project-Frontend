@@ -13,6 +13,7 @@ import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DateAdapter } from '@angular/material/core';
 import { BooleanInput } from '@angular/cdk/coercion';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 @Component({
   selector: 'app-prop-details',
@@ -73,7 +74,7 @@ onDateRangeChange() {
 }
 
   constructor(myRoute: ActivatedRoute, private propService: PropertyService, public myRouter: Router,
-    public fb: FormBuilder, private authService: AuthenticationService, private dateAdapter: DateAdapter<Date>,
+    public fb: FormBuilder,private tabService: TabsService, private authService: AuthenticationService, private dateAdapter: DateAdapter<Date>,
     private dialog: MatDialog, private snackBar: MatSnackBar, private reservationService: ReservationService) {
       this.dateAdapter.setLocale('en-GB');
     this.propId = myRoute.snapshot.params["id"];
@@ -87,6 +88,7 @@ onDateRangeChange() {
     // Handle date change events
   }
   ngOnInit(): void {
+    this.tabService.tab$.next("User");
     this.propService.GetPropertyById(this.propId).subscribe({
       next: (data) => { this.propDetails = data; console.log(data); },
       error: (error) => { console.log(error) },
