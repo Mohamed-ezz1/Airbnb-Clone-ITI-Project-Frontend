@@ -12,6 +12,7 @@ import { ReservationDto } from 'src/app/types/ReservationDto';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DateAdapter } from '@angular/material/core';
+import { BooleanInput } from '@angular/cdk/coercion';
 
 @Component({
   selector: 'app-prop-details',
@@ -32,21 +33,47 @@ export class PropDetailsComponent implements OnInit {
   endDate: any;                 //end date of reservation
   numOfNights: any;             //number of nights the user reserving
   totalPrice: any;             //total price of booking
+  minCheckOutDate: any;
+  maxCheckOutDate: any;
   range!: FormGroup;
 
-  myHolidayDates = [
-    new Date("7/10/2023"),
-    new Date("7/11/2023"),
-    new Date("7/12/2023"),
-    new Date("7/13/2023")
-];
-myHolidayFilter = (d: Date): boolean => {
-  const time=d.getTime();
-  return !this.myHolidayDates.find(x=>x.getTime()==time);
+myFilter = (date: Date | null): boolean => {        //filter of check in date
+  if (!date) {
+    return false;
+  }
+  const timestamp = date.toLocaleDateString();
+  for (const booking of this.propDetails.bookingDates) {
+    const checkIn = new Date(booking.checkInDate).toLocaleDateString();
+    const checkOut = new Date(booking.checkOutDate).toLocaleDateString();
+    if (timestamp >= checkIn && timestamp <= checkOut) {
+      return false;
+    }
+  }
+  return true;
+};
+
+onCheckInDateChange() {
+  const nextBooking = this.getNextBooking(this.startDate);
+  this.minCheckOutDate = new Date(this.startDate);
+  this.minCheckOutDate.setDate(this.minCheckOutDate.getDate() + 1);
+  this.maxCheckOutDate = nextBooking ? new Date(nextBooking.checkInDate) : null;
+}
+
+getNextBooking(checkInDate: Date): { checkInDate: string, checkOutDate: string } {
+  // Find the next available booking after the given check-in date
+  const timestamp = checkInDate.getTime();
+  const bookings = this.propDetails.bookingDates.filter((booking: { checkInDate: string | number | Date; }) => new Date(booking.checkInDate).getTime() > timestamp);
+  return bookings.length > 0 ? bookings[0] : null;
+}
+
+onDateRangeChange() {
+  const differenceInMs = this.endDate.getTime() - this.startDate.getTime();
+  this.numOfNights = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
+  this.totalPrice = (this.numOfNights) * (this.propDetails.pricePerNight);
 }
 
   constructor(myRoute: ActivatedRoute, private propService: PropertyService, public myRouter: Router,
-    private fb: FormBuilder, private authService: AuthenticationService, private dateAdapter: DateAdapter<Date>,
+    public fb: FormBuilder, private authService: AuthenticationService, private dateAdapter: DateAdapter<Date>,
     private dialog: MatDialog, private snackBar: MatSnackBar, private reservationService: ReservationService) {
       this.dateAdapter.setLocale('en-GB');
     this.propId = myRoute.snapshot.params["id"];
@@ -56,6 +83,9 @@ myHolidayFilter = (d: Date): boolean => {
     });
   }
 
+  onDateChange(event: MatDatepickerInputEvent<Date>): void {
+    // Handle date change events
+  }
   ngOnInit(): void {
     this.propService.GetPropertyById(this.propId).subscribe({
       next: (data) => { this.propDetails = data; console.log(data); },
@@ -85,11 +115,6 @@ myHolidayFilter = (d: Date): boolean => {
         this.isMDisabled = true;
       }
     }
-  }
-
-  onDateRangeChange() {
-    this.numOfNights = (this.endDate.getDate()) - (this.startDate.getDate());
-    this.totalPrice = (this.numOfNights) * (this.propDetails.pricePerNight);
   }
 
   openPopup() {

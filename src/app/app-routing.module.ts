@@ -27,6 +27,7 @@ const routes: Routes = [
   { path: 'Property', component: PropertyComponent },
   { path: 'Property/filter', component: PropertyComponent },
   { path: '', component: PropertyComponent },
+  { path: 'Property/:id', component: PropertyComponent },
   { path: 'HostDashboardComponent',canActivate :[authenticatonGuard], component: HostDashboardComponent },
   {path: 'GuestTrips',canActivate:[authenticatonGuard],component:GuestTripsComponent},
   { path: 'updateProfile', canActivate: [authenticatonGuard], component: UserProfileUpdateComponent }
