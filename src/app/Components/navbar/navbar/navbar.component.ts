@@ -47,6 +47,9 @@ numbers=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
   cities: any;
   Catogires: any;
 url:any
+  isusertab: any;
+  ishosttab: any;
+  ishometab: any;
   constructor(a: AuthenticationService,
      SearchboxService: SearchboxService, 
      query: QueryService, route: Router,
@@ -75,6 +78,28 @@ url:any
       this.hostService.isHost$.next(Type);
 
     });
+    this.TabsService.tab$.subscribe({
+
+     next : (data)=>{
+if (data=="User"){
+  this.isusertab=true
+  this.ishosttab=false
+  this.ishometab=false
+
+}else if (data=="Host"){
+  this.ishosttab=true
+  this.ishometab=false
+  this.isusertab=false
+
+
+
+}else if (data=="Home"){
+  this.ishometab=true
+  this.isusertab=false
+  this.ishosttab=false
+}
+     }
+    })
   }
 
   ngOnDestroy(): void {

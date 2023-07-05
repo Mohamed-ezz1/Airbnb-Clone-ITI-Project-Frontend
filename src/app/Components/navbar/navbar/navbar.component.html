@@ -26,7 +26,9 @@
 
 </div>
 <div class="col-8"></div>
-<div style="width: 15%" class="mt-3">
+<div style="width: 15%" class="mt-3"  *ngIf="ishosttab"></div>
+
+<div style="width: 15%" class="mt-3"  *ngIf="!ishosttab">
   <button
     mat-button
     class="rounded-pill"
@@ -84,7 +86,7 @@
 </mat-menu>
 
 </nav>
-<div   >
+<div  *ngIf="ishometab" >
   <mat-expansion-panel   style="border-style: outset ; border-radius: 20px;  width: 50%; margin: auto; border-color:rgb(197, 26, 61)"    >
     <mat-expansion-panel-header  >
                       <p>Search</p>   

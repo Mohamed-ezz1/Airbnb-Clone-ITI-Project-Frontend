@@ -7,6 +7,7 @@ import { PropertyService } from 'src/app/Services/Property/property.service';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 import { QueryService } from 'src/app/Services/query/query.service';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 @Component({
   selector: 'app-property',
@@ -22,10 +23,10 @@ export class PropertyComponent {
   constructor(private myRoute: ActivatedRoute,
     private query: QueryService, private PropertyService: PropertyService,
     private router: Router, private toastr: ToastrService,
-    private usertype: UsertypeService, private hostservice: HostService) {
+    private usertype: UsertypeService, private hostservice: HostService, private TabsService:TabsService) {
     this.ID = myRoute.snapshot.params['id'];
     console.log(this.ID)
-    
+    this.TabsService.tab$.next("Home")
     //     if(this.ID == null ){
     //       console.log("null oarams")
     //     }
