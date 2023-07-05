@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 numberOfguets:any;
 cities:any;
 Catogires :any;  
-constructor    ( a:AuthenticationService , SearchboxService :SearchboxService ,query : QueryService ,route: Router  , PropertyService:PropertyService,UsertypeService:UsertypeService){
+constructor    ( a:AuthenticationService , SearchboxService :SearchboxService ,query : QueryService ,route: Router  , PropertyService:PropertyService,UsertypeService:UsertypeService, private hostService :HostService){
 this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
