@@ -1,11 +1,22 @@
   body {
-      background: rgb(238,174,202);
-      background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100%;
       overflow: hidden;
+      }
+      .xx{
+        background: linear-gradient(to bottom, #f8e2e2 0%, #edfefe 100%);
+      }
+      .xxx{
+        background: rgba(250, 249, 249, 0.3);
+        border-top-right-radius: 100%;
+        border-bottom-right-radius: 100%;
+      }
+      .xxx2{
+        background: rgba(250, 249, 249, 0.3);
+        border-top-left-radius: 100%;
+        border-bottom-left-radius: 100%;
       }
       .card{
         border-radius: 20px;

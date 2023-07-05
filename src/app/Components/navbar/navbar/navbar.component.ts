@@ -45,12 +45,13 @@ constructor    ( a:AuthenticationService , SearchboxService :SearchboxService ,q
 this.authenticationService=a;
 this.SearchboxService = SearchboxService;
 this.query = query;
-query.setqeury({"cityId": 1})
-query.setqeury({"catogreyId": 1  ,"cityId": 1 })
-query.setqeury({"catogreyId": 1  ,"cityId": 11 })
+// query.setqeury({"cityId": 1})
+// query.setqeury({"catogreyId": 1  ,"cityId": 1 })
+// query.setqeury({"catogreyId": 1  ,"cityId": 11 })
 this.route=route
 this.selectedCountry= null ;
 this.selectedCity  = null;
+this.selectedCatogrey = null;
 this.numberOfguets=null;
 this.PropertyService=PropertyService
 this.UsertypeService=UsertypeService
@@ -180,7 +181,7 @@ this.UsertypeService=UsertypeService
 //this.x["numberOfguets"]=5;
 //console.log(this.x);
 await this.query.setqeury({"cityId":this.selectedCity,"countryId":this.selectedCountry,"catogreyId":this.selectedCatogrey,})
-this.redirectTo("/Property")
+this.redirectTo("/Property/1")
 
   }
 }

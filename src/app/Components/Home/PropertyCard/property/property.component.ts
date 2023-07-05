@@ -19,9 +19,7 @@ export class PropertyComponent {
 ///cahnge\\\
   PropertyFilter: any;
   objectFilter: any;
-  query: QueryService
-  PropertyService: PropertyService
-  constructor( private myRoute: ActivatedRoute, query: QueryService, PropertyService: PropertyService, private router: Router ,private toastr: ToastrService, private usertype: UsertypeService, private hostservice: HostService) {
+  constructor( private myRoute: ActivatedRoute,private query: QueryService,private PropertyService: PropertyService, private router: Router ,private toastr: ToastrService, private usertype: UsertypeService, private hostservice: HostService) {
     this.ID = myRoute.snapshot.params['id'];
 //     if(this.ID == null ){
 //       console.log("null oarams")
@@ -29,20 +27,16 @@ export class PropertyComponent {
 //     else{
 //       console.log(this.ID)
 //     }
-    
-// console.log(myRoute.snapshot)
-    this.query = query;
-    this.PropertyService = PropertyService
   }
 
+  jedi(id:string){
+    console.log(id)
+    this.router.navigateByUrl('propertyDetails/'+id)
+
+
+      }
+
   ngOnInit(): void {
-
-    // this.usertype.getusertype().subscribe((user: any) => {
-    //   let Type = user.userType;
-    //   this.hostservice.isHost$.next(Type);
-
-    // });
-
 
     this.PropertyService.GetAllPorperty().subscribe({
       next: (data) => {
@@ -52,57 +46,55 @@ export class PropertyComponent {
 
 
     });
+///////////
 
+    if(this.query.query.value !== null){
+console.log(this.query.query)
+      this.query.query$.subscribe({
 
-
-    ///////
-
-    this.query.query$.subscribe({
-
-      next: (value) => {
-
-        console.log(this.query.query)
-        this.objectFilter = this.query.query;
-
-      },
-      error: () => console.log("Asdasdsadsa")
-    });
-
-
-
-
-    ///////////////
-
-    this.PropertyService.GetPropertySarch(this.objectFilter).subscribe({
-      next: (data) => {
-        console.log("data filter")
-
-        console.log("//////////////////////")
-        console.log(data)
-        console.log("////////////////////")
-
-
-        this.PropertyFilter = data;
-      },
-      error: (e) => {
-        
-        console.log(this.objectFilter)
-
-        this.router.navigateByUrl('Property')
-        this.toastr.warning("No Data Match")
-
-        console.log(e)}
-
-
-    });
-
-    //////
-
-
-
+        next: (value) => {
+  
+          console.log(this.query.query)
+          this.objectFilter = this.query.query;
+          console.log("object seacrcgggg");
+          this.search();
+        },
+        error: () => console.log("Asdasdsadsa")
+      });
+  
+    }
   }
 
 
+
+search(){
+  this.PropertyService.GetPropertySarch(this.objectFilter).subscribe({
+    next: (data) => {
+      console.log("data filter")
+
+      console.log("//////////////////////")
+      console.log(data)
+      console.log("////////////////////")
+
+
+      this.PropertyFilter = data;
+    },
+    error: (e) => {
+      
+      console.log(this.objectFilter)
+
+      this.router.navigateByUrl('Property')
+
+        this.toastr.warning("No Data Match")
+
+      
+
+      console.log(e)}
+
+
+  });
+
+}
 
 
   // onItemChange($event: any): void {
