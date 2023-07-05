@@ -55,6 +55,7 @@ myFilter = (date: Date | null): boolean => {        //filter of check in date
 onCheckInDateChange() {
   const nextBooking = this.getNextBooking(this.startDate);
   this.minCheckOutDate = new Date(this.startDate);
+  this.minCheckOutDate.setDate(this.minCheckOutDate.getDate() + 1);
   this.maxCheckOutDate = nextBooking ? new Date(nextBooking.checkInDate) : null;
 }
 
