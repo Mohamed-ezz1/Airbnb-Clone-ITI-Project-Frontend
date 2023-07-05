@@ -88,8 +88,7 @@ onDateRangeChange() {
     // Handle date change events
   }
   ngOnInit(): void {
-    this.tabService.tab$.next(this.myRouter.url);
-    console.log(this.myRouter.url)
+    this.tabService.tab$.next("User");
     this.propService.GetPropertyById(this.propId).subscribe({
       next: (data) => { this.propDetails = data; console.log(data); },
       error: (error) => { console.log(error) },
