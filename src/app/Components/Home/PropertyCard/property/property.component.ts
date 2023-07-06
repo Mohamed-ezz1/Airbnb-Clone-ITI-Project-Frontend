@@ -116,7 +116,7 @@ this.stayService.query$.subscribe(
         console.log("////////////////////")
 
 
-        this.PropertyFilter = data;
+        this.Property = data;
       },
       error: (e) => {
 console.log("momomomomomomomomomo")
