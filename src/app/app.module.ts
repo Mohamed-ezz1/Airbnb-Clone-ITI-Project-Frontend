@@ -57,7 +57,10 @@ import { GategoryComponent } from './Components/Home/Category/gategory/gategory.
     ImagePopupComponent,
     imagePopUpdateComponent,
     UserProfileUpdateComponent,
-    GuestTripsComponent
+    GuestTripsComponent,
+    GategoryComponent,
+    FooterComponent,
+    
   ],
   imports: [
     BrowserModule,

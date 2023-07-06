@@ -3,6 +3,7 @@ import { Route, Router } from '@angular/router';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { CategoryService } from 'src/app/Services/Category/category.service';
 import { GtegoryDto } from 'src/app/types/Gategory';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-gategory',
@@ -53,7 +54,7 @@ category!: GtegoryDto[];
    // this.stayFilter.label = label
     console.log(label)
     this.stayService.setqeury(label);
-    this.redirectTo()
+     this.redirectTo()
    // this.stayService.setFilter({ ...this.stayFilter })
   }
 

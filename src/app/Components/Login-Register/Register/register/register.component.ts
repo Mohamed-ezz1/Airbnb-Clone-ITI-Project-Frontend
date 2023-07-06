@@ -34,6 +34,8 @@ import { MatButtonModule } from '@angular/material/button';
   // imports: [FormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatButtonModule, ReactiveFormsModule, NgIf],
 })
 export class RegisterComponent implements OnInit {
+
+  SendReq =false ;
   [x: string]: any;
   // emailForm = new FormControl('', [Validators.required, Validators.email]);
 
@@ -68,6 +70,7 @@ export class RegisterComponent implements OnInit {
   register(rgister: FormGroup) : void{
     console.log(rgister.value);
     if (rgister.valid) {
+      this.SendReq =true
 
 this.xx["firstName"] = rgister.value["FirstName"] ;
 this.xx["lastttName"] =rgister.value["LastName"] ;
@@ -81,6 +84,8 @@ console.log(this.xx)
         {
           next: (data)=>{
         
+            this.SendReq =false
+
 
   this.toastr.success("Done" , "success Register")
   setTimeout(() => this.router.navigateByUrl('login'), 3000)
@@ -94,6 +99,7 @@ for(var i =0 ;i<err.error.length ; i++ ){
 
   this.toastr.warning(err.error[i].code)
   this.toastr.warning(err.error[i].description)
+  this.SendReq =false
 
 
 }

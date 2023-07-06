@@ -94,7 +94,9 @@
         </mat-form-field>
 
 
-        <button  mat-raised-button color="primary"  class="w-100">Register </button>
+        <button *ngIf="!SendReq"  mat-raised-button color="primary"  class="w-100">Register </button>
+        <i  *ngIf="SendReq" class="fa-duotone fa-arrow-rotate-left fa-spin fa-spin-reverse"></i> 
+
       </form>
       <br>
       <br>
