@@ -1,0 +1,114 @@
+
+
+.stay-filter.main-layout {
+    display: unset;
+}
+
+.stay-filter .main-content {
+    position: relative;
+    height: 78px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stay-filter .main-content fa-icon {
+    font-size: 12px;
+}
+
+.stay-filter .main-content .arrow-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    padding: 16px;
+    height: 100%;
+    background-color: white;
+    z-index: 5;
+    width: 50px;
+}
+
+.stay-filter .main-content .arrow-container.arrow-left {
+    bottom: 0;
+    left: 0;
+}
+
+.stay-filter .main-content .arrow-container.arrow-right {
+    bottom: 0;
+    right: 0;
+}
+
+.stay-filter .main-content .arrow-container .arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    cursor: pointer;
+    border: 0.5px solid rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    background-color: white;
+    transition: box-shadow 0.2s ease;
+}
+
+.stay-filter .main-content .arrow-container .arrow:hover {
+    transform: scale(1.04);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.stay-filter .main-content .filter-container {
+    display: flex;
+    font-size: 12px;
+    align-items: center;
+    overflow-y: auto;
+    position: relative;
+    scroll-behavior: smooth;
+}
+
+.stay-filter .main-content .filter-container::-webkit-scrollbar {
+    display: none;
+}
+
+.stay-filter .main-content .filter-container > * {
+    color: var(--main-color);
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4px 20px 6px;
+    margin: 12px 0 10px;
+    gap: 8px;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.2s, opacity 0.2s;
+}
+
+.stay-filter .main-content .filter-container > * img {
+    opacity: 0.6;
+    width: 24px;
+    transition: opacity 0.2s;
+}
+
+.stay-filter .main-content .filter-container > *:hover:not(:last-child) {
+    color: #000000;
+}
+
+.stay-filter .main-content .filter-container > *:hover:not(:last-child) img {
+    opacity: 1;
+}
+
+.stay-filter .main-content .filter-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    gap: 6px;
+    color: var(--header-text-color);
+    padding: 7px 16px;
+    height: 48px;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin: auto 0;
+    cursor: pointer;
+}

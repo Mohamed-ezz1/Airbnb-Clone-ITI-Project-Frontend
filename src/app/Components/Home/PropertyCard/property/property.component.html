@@ -1,6 +1,12 @@
+
+<div class="position">
+  <app-gategory></app-gategory>
+</div>  
+
+
 <section
   *ngIf="ID == null"
-  class="p-3 d-flex align-items-center justify-content-center flex-wrap w-auto"
+  class="p-3 d-flex align-items-center justify-content-center flex-wrap w-auto container-fluid"
 >
   <div *ngFor="let item of Property; index as A" class="card col-lg-3 xx p-3">
     <div
@@ -67,17 +73,17 @@
         {{ item.propertyName }}
       </p>
 
-      <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-row justify-content-between hide">
         <div>
-          <h2 class="card-text">
-            <mat-icon class="fs-3"> attach_money</mat-icon
-            >{{ item.pricePerNight }}
-            <span class="bg-danger bg-opacity-10 fs-6"> Night</span>
+          <h2 class="card-text ">
+            <mat-icon class="fs-2"> attach_money</mat-icon
+            >{{ item.pricePerNight }}  
+            <span class=" bg-opacity-10 fs-6 text-muted"> Night</span>
           </h2>
         </div>
 
         <div>
-          <button class="btn btn-outline-dark" (click)="jedi(item.propertyId)">
+          <button class="btn btn-outline-dark " (click)="jedi(item.propertyId)">
             <mat-icon class="fs-3">arrow_right_alt</mat-icon>
           </button>
         </div>
@@ -87,7 +93,7 @@
 </section>
 
 <section
-  *ngIf="ID == 1"
+  *ngIf="ID == 1 ||ID == 2"
   class="p-3 d-flex align-items-center justify-content-center flex-wrap w-auto"
 >
   <div

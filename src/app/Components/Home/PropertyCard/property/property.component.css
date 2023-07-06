@@ -1,7 +1,13 @@
 .xx {
-  background: linear-gradient(to bottom, #f4f3f3 0%, #f9fcfc 100%);
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 100%);
 }
+.position{
+  background-color: rgba(245, 245, 245, 0.923);
+  display: block;
+  margin: auto;
+  
 
+}
 .xxx {
   background: rgba(250, 249, 249, 0.3);
   border-top-right-radius: 100%;
@@ -15,10 +21,12 @@
 }
 
 .card {
-  border-radius: 20px;
+  border-radius: 30px;
   margin-top: 5px;
   margin-bottom: 5px;
   border: none;
+  width: 35vh;
+  margin: 7px;
 }
 
 .carousel-item {
@@ -28,7 +36,7 @@
 
 .carousel-item img {
   border-radius: 10px;
-  height: 50vh;
+  height: 40vh;
   box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.21);
   transition: 0.25s linear;
 }
@@ -39,20 +47,17 @@
 
 
 
-.carousel-indicators li {
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  text-indent: -999px;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #000;
-  border-radius: 10px;
-  margin: 2px;
-  position: relative;
-  top: 30px;
-}
+ .hide .btn {
+  transition: tranform 1s , opacity 1s;
+opacity: 0;
+transform: translateY(100%);
 
+}
+.hide  :hover .btn {
+  opacity: 1;
+  transform: translateY(0%);
+
+}
 .carousel-indicators li.active {
   background: #000;
 }
