@@ -47,14 +47,8 @@ category2! :string;
 
   ngOnInit(): void {
 
-if (this.router.url=="/Property/filter"){
-  console.log("ha ha ha ha ha ha ha ha ");
-}else{
-  console.log("lalalalalalal")
-}
 
          if(this.ID == null ){
-
     this.PropertyService.GetAllPorperty().subscribe({
       next: (data) => {
         this.Property = data;
@@ -65,6 +59,7 @@ if (this.router.url=="/Property/filter"){
     });
   
   }
+
     ///////////
 
             if(this.ID == 1 ){
@@ -85,6 +80,9 @@ if (this.router.url=="/Property/filter"){
 
     }
   }
+
+  //////////////
+
   if(this.ID ==2 ){
 
 this.stayService.query$.subscribe(

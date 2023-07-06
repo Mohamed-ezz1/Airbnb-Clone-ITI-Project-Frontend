@@ -47,17 +47,7 @@
 
 
 
- .hide .btn {
-  transition: tranform 1s , opacity 1s;
-opacity: 0;
-transform: translateY(100%);
 
-}
-.hide  :hover .btn {
-  opacity: 1;
-  transform: translateY(0%);
-
-}
 .carousel-indicators li.active {
   background: #000;
 }

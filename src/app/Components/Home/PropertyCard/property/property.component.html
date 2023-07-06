@@ -5,7 +5,6 @@
 
 
 <section
- 
   class="p-3 d-flex align-items-center justify-content-center flex-wrap w-auto container-fluid"
 >
   <div *ngFor="let item of Property; index as A" class="card col-lg-3 xx p-3">
@@ -62,22 +61,22 @@
 
     <div class="card-body">
       <div class="d-flex justify-content-between">
-        <h5 class="card-title fs-5 fw-bold">
+        <h5 class="card-title fs-5 fw-bolder">
           {{ item.cityName }} / {{ item.countryName }}
         </h5>
         <h2 class="card-title fs-4">
-          <mat-icon>grade</mat-icon>{{ item.propertyAllRating }}
+          <!-- <mat-icon>grade</mat-icon> -->
+          <i class="fa-solid fa-star fs-5" style="color: #ffbb00;"></i>          {{ item.propertyAllRating }}
         </h2>
       </div>
-      <p class="card-text fs-5 bg-opacity-10 fw-normal">
+      <p class="card-text fs-5 bg-opacity-10 fw-normal text-muted">
         {{ item.propertyName }}
       </p>
 
-      <div class="d-flex flex-row justify-content-between hide">
+      <div class="d-flex flex-row justify-content-between ">
         <div>
-          <h2 class="card-text ">
-            <mat-icon class="fs-2"> attach_money</mat-icon
-            >{{ item.pricePerNight }}  
+          <h2 class="card-text">
+            <i class="fa-solid fa-sack-dollar fs-5" style="color: #006110;"></i>   <span class="fs-4"> {{ item.pricePerNight }}  </span>        
             <span class=" bg-opacity-10 fs-6 text-muted"> Night</span>
           </h2>
         </div>
@@ -92,14 +91,11 @@
   </div>
 </section>
 
-<section
-  *ngIf="ID == 20 ||ID == 30"
-  class="p-3 d-flex align-items-center justify-content-center flex-wrap w-auto"
+<!-- <section
+  *ngIf="ID == 1 ||ID == 2"
+  class="p-3 d-flex align-items-center justify-content-center flex-wrap w-auto container-fluid"
 >
-  <div
-    *ngFor="let item of PropertyFilter; index as A"
-    class="card col-lg-3 xx p-3"
-  >
+  <div *ngFor="let item of PropertyFilter; index as A" class="card col-lg-3 xx p-3">
     <div
       id="carouselExampleIndicators + A"
       class="carousel slide"
@@ -164,21 +160,21 @@
         {{ item.propertyName }}
       </p>
 
-      <div class="d-flex flex-row justify-content-between">
+      <div class="d-flex flex-row justify-content-between ">
         <div>
-          <h2 class="card-text">
-            <mat-icon class="fs-3"> attach_money</mat-icon
-            >{{ item.pricePerNight }}
-            <span class="bg-danger bg-opacity-10 fs-6"> Night</span>
+          <h2 class="card-text ">
+            <mat-icon class="fs-2"> attach_money</mat-icon
+            >{{ item.pricePerNight }}  
+            <span class=" bg-opacity-10 fs-6 text-muted"> Night</span>
           </h2>
         </div>
 
         <div>
-          <button class="btn btn-outline-dark" (click)="jedi(item.propertyId)">
+          <button class="btn btn-outline-dark " (click)="jedi(item.propertyId)">
             <mat-icon class="fs-3">arrow_right_alt</mat-icon>
           </button>
         </div>
       </div>
     </div>
   </div>
-</section>
+</section> -->

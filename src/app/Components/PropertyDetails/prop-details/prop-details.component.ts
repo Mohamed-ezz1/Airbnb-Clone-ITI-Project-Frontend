@@ -26,9 +26,9 @@ export class PropDetailsComponent implements OnInit {
   propDetails: any;             //all details of property
   propId: any;                      //Id of property 
   pricePerNight!: any;
-  numOfGuests: any = 2;         // number of guests the user reserving
+  numOfGuests: any = 1;         // number of guests the user reserving
   isPDisabled!: boolean;
-  isMDisabled!: boolean;
+  isMDisabled: boolean = true;
   minDate = new Date();         //now date
   startDate: any;               //start date of reservation
   endDate: any;                 //end date of reservation
@@ -84,9 +84,6 @@ onDateRangeChange() {
     });
   }
 
-  onDateChange(event: MatDatepickerInputEvent<Date>): void {
-    // Handle date change events
-  }
   ngOnInit(): void {
     this.tabService.tab$.next("User");
     this.propService.GetPropertyById(this.propId).subscribe({
@@ -105,6 +102,8 @@ onDateRangeChange() {
       if (this.numOfGuests == this.propDetails.maxNumOfGuest) {
         this.isPDisabled = true;
       }
+    }else if (this.numOfGuests == this.propDetails.maxNumOfGuest) {
+      this.isPDisabled = true;
     }
   }
 
