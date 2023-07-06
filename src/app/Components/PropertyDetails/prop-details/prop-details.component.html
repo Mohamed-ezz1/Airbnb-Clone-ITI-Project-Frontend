@@ -4,8 +4,8 @@
         <h1 class="">{{propDetails.nameOfProperty}}</h1>
         <div>
             <mat-icon style="display: inline; font-size:1.1rem">star</mat-icon>
-            <p class="fs-6" style="display: inline;">{{propDetails.ratingOverroll}}4.8 |
-                <a>{{propDetails.numOfReviews}}6 Reviews</a> |
+            <p class="fs-6" style="display: inline;">{{propDetails.ratingOverroll}} |
+                <a>{{propDetails.numOfReview}} Reviews</a> |
                 {{propDetails.cityNmae}},
                 {{propDetails.countryNmae}}
             </p>
@@ -82,11 +82,8 @@
                 <div>
                     <p style="display: inline;" class="material-icons fs-5">star</p>
                     <p class="fs-5" style="display: inline;">
-                        {{propDetails.ratingOverroll}}4.8 |
-                        {{propDetails.numOfReviews}}6 Reviews</p>
-                </div>
-                <div>
-                    <!-- <img src="{{propDetails.reviews....}}" class="rounded-circle" style="height: 4rem;"> -->
+                        {{propDetails.ratingOverroll}} |
+                        {{propDetails.numOfReview}} Reviews</p>
                 </div>
             </div>
             <hr>
@@ -102,11 +99,12 @@
                                 style="font-size:small;">per night</span> </h2>
                         <p style="display: inline;" class="material-icons fs-6 mt-2">star</p>
                         <p class="fs-6 mt-2" style="display: inline;">
-                            {{propDetails.ratingOverroll}}4.8 |
-                            {{propDetails.numOfReviews}}6 Reviews</p>
+                            {{propDetails.ratingOverroll}} |
+                            {{propDetails.numOfReview}} Reviews</p>
                     </div>
                 </div>
                 <div class="row" style="margin: auto;">
+                    <p>check-in date:</p>
                     <mat-form-field>
                         <mat-label>Choose a check-in date</mat-label>
                         <input matInput [min]="minDate" [matDatepickerFilter]="myFilter" [matDatepicker]="checkInPicker"
@@ -115,8 +113,9 @@
                         <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
                         <mat-datepicker #checkInPicker></mat-datepicker>
                     </mat-form-field>
-
-                    <mat-form-field>
+                    
+                    <p *ngIf="startDate">Check-out date:</p>
+                    <mat-form-field *ngIf="startDate">
                         <mat-label>Choose a check-out date</mat-label>
                         <input matInput [matDatepicker]="checkOutPicker" [min]="minCheckOutDate" [max]="maxCheckOutDate"
                             placeholder="Check-out" (dateInput)="onDateRangeChange()" [(ngModel)]="endDate">
