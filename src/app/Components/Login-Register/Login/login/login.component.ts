@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup } from '@angular/forms';
 import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 import { HostService } from 'src/app/Services/Host/host.service';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 
 @Component({
@@ -22,8 +23,9 @@ export class LoginComponent {
     private authService: AuthenticationService,
     private router: Router,
     private Usertype: UsertypeService,
-    private hostservice: HostService
-  ) { }
+    private hostservice: HostService,
+    private TabsService:TabsService
+  ) { this.TabsService.tab$.next("User")}
 
   form = new FormGroup({
     username: new FormControl<string>(''),

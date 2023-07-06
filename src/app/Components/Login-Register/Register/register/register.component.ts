@@ -5,6 +5,7 @@ import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { RegisterDto } from 'src/app/types/Register';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ToastrService } from 'ngx-toastr';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 import {
   FormGroupDirective,
@@ -45,7 +46,10 @@ export class RegisterComponent implements OnInit {
     email: "string",
     password: "string"
   };
-  constructor(private authService: AuthenticationService, private router: Router, private formBuilder: FormBuilder , private toastr: ToastrService) { }
+  constructor(private authService: AuthenticationService, private router: Router, private formBuilder: FormBuilder , private toastr: ToastrService , private Tabservice:TabsService) {
+
+    this.Tabservice.tab$.next("User")
+   }
 
 
   hide = true;

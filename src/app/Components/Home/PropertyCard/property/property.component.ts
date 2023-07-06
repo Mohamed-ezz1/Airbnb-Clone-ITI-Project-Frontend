@@ -8,6 +8,7 @@ import { PropertyService } from 'src/app/Services/Property/property.service';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 import { QueryService } from 'src/app/Services/query/query.service';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 @Component({
   selector: 'app-property',
@@ -27,14 +28,10 @@ category2! :string;
   constructor(private myRoute: ActivatedRoute,
     private query: QueryService, private PropertyService: PropertyService,
     private router: Router, private toastr: ToastrService,
-    private usertype: UsertypeService, private hostservice: HostService ,private stayService :CategoryService) {
+    private usertype: UsertypeService, private hostservice: HostService ,private stayService :CategoryService, private TabsService:TabsService) {
     this.ID = myRoute.snapshot.params['id'];
     console.log(this.ID)
-    this.usertype.getusertype().subscribe((user: any) => {
-      let Type = user.userType;
-      this.hostservice.isHost$.next(Type);
-
-    });
+    this.TabsService.tab$.next("Home")
     //     if(this.ID == null ){
     //       console.log("null oarams")
     //     }
@@ -113,9 +110,8 @@ this.stayService.query$.subscribe(
   search(objectFilter: any) {
     this.PropertyService.GetPropertySarch(objectFilter).subscribe({
       next: (data) => {
-        console.log("data filter")
 
-        console.log("//////////////////////")
+        console.log("kokkokokokooko")
         console.log(data)
         console.log("////////////////////")
 
@@ -123,8 +119,11 @@ this.stayService.query$.subscribe(
         this.PropertyFilter = data;
       },
       error: (e) => {
-
+console.log("momomomomomomomomomo")
         console.log(this.objectFilter)
+
+        this.router.navigateByUrl('Property')
+
         this.toastr.warning("No Data Match")
         console.log(e)
       }

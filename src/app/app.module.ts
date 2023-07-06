@@ -23,7 +23,6 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
 import { NavbarComponent } from './Components/navbar/navbar/navbar.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -38,6 +37,7 @@ import { imagePopUpdateComponent } from './Components/User/image-pop-update/imag
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
 import { from } from 'rxjs';
+import { FooterComponent } from './Components/Footer/footer/footer.component';
 import { GategoryComponent } from './Components/Home/Category/gategory/gategory.component';
 @NgModule({
   declarations: [
@@ -57,8 +57,7 @@ import { GategoryComponent } from './Components/Home/Category/gategory/gategory.
     ImagePopupComponent,
     imagePopUpdateComponent,
     UserProfileUpdateComponent,
-    GuestTripsComponent,
-    GategoryComponent
+    GuestTripsComponent
   ],
   imports: [
     BrowserModule,
