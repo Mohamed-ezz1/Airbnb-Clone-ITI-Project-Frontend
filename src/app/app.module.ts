@@ -36,9 +36,9 @@ import { UserProfileUpdateComponent } from './Components/user-profile-update/use
 import { ImagePopupComponent } from './Components/User/image-popup/image-popup.component';
 import { imagePopUpdateComponent } from './Components/User/image-pop-update/image-pop-update.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
 import { from } from 'rxjs';
+import { GategoryComponent } from './Components/Home/Category/gategory/gategory.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +57,8 @@ import { from } from 'rxjs';
     ImagePopupComponent,
     imagePopUpdateComponent,
     UserProfileUpdateComponent,
-    GuestTripsComponent
+    GuestTripsComponent,
+    GategoryComponent
   ],
   imports: [
     BrowserModule,
