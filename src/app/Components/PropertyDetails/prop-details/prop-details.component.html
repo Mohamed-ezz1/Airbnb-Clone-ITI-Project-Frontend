@@ -1,10 +1,10 @@
 <div *ngIf="propDetails" class="container">
 
     <div class="row">
-        <h1 class="">{{propDetails.nameOfProperty}}</h1>
+        <h1 class="colo-sm-12">{{propDetails.nameOfProperty}}</h1>
         <div>
             <mat-icon style="display: inline; font-size:1.1rem">star</mat-icon>
-            <p class="fs-6" style="display: inline;">{{propDetails.ratingOverroll}} |
+            <p class="fs-6 colo-sm-12" style="display: inline;">{{propDetails.ratingOverroll}} |
                 <a>{{propDetails.numOfReview}} Reviews</a> |
                 {{propDetails.cityNmae}},
                 {{propDetails.countryNmae}}
@@ -13,7 +13,7 @@
     </div>
 
     <div class="row mt-3">
-        <div class="col" *ngFor="let i of propDetails.imgs">
+        <div class="col colo-sm-12" *ngFor="let i of propDetails.imgs">
             <div class="d-flex justify-content-center flex-wrap m-2">
                 <img src="{{i}}" class="rounded" style="height: 15rem; width: 25rem;">
             </div>
@@ -22,9 +22,9 @@
     <hr>
 
     <div class="row">
-        <div class="col-8">
+        <div class="col-lg-8 colo-sm-12">
             <div class="row mb-4">
-                <div class="mb-3 d-flex justify-content-between">
+                <div class="colo-sm-12 mb-3 d-flex justify-content-between">
                     <div>
                         <h1>Hosted by: {{propDetails.userName}}</h1>
                         <p class="fs-6" style="display: inline;">
@@ -44,7 +44,7 @@
                     <p style="display: block;" class="material-icons fs-1"> key </p>
                 </div>
                 <div class="col-11">
-                    <h4 style="display: inline; font-weight: bold;">Patty And Beckett is a Superhost</h4>
+                    <h4 style="display: inline; font-weight: bold;">{{propDetails.userName}} is a Superhost</h4>
                     <p style="margin-left: 0.2rem;">Superhosts are experienced, highly rated hosts who are committed to
                         providing great stays for guests.</p>
                     <h4 style="display: inline; font-weight: bold;">Great location</h4>
@@ -89,7 +89,7 @@
             <hr>
         </div>
 
-        <div class="col-4">
+        <div class="col-lg-4 col-sm-12">
             <div class="row" style="position: sticky; top: 6rem; left: 12rem; 
             border: lightgray solid 1px; border-radius: 5px; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
             margin-left: 4rem; margin-top: 2rem;">
