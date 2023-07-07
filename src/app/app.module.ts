@@ -39,6 +39,8 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
 import { from } from 'rxjs';
 import { FooterComponent } from './Components/Footer/footer/footer.component';
 import { GategoryComponent } from './Components/Home/Category/gategory/gategory.component';
+import { LoadingInterceptor } from './Components/Interceptors/loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +59,7 @@ import { GategoryComponent } from './Components/Home/Category/gategory/gategory.
     ImagePopupComponent,
     imagePopUpdateComponent,
     UserProfileUpdateComponent,
-    
+
     GuestTripsComponent,
     GategoryComponent,
     FooterComponent
@@ -80,12 +82,17 @@ import { GategoryComponent } from './Components/Home/Category/gategory/gategory.
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    NgxSpinnerModule
 
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
     useClass: AuthenticationInterceptor,
+    multi: true,
+  },{
+    provide: HTTP_INTERCEPTORS,     //For the interceptor
+    useClass: LoadingInterceptor,
     multi: true,
   },
 
@@ -95,6 +102,9 @@ import { GategoryComponent } from './Components/Home/Category/gategory/gategory.
 
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+  NgxSpinnerModule
+  ]
 })
 export class AppModule { }
