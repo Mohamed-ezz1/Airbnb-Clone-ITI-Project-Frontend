@@ -21,7 +21,8 @@ export class AddPropertyComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
     private hostDashboard: HostDashboardComponent,
-    private usertype: UsertypeService, private hostservice: HostService) {
+    private usertype: UsertypeService,
+    private hostservice: HostService) {
 
   }
 

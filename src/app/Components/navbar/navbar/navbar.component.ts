@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   PropertyService: PropertyService
   UsertypeService: UsertypeService
   //search output
-numbers=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
+  numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
 
   selectedCountry: any;
@@ -46,21 +46,18 @@ numbers=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
   numberOfguets: any;
   cities: any;
   Catogires: any;
-url:any
+  url: any
   isusertab: any;
   ishosttab: any;
   ishometab: any;
   constructor(a: AuthenticationService,
-     SearchboxService: SearchboxService, 
-     query: QueryService, route: Router,
-      PropertyService: PropertyService,
-       UsertypeService: UsertypeService,
-        private hostService: HostService,
-        private  ActivatedRoute:ActivatedRoute,
-        private TabsService:TabsService) 
-         
-         
-         {
+    SearchboxService: SearchboxService,
+    query: QueryService, route: Router,
+    PropertyService: PropertyService,
+    UsertypeService: UsertypeService,
+    private hostService: HostService,
+    private ActivatedRoute: ActivatedRoute,
+    private TabsService: TabsService,) {
     this.authenticationService = a;
 
     this.SearchboxService = SearchboxService;
@@ -68,10 +65,10 @@ url:any
     this.selectedCountry = null;
     this.selectedCity = null;
     this.numberOfguets = 1;
-    this.route=route
+    this.route = route
     this.PropertyService = PropertyService
     this.UsertypeService = UsertypeService
-    this.selectedCatogrey=null
+    this.selectedCatogrey = null
 
     this.UsertypeService.getusertype().subscribe((user: any) => {
       let Type = user.userType;
@@ -80,25 +77,25 @@ url:any
     });
     this.TabsService.tab$.subscribe({
 
-     next : (data)=>{
-if (data=="User"){
-  this.isusertab=true
-  this.ishosttab=false
-  this.ishometab=false
+      next: (data) => {
+        if (data == "User") {
+          this.isusertab = true
+          this.ishosttab = false
+          this.ishometab = false
 
-}else if (data=="Host"){
-  this.ishosttab=true
-  this.ishometab=false
-  this.isusertab=false
+        } else if (data == "Host") {
+          this.ishosttab = true
+          this.ishometab = false
+          this.isusertab = false
 
 
 
-}else if (data=="Home"){
-  this.ishometab=true
-  this.isusertab=false
-  this.ishosttab=false
-}
-     }
+        } else if (data == "Home") {
+          this.ishometab = true
+          this.isusertab = false
+          this.ishosttab = false
+        }
+      }
     })
   }
 
@@ -106,13 +103,13 @@ if (data=="User"){
     console.log("onDestroy");
   }
   ngOnInit(): void {
-console.log(this.route.url)
+    console.log(this.route.url)
 
 
     this.hostService.isHost$.subscribe((data: any) => {
       this.ishost = data;
     });
-   
+
     this.authenticationService.isLoggedIn$.subscribe({
 
       next: (value) => {
@@ -135,7 +132,8 @@ console.log(this.route.url)
 
     })
 
-  
+
+
   }
 
 
@@ -144,16 +142,17 @@ console.log(this.route.url)
 
 
   getcities(a: any) {
-    
-if(a==0){
-  this.cities=null
-}else{
-    
-    this.selectedCountry = a
-    console.log(this.selectedCountry)
-    this.cities = this.searchCountryandcity.find((x: any) => x.countryId == +this.selectedCountry).navbarCities
-    console.log(this.cities)
-  }}
+
+    if (a == 0) {
+      this.cities = null
+    } else {
+
+      this.selectedCountry = a
+      console.log(this.selectedCountry)
+      this.cities = this.searchCountryandcity.find((x: any) => x.countryId == +this.selectedCountry).navbarCities
+      console.log(this.cities)
+    }
+  }
   changecity(a: any) {
 
     this.selectedCity = a;
@@ -170,7 +169,7 @@ if(a==0){
 
       this.route.navigate(['/Property'])
 
-console.log(this.route.url)
+      console.log(this.route.url)
     }
 
 
@@ -187,32 +186,37 @@ console.log(this.route.url)
   }
 
   x: any = {}
-   search() {
-    
-    if (this.selectedCountry==0){
-      this.selectedCountry=null
-      this.selectedCity=null
+  search() {
+
+    if (this.selectedCountry == 0) {
+      this.selectedCountry = null
+      this.selectedCity = null
 
 
     }
-    if (this.selectedCity==0){
-      this.selectedCity=null
+    if (this.selectedCity == 0) {
+      this.selectedCity = null
 
     }
-    if (this.selectedCatogrey==0){
-      this.selectedCatogrey=null
+    if (this.selectedCatogrey == 0) {
+      this.selectedCatogrey = null
 
     }
 
 
-     this.query.setqeury({ "cityId": this.selectedCity, "countryId": this.selectedCountry, "catogreyId": this.selectedCatogrey,"numberOfGuests":this.numberOfguets })
+    this.query.setqeury({ "cityId": this.selectedCity, "countryId": this.selectedCountry, "catogreyId": this.selectedCatogrey, "numberOfGuests": this.numberOfguets })
     // this.route.navigateByUrl("Property/1")
     this.redirectTo("Property/1")
 
   }
 
-  changenumberofguests(numberofguest:any){
-this.numberOfguets= numberofguest
+  changenumberofguests(numberofguest: any) {
+    this.numberOfguets = numberofguest
 
+  }
+
+  switchToHosting(): void {
+    console.log("A7AAAAAAAAAAAAAAAAA")
+    this.hostService.updateSubject$.next(false);
   }
 }

@@ -1,4 +1,4 @@
-<section class="stay-filter main-layout">
+<section class="stay-filter main-layout" *ngIf="ishome">
  
     <div class="main-content d-flex justify-content-center">
         <div (click)="onScroll(-1)" class="arrow-container arrow-left ">
@@ -7,12 +7,10 @@
             </div>
         </div>
         <div #elFilter class="filter-container   mx=auto">
-            <div>>></div>
             <div  *ngFor="let filter of category" (click)="onClickLabel(filter.categoryId)">
                 <img src="{{filter.categoryIcon}}" alt="">
                 <span>{{ filter.categoryName}}</span>
             </div>
-            <div><<</div>
 
         </div>
         <div  (click)="onScroll(1)" class="arrow-container arrow-right  ">
