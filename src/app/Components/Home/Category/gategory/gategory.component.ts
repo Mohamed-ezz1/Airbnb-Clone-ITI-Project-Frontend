@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { CategoryService } from 'src/app/Services/Category/category.service';
 import { GtegoryDto } from 'src/app/types/Gategory';
 import { MatIcon } from '@angular/material/icon';
+import { TabsService } from 'src/app/Services/tabs/tabs.service';
 
 @Component({
   selector: 'app-gategory',
@@ -12,8 +13,21 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class GategoryComponent {
   @ViewChild('elFilter') elFilter: any
+  ishome:any
+  constructor(private route : Router, private  stayService : CategoryService ,TabsService:TabsService) {
+    TabsService.tab$.subscribe({
 
-  constructor(private route : Router, private  stayService : CategoryService) { }
+      next: (data)=>{
+  
+        if(data=="Home"){
+          this.ishome=true}
+          else{
+            this.ishome=false
+          }
+        }
+      }
+     )
+   }
 
  // filters = filters  // data
   
