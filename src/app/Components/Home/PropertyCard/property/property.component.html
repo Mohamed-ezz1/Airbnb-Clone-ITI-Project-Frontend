@@ -17,7 +17,7 @@
         <button
           *ngFor="let img of Property[A].imgUrl; index as ii"
           type="button"
-          [class.active]="ii === 0"
+          [class.active]="ii == 0"
           data-bs-target="#carouselExampleIndicators + A"
           data-bs-slide-to="ii"
           aria-current="true"
@@ -61,10 +61,10 @@
 
     <div class="card-body">
       <div class="d-flex justify-content-between">
-        <h5 class="card-title fs-5 fw-bolder">
+        <h5 class="card-title fs-5 fw-bolder col-8">
           {{ item.cityName }} / {{ item.countryName }}
         </h5>
-        <h2 class="card-title fs-4">
+        <h2 class="card-title fs-4 col-3">
           <!-- <mat-icon>grade</mat-icon> -->
           <i class="fa-solid fa-star fs-5" style="color: #ffbb00;"></i>          {{ item.propertyAllRating }}
         </h2>
@@ -74,7 +74,7 @@
       </p>
 
       <div class="d-flex flex-row justify-content-between ">
-        <div>
+        <div class="col-6">
           <h2 class="card-text">
             <i class="fa-solid fa-sack-dollar fs-5" style="color: #006110;"></i>   <span class="fs-4"> {{ item.pricePerNight }}  </span>        
             <span class=" bg-opacity-10 fs-6 text-muted"> Night</span>
@@ -91,90 +91,4 @@
   </div>
 </section>
 
-<!-- <section
-  *ngIf="ID == 1 ||ID == 2"
-  class="p-3 d-flex align-items-center justify-content-center flex-wrap w-auto container-fluid"
->
-  <div *ngFor="let item of PropertyFilter; index as A" class="card col-lg-3 xx p-3">
-    <div
-      id="carouselExampleIndicators + A"
-      class="carousel slide"
-      data-ride="true"
-    >
-      <div class="carousel-indicators">
-        <button
-          *ngFor="let img of Property[A].imgUrl; index as ii"
-          type="button"
-          [class.active]="ii === 0"
-          data-bs-target="#carouselExampleIndicators + A"
-          data-bs-slide-to="ii"
-          aria-current="true"
-          aria-label="'Slide' + ii "
-        ></button>
-      </div>
 
-      <mdb-carousel
-        class="carousel slide carousel-inner"
-        interval="0"
-        [isControls]="true"
-      >
-        <mdb-carousel-item *ngFor="let img of Property[A].imgUrl">
-          <div class="w-auto" (click)="jedi(item.propertyId)">
-            <img class="d-block w-100" src="{{ img }}" />
-            <div class="rgba-black-light waves-light" mdbWavesEffect></div>
-          </div>
-        </mdb-carousel-item>
-
-        <button
-          class="xxx carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExampleIndicators + A"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-
-        <button
-          class="xxx2 carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExampleIndicators + A"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </mdb-carousel>
-    </div>
-
-    <div class="card-body">
-      <div class="d-flex justify-content-between">
-        <h5 class="card-title fs-5 fw-bold">
-          {{ item.cityName }} / {{ item.countryName }}
-        </h5>
-        <h2 class="card-title fs-4">
-          <mat-icon>grade</mat-icon>{{ item.propertyAllRating }}
-        </h2>
-      </div>
-      <p class="card-text fs-5 bg-opacity-10 fw-normal">
-        {{ item.propertyName }}
-      </p>
-
-      <div class="d-flex flex-row justify-content-between ">
-        <div>
-          <h2 class="card-text ">
-            <mat-icon class="fs-2"> attach_money</mat-icon
-            >{{ item.pricePerNight }}  
-            <span class=" bg-opacity-10 fs-6 text-muted"> Night</span>
-          </h2>
-        </div>
-
-        <div>
-          <button class="btn btn-outline-dark " (click)="jedi(item.propertyId)">
-            <mat-icon class="fs-3">arrow_right_alt</mat-icon>
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
