@@ -20,7 +20,8 @@ export class UserProfileUpdateService {
 
   updateUserProfile(updatedProfile: GestToUpdateProfile): Observable<GestToUpdateProfile> {
     //console.log("sending data to backend" , updatedProfile)
-
+    console.log("inside service")
+    console.log(updatedProfile)
     return this.client.put<GestToUpdateProfile>(this.apiUrl, updatedProfile);
   }
 }

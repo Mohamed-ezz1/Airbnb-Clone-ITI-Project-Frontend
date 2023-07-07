@@ -5,4 +5,5 @@ export interface GestProfile{
   email: string;
   phoneNumber:string;
   about:string;
+  url:string;
 }

@@ -39,8 +39,8 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
 import { from } from 'rxjs';
 import { FooterComponent } from './Components/Footer/footer/footer.component';
 import { GategoryComponent } from './Components/Home/Category/gategory/gategory.component';
-import { EmaiforgetComponent } from './Components/Login-Register/EmailForget/emaiforget/emaiforget.component';
-import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-card/valid-card.component';
+import { LoadingInterceptor } from './Components/Interceptors/loading.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +59,7 @@ import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-
     ImagePopupComponent,
     imagePopUpdateComponent,
     UserProfileUpdateComponent,
-    
+
     GuestTripsComponent,
     GategoryComponent,
     FooterComponent,
@@ -84,12 +84,17 @@ import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
     }),
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    NgxSpinnerModule
 
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,     //For the interceptor
     useClass: AuthenticationInterceptor,
+    multi: true,
+  },{
+    provide: HTTP_INTERCEPTORS,     //For the interceptor
+    useClass: LoadingInterceptor,
     multi: true,
   },
 
@@ -99,6 +104,9 @@ import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-
 
 
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+  NgxSpinnerModule
+  ]
 })
 export class AppModule { }

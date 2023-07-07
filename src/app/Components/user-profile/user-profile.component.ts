@@ -25,6 +25,8 @@ export class UserProfileComponent implements OnInit {
         next: (data) => {
           if (data) {
             this.userProfile = data;
+            console.log("next")
+        console.log(this.userProfile)
           }
           this.userProfile = data
         },
