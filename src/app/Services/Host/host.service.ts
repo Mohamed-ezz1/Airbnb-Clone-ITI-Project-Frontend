@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { PropertyAddEditDto } from 'src/app/types/PropertyAddEditDto';
 import { UploadFileDto } from 'src/app/types/UploadFileDto';
@@ -9,9 +10,9 @@ import { UploadFileDto } from 'src/app/types/UploadFileDto';
 })
 export class HostService {
 
-  constructor(private myClient: HttpClient) { }
+  constructor(private myClient: HttpClient, private snackBar: MatSnackBar) { }
   public isHost$ = new BehaviorSubject<string>("Guest");
-
+  public updateSubject$ = new BehaviorSubject<boolean>(false);
 
   private readonly hostBookingUrl = "https://localhost:7108/api/HostSection/HostBooking";
   private readonly hostPropertyUrl = "https://localhost:7108/api/HostSection/HostProperty";
@@ -39,7 +40,14 @@ export class HostService {
 
   UpdateProperty(property: PropertyAddEditDto): Observable<any> {
     console.log("Sending property data to backend:", property); // Log the property data before sending
+    setTimeout(() => {
+      this.snackBar.open('Property Updated successfully', 'Close', {
+        duration: 4000, // Duration in milliseconds
+        verticalPosition: 'top'
+      });
+    }, 300);
 
+    this.updateSubject$.next(true);
     return this.myClient.put<any>(this.hostPropertyAddEditUrl, property);
   }
   GetPropertyById(propertyId: string): Observable<any> {

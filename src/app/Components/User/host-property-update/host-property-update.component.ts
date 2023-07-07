@@ -11,6 +11,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser'
 import { MatDialog } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 import { imagePopUpdateComponent } from '../image-pop-update/image-pop-update.component';
+import { HostDashboardComponent } from '../host-dashboard/host-dashboard.component';
 
 @Component({
   selector: 'app-host-property-update',
@@ -28,7 +29,7 @@ export class HostPropertyUpdateComponent implements OnInit {
     private route: ActivatedRoute,
     private sanitizer: DomSanitizer,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
   ) { }
 
   private listsData: any;
@@ -253,12 +254,14 @@ export class HostPropertyUpdateComponent implements OnInit {
     this.hostService.UpdateProperty(updatedProperty).subscribe(
       () => {
         console.log('Property updated successfully');
-        this.router.navigate(['HostDashboardComponent'], { queryParams: { showHostProperty: true } });
+        this.router.navigate(['HostDashboardComponent'])
+        // , { queryParams: { showHostProperty: true } });
+        // this.hostDashboard.toggleHostProperty();
         // Show snackbar message
-        this.snackBar.open('Property Updated successfully', 'Close', {
-          duration: 4000, // Duration in milliseconds
-          verticalPosition: "top",
-        });
+        // this.snackBar.open('Property Updated successfully', 'Close', {
+        //   duration: 4000, // Duration in milliseconds
+        //   verticalPosition: "top",
+        // });
       },
       (error) => {
         console.log('Error updating property:', error);

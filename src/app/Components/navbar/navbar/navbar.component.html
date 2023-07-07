@@ -122,6 +122,7 @@
         class="rounded-pill"
         style="width: 100%"
         *ngIf="Isloggen && ishost == 'Host'"
+        (click)="switchToHosting()"
         routerLink="/HostDashboardComponent"
       >
         switch to hosting
