@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from 'src/app/Services/User/user.service';
 import { LoginDto } from 'src/app/types/LoginDto';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup ,FormBuilder ,Validators} from '@angular/forms';
 import { UsertypeService } from 'src/app/Services/UserType/usertype.service';
 import { HostService } from 'src/app/Services/Host/host.service';
 import { TabsService } from 'src/app/Services/tabs/tabs.service';
@@ -13,37 +13,47 @@ import { TabsService } from 'src/app/Services/tabs/tabs.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
 
   public StatsLgin: boolean = false;
   public StatsError: boolean = false;
-
+  form!: FormGroup;
+  public credentials : LoginDto ={
+    userName: "string",
+    password: "string",
+  };
   constructor(
     private authService: AuthenticationService,
     private router: Router,
     private Usertype: UsertypeService,
     private hostservice: HostService,
-    private TabsService:TabsService
+    private TabsService:TabsService,
+    private formBuilder: FormBuilder
+
   ) { this.TabsService.tab$.next("User")}
 
-  form = new FormGroup({
-    username: new FormControl<string>(''),
-    password: new FormControl<string>(''),
-  });
+  hide = true;
+
+  ngOnInit(): void {
+    this.form = this.formBuilder.group({
+      username:  ['', Validators.required],
+      password: ['', Validators.required],
+    });
+  }
 
 
 
 
 
-  handleSubmit(e: Event) {
-    e.preventDefault();
 
-    var credentials = new LoginDto();
-    credentials.userName = this.form.controls.username.value ?? '';
-    credentials.password = this.form.controls.password.value ?? '';
+  handleSubmit(login :FormGroup ) {
+    if(login.valid){
+  
+    this.credentials.userName = login.value["username"]  ;
+    this.credentials.password = login.value["password"] ;
 
-    this.authService.login(credentials).subscribe({
+    this.authService.login(this.credentials).subscribe({
 
       next: (data) => {
         console.log(data);
@@ -73,12 +83,12 @@ export class LoginComponent {
       }
 
     }
-
+  
 
 
 
     );
-
+  }
   }
 
 

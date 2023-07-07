@@ -14,6 +14,8 @@ import { HostDashboardComponent } from './Components/User/host-dashboard/host-da
 import { UserProfileUpdateComponent } from './Components/user-profile-update/user-profile-update.component';
 import { authenticatonGuard } from './Components/guards/authenticaton.guard';
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
+import { EmaiforgetComponent } from './Components/Login-Register/EmailForget/emaiforget/emaiforget.component';
+import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-card/valid-card.component';
 const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -31,7 +33,10 @@ const routes: Routes = [
   { path: '', component: PropertyComponent },
   { path: 'HostDashboardComponent',canActivate :[authenticatonGuard], component: HostDashboardComponent },
   {path: 'GuestTrips',canActivate:[authenticatonGuard],component:GuestTripsComponent},
-  { path: 'updateProfile', canActivate: [authenticatonGuard], component: UserProfileUpdateComponent }
+  { path: 'updateProfile', canActivate: [authenticatonGuard], component: UserProfileUpdateComponent },
+  { path: 'ForgetPassword', component: EmaiforgetComponent },
+  { path: 'ValidCard', component: ValidCardComponent }
+
 
 ];
 

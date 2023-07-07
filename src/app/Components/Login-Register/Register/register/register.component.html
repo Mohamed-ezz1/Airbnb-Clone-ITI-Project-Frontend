@@ -1,16 +1,28 @@
-<section class="d-flex justify-content-center align-items-center ">
-  <div class="row g-0 shadow rounded overflow-hidden  w-100 align-items-center bg-danger-subtle">
-    <div class="col-md-7 d-none d-md-block">
+<section class="d-flex justify-content-center align-items-center  ">
+  <div
+    class="row g-0 shadow rounded overflow-hidden  w-100 align-items-center  colorstyle d-flex justify-content-center ">
+    <div class="col-md-6 d-none d-md-block">
+      <div class="backimg">
 
-      <div class="image"></div>
+        <div class="image">
+
+          <figure><img height="100px" src="assets/Images/Logo.png"></figure>
+          <h6>
+            REINTFIY
+          </h6>
+        </div>
+
+      </div>
+
+      <!-- <div class="image"></div> -->
     </div>
 
     <div class=" d-block d-md-none d-flex justify-content-center align-items-center">
 
-      <figure><img height="100px" width="100px" src="https://logodownload.org/wp-content/uploads/2016/10/airbnb-logo-0.png"></figure>
-      </div>
+      <figure><img height="100px" width="100px" src="assets/Images/Logo.png"></figure>
+    </div>
 
-    <div class="col-md-4 ">
+    <div class="col-md-5  bg-white p-2 style2  pt-5 my-4  ">
 
       <form class="px-4" [formGroup]="form2" (ngSubmit)="register(form2)">
 
@@ -29,23 +41,24 @@
 
         <mat-form-field class="w-100" appearance="outline">
           <mat-label>LastName</mat-label>
-          <input formControlName="LastName" type="text" matInput placeholder="LastName"  maxlength="10" minlength="3">
+          <input formControlName="LastName" type="text" matInput placeholder="LastName" maxlength="10" minlength="3">
 
-          <mat-error *ngIf="form2.get('LastName')?.hasError('required')" >
+          <mat-error *ngIf="form2.get('LastName')?.hasError('required')">
             LastName is <strong>required</strong>
-          </mat-error> 
+          </mat-error>
           <mat-error *ngIf="form2.get('LastName')?.hasError('minlength')">
             FirstName is <strong>minlenth =3 </strong>
           </mat-error>
-       
-      
+
+
 
         </mat-form-field>
 
 
         <mat-form-field class="w-100" appearance="outline">
           <mat-label>UserName</mat-label>
-          <input formControlName="UserName" type="text" matInput placeholder="UserName" maxlength="10" minlength="4" pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,10}[a-zA-Z0-9]$">
+          <input formControlName="UserName" type="text" matInput placeholder="UserName" maxlength="10" minlength="4"
+            pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,10}[a-zA-Z0-9]$">
 
           <mat-error *ngIf="form2.get('UserName')?.hasError('required')">
             UserName is <strong>required</strong>
@@ -56,9 +69,9 @@
           </mat-error>
 
           <mat-error *ngIf="form2.get('UserName')?.hasError('pattern')">
-            UserName not match pattern [<strong>  contain strange char  </strong>]
+            UserName not match pattern [<strong> contain strange char </strong>]
           </mat-error>
-       
+
         </mat-form-field>
 
 
@@ -71,37 +84,38 @@
             email is <strong>required</strong>
           </mat-error>
 
-   
+
         </mat-form-field>
 
 
 
         <mat-form-field appearance="outline" class="w-100">
           <mat-label> password</mat-label>
-          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'" pattern='^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$'>
+          <input formControlName="password" matInput [type]="hide ? 'password' : 'text'"
+            pattern='^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$'>
           <mat-error *ngIf="form2.get('password')?.hasError('required')">
             password is <strong>required</strong>
           </mat-error>
           <mat-error *ngIf="form2.get('password')?.hasError('pattern')">
-            password not match pattern [<strong>  contain Upercase / Lowercase / numbers</strong>]
+            password not match pattern [<strong> contain Upercase / Lowercase / numbers</strong>]
           </mat-error>
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
             [attr.aria-pressed]="hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
 
-      
+
         </mat-form-field>
 
 
-        <button *ngIf="!SendReq"  mat-raised-button color="primary"  class="w-100">Register </button>
-        <i  *ngIf="SendReq" class="fa-duotone fa-arrow-rotate-left fa-spin fa-spin-reverse"></i> 
+        <button *ngIf="!SendReq" mat-raised-button class="w-100 colorstyle mt-4 fs-4">Register </button>
+        <i *ngIf="SendReq" class="fa-duotone fa-arrow-rotate-left fa-spin fa-spin-reverse"></i>
 
       </form>
       <br>
       <br>
-      <br>
-      <p>Have Account? <a class="btn btn-outline-dark"  routerLink="login">Login</a></p>
+
+      <p class="mx-4">Have Account? <a class="btn btn-outline-dark  " routerLink="/login">Login</a></p>
 
     </div>
 

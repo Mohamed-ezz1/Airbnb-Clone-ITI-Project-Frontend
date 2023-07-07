@@ -1,0 +1,25 @@
+
+
+  <div class="">
+    
+<form [formGroup]="form" class="user-form" id="form" (ngSubmit)="Check(form)">
+    
+
+
+    <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Email</mat-label>
+        <input type="email" id="search" placeholder="Enter Email User" formControlName="email" matInput>
+
+        <mat-error *ngIf="form.get('email')?.hasError('required')">
+          email is <strong>required</strong>
+        </mat-error>
+
+
+      </mat-form-field>
+
+
+    <button type="submit" class="btn "style="background-color: rgb(255, 102, 102);     font-family: cursive;" > Send Mail </button>
+  </form>
+  </div>
+
+

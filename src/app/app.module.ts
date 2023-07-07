@@ -39,6 +39,8 @@ import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.c
 import { from } from 'rxjs';
 import { FooterComponent } from './Components/Footer/footer/footer.component';
 import { GategoryComponent } from './Components/Home/Category/gategory/gategory.component';
+import { EmaiforgetComponent } from './Components/Login-Register/EmailForget/emaiforget/emaiforget.component';
+import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-card/valid-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +62,9 @@ import { GategoryComponent } from './Components/Home/Category/gategory/gategory.
     
     GuestTripsComponent,
     GategoryComponent,
-    FooterComponent
+    FooterComponent,
+    EmaiforgetComponent,
+    ValidCardComponent
   ],
   imports: [
     BrowserModule,
