@@ -5,4 +5,5 @@ export interface GestToUpdateProfile{
   email: string;
   phoneNumber:string;
   about:string;
+  url:string;
 }
