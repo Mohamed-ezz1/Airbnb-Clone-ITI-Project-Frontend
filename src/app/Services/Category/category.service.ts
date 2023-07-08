@@ -26,7 +26,7 @@ export class CategoryService {
 
   GetAllGategory(): Observable<any> {
 
-    return this.myClient.get('https://localhost:7108/api/Home/Categories')
+    return this.myClient.get('https://rentifyapiazure.azurewebsites.net/api/Home/Categories')
   }
 
 }

@@ -14,7 +14,7 @@ export class SearchboxService {
 
 
 
-  private readonly search = "https://localhost:7108/api/SearchBar";
+  private readonly search = "https://rentifyapiazure.azurewebsites.net/api/SearchBar";
 
   Searchbarinformation() {
     return this.myclient.get(this.search);

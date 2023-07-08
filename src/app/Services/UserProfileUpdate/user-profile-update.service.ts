@@ -10,7 +10,7 @@ export class UserProfileUpdateService {
   
 
 
-  private apiUrl = 'https://localhost:7108/api/UserDetails';
+  private apiUrl = 'https://rentifyapiazure.azurewebsites.net/api/UserDetails';
 
   constructor(private client: HttpClient) {}
 

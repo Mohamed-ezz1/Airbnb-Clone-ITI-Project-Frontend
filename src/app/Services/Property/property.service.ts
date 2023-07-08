@@ -11,8 +11,8 @@ export class PropertyService {
 
   constructor(private myClient: HttpClient) { }
 
-  private readonly propertyDetailsUrl = "https://localhost:7108/api/Property";
-  private readonly propertyBookingUrl = "https://localhost:7108/api/Property/Booking";
+  private readonly propertyDetailsUrl = "https://rentifyapiazure.azurewebsites.net/api/Property";
+  private readonly propertyBookingUrl = "https://rentifyapiazure.azurewebsites.net/api/Property/Booking";
 
   GetPropertyById(ID:any) {
     return this.myClient.get(this.propertyDetailsUrl+"/"+ID);
@@ -26,7 +26,7 @@ export class PropertyService {
 
   GetAllPorperty()  {
 
-    return this.myClient.get('https://localhost:7108/api/Home/Properties')
+    return this.myClient.get('https://rentifyapiazure.azurewebsites.net/api/Home/Properties')
   }
 
 
