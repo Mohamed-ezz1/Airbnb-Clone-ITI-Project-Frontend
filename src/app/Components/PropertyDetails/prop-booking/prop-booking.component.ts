@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit  } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ReservationService } from 'src/app/Services/Property/reservation.service';
 import { ReservationDto } from 'src/app/types/ReservationDto';
@@ -15,11 +15,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class PropBookingComponent implements OnInit {
   resDto = new ReservationDto();
   newBooking = new PropertyBookingDto;
-  propId :any;
+  propId: any;
   constructor(
-    private dialogRef: MatDialogRef<PropBookingComponent>, private reservationService : ReservationService,
-    public myServic:PropertyService, myRoute:ActivatedRoute,public myRouter: Router, private snackBar: MatSnackBar,
-     @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string }
+    private dialogRef: MatDialogRef<PropBookingComponent>, private reservationService: ReservationService,
+    public myServic: PropertyService, myRoute: ActivatedRoute, public myRouter: Router, private snackBar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: { title: string, message: string }
   ) {
   }
 
@@ -33,22 +33,25 @@ export class PropBookingComponent implements OnInit {
     console.log(this.resDto.numOfGuests)
   }
 
-  addBooking():void{
+  addBooking(): void {
     this.newBooking.StartDate = this.resDto.StartDate;
+    console.log(this.newBooking.StartDate)
     this.newBooking.EndDate = this.resDto.EndDate;
+    console.log(this.newBooking.EndDate)
+
     this.newBooking.NumOfGuest = this.resDto.numOfGuests;
     this.newBooking.PropertyId = this.resDto.propId;
 
     this.myServic.PostPropertyBooking(this.newBooking).subscribe(
-      (next)=>{ 
+      (next) => {
         this.myRouter.navigate(['/Property']);
         this.close();
         this.snackBar.open('Reserved succefully!', 'Ok', {
           duration: 4000, // Duration in milliseconds
           verticalPosition: "top",
         });
-    },
-    (error) => { console.log("Error adding booking:", error);}
+      },
+      (error) => { console.log("Error adding booking:", error); }
     )
   }
 }

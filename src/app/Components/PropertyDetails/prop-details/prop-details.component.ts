@@ -24,7 +24,7 @@ import { TabsService } from 'src/app/Services/tabs/tabs.service';
 export class PropDetailsComponent implements OnInit {
 
   propDetails: any;             //all details of property
-  propId: any;                      //Id of property 
+  propId: any;                      //Id of property
   pricePerNight!: any;              //priceeeeeeee
   numOfGuests: any = 1;         // number of guests the user reserving
   isPDisabled!: boolean;
@@ -38,45 +38,48 @@ export class PropDetailsComponent implements OnInit {
   maxCheckOutDate: any;
   range!: FormGroup;
 
-myFilter = (date: Date | null): boolean => {        //filter of check in date
-  if (!date) {
-    return false;
-  }
-  const timestamp = date.toLocaleDateString();
-  for (const booking of this.propDetails.bookingDates) {
-    const checkIn = new Date(booking.checkInDate).toLocaleDateString();
-    const checkOut = new Date(booking.checkOutDate).toLocaleDateString();
-    if (timestamp >= checkIn && timestamp <= checkOut) {
+  myFilter = (date: Date | null): boolean => {
+    if (!date) {
       return false;
     }
+    const timestamp = date.getTime();
+    for (const booking of this.propDetails.bookingDates) {
+      const checkIn = new Date(booking.checkInDate);
+      const checkOut = new Date(booking.checkOutDate);
+      checkOut.setDate(checkOut.getDate()); // Add one day to the check-out date
+      if (timestamp >= checkIn.getTime() && timestamp < checkOut.getTime()) {
+        return false;
+      }
+    }
+    return true;
+  };
+
+
+
+  onCheckInDateChange() {
+    const nextBooking = this.getNextBooking(this.startDate);
+    this.minCheckOutDate = new Date(this.startDate);
+    this.minCheckOutDate.setDate(this.minCheckOutDate.getDate() + 1);
+    this.maxCheckOutDate = nextBooking ? new Date(nextBooking.checkInDate) : null;
   }
-  return true;
-};
 
-onCheckInDateChange() {
-  const nextBooking = this.getNextBooking(this.startDate);
-  this.minCheckOutDate = new Date(this.startDate);
-  this.minCheckOutDate.setDate(this.minCheckOutDate.getDate() + 1);
-  this.maxCheckOutDate = nextBooking ? new Date(nextBooking.checkInDate) : null;
-}
+  getNextBooking(checkInDate: Date): { checkInDate: string, checkOutDate: string } {
+    // Find the next available booking after the given check-in date
+    const timestamp = checkInDate.getTime();
+    const bookings = this.propDetails.bookingDates.filter((booking: { checkInDate: string | number | Date; }) => new Date(booking.checkInDate).getTime() > timestamp);
+    return bookings.length > 0 ? bookings[0] : null;
+  }
 
-getNextBooking(checkInDate: Date): { checkInDate: string, checkOutDate: string } {
-  // Find the next available booking after the given check-in date
-  const timestamp = checkInDate.getTime();
-  const bookings = this.propDetails.bookingDates.filter((booking: { checkInDate: string | number | Date; }) => new Date(booking.checkInDate).getTime() > timestamp);
-  return bookings.length > 0 ? bookings[0] : null;
-}
-
-onDateRangeChange() {
-  const differenceInMs = this.endDate.getTime() - this.startDate.getTime();
-  this.numOfNights = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
-  this.totalPrice = (this.numOfNights) * (this.propDetails.pricePerNight);
-}
+  onDateRangeChange() {
+    const differenceInMs = this.endDate.getTime() - this.startDate.getTime();
+    this.numOfNights = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
+    this.totalPrice = (this.numOfNights) * (this.propDetails.pricePerNight);
+  }
 
   constructor(myRoute: ActivatedRoute, private propService: PropertyService, public myRouter: Router,
-    public fb: FormBuilder,private tabService: TabsService, private authService: AuthenticationService, private dateAdapter: DateAdapter<Date>,
+    public fb: FormBuilder, private tabService: TabsService, private authService: AuthenticationService, private dateAdapter: DateAdapter<Date>,
     private dialog: MatDialog, private snackBar: MatSnackBar, private reservationService: ReservationService) {
-      this.dateAdapter.setLocale('en-GB');
+    this.dateAdapter.setLocale('en-GB');
     this.propId = myRoute.snapshot.params["id"];
     this.range = this.fb.group({
       start: null,
@@ -102,7 +105,7 @@ onDateRangeChange() {
       if (this.numOfGuests == this.propDetails.maxNumOfGuest) {
         this.isPDisabled = true;
       }
-    }else if (this.numOfGuests == this.propDetails.maxNumOfGuest) {
+    } else if (this.numOfGuests == this.propDetails.maxNumOfGuest) {
       this.isPDisabled = true;
     }
   }
@@ -136,7 +139,9 @@ onDateRangeChange() {
       resDto.numOfGuests = this.numOfGuests;
       resDto.pricePerNight = this.pricePerNight;
       resDto.StartDate = this.startDate;
+      console.log(resDto.StartDate)
       resDto.EndDate = this.endDate;
+      console.log(resDto.EndDate)
       resDto.numOfNights = this.numOfNights;
       resDto.totalPrice = this.totalPrice;
       resDto.propDetails = this.propDetails;
