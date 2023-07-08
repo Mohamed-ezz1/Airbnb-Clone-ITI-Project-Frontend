@@ -41,6 +41,7 @@ import { FooterComponent } from './Components/Footer/footer/footer.component';
 import { GategoryComponent } from './Components/Home/Category/gategory/gategory.component';
 import { LoadingInterceptor } from './Components/Interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { StarRatingDirective } from './Components/PropertyDetails/prop-details/star-rating.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
     GuestTripsComponent,
     GategoryComponent,
-    FooterComponent
+    FooterComponent,
+    StarRatingDirective
   ],
   imports: [
     BrowserModule,

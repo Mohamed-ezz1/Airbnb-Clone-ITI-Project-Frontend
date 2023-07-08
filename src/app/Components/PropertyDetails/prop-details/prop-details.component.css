@@ -1,0 +1,13 @@
+.rating {
+    display: inline-block;
+    font-size: 0;
+    line-height: 1;
+  }
+  
+  .star {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    font-size: 1rem;
+    color: #ffcc00;
+  }

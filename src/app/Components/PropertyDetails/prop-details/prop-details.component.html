@@ -1,19 +1,27 @@
 <div *ngIf="propDetails" class="container">
 
     <div class="row">
-        <h1 class="colo-sm-12">{{propDetails.nameOfProperty}}</h1>
+        <h1 class="col-sm-12">{{propDetails.nameOfProperty}}</h1>
         <div>
             <mat-icon style="display: inline; font-size:1.1rem">star</mat-icon>
-            <p class="fs-6 colo-sm-12" style="display: inline;">{{propDetails.ratingOverroll}} |
-                <a>{{propDetails.numOfReview}} Reviews</a> |
+            <p *ngIf="propDetails.ratingOverroll===0.0; else topNotZero" class="fs-6 colo-sm-12"
+                style="display: inline;">N/A |
+                <a>No reviews yet</a> |
                 {{propDetails.cityNmae}},
                 {{propDetails.countryNmae}}
             </p>
+            <ng-template #topNotZero>
+                <p class="fs-6 colo-sm-12" style="display: inline;">{{propDetails.ratingOverroll | number:'1.1-1' }} |
+                    <a>{{propDetails.numOfReview}} Reviews</a> |
+                    {{propDetails.cityNmae}},
+                    {{propDetails.countryNmae}}
+                </p>
+            </ng-template>
         </div>
     </div>
 
     <div class="row mt-3">
-        <div class="col colo-sm-12" *ngFor="let i of propDetails.imgs">
+        <div class="col" *ngFor="let i of propDetails.imgs">
             <div class="d-flex justify-content-center flex-wrap m-2">
                 <img src="{{i}}" class="rounded" style="height: 15rem; width: 25rem;">
             </div>
@@ -32,7 +40,7 @@
                             {{propDetails.bedRoomCount}} BedRooms |
                             {{propDetails.bathRoomCount}} BathRooms</p>
                     </div>
-                    <img src="{{propDetails.userImage}}" class="rounded-circle" style="height: 4rem;">
+                    <img src="{{propDetails.userImage}}" class="rounded-circle" style="height: 3rem;">
                 </div>
                 <hr>
             </div>
@@ -75,15 +83,37 @@
                 <p style="display: inline;" class="material-icons fs-3">{{a.icon}}</p>
                 <p style="display: inline;" class="fs-3"> {{a.amintiesName}}</p>
             </div>
-            <hr>
+            <div class="">
 
-            <!-- reviews sction -->
+            </div>
+            <hr>
             <div>
-                <div>
-                    <p style="display: inline;" class="material-icons fs-5">star</p>
+                <p style="display: inline;" class="material-icons fs-5">star</p>
+                <p *ngIf="propDetails.ratingOverroll === 0.0; else notZero" class="fs-5" style="display: inline;">
+                    N/A |
+                    No reviews yet</p>
+                <ng-template #notZero>
                     <p class="fs-5" style="display: inline;">
-                        {{propDetails.ratingOverroll}} |
+                        {{propDetails.ratingOverroll | number:'1.1-1'}} |
                         {{propDetails.numOfReview}} Reviews</p>
+                </ng-template>
+            </div>
+            <div class="row d-flex justify-content-start flex-wrap">
+                <div class="col-6 mt-3" *ngFor="let i of propDetails.reviews">
+                    <div class="row">
+                        <div class="col-2"><img src="{{i.userimage}}" class="rounded-circle" style="height: 3rem;">
+                        </div>
+                        <div class="col-6">
+                            <h3 class="fw-bold" style="display: inline;">{{i.userName}}</h3>
+                            <h5>{{i.createDate | date:'EEEE, MMMM d, y'}}</h5>
+                        </div>
+                        <div class="col-4 d-flex">
+                            <h1 class="star" [appStarRating]="i.rate"></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <p>{{i.reviewComment}}</p>
+                    </div>
                 </div>
             </div>
             <hr>
@@ -98,9 +128,16 @@
                         <h2 class="me-auto" style="display: inline;">${{propDetails.pricePerNight}} <span
                                 style="font-size:small;">per night</span> </h2>
                         <p style="display: inline;" class="material-icons fs-6 mt-2">star</p>
-                        <p class="fs-6 mt-2" style="display: inline;">
-                            {{propDetails.ratingOverroll}} |
-                            {{propDetails.numOfReview}} Reviews</p>
+
+                        <p *ngIf="propDetails.ratingOverroll ===0.0; else reserveNotZero" class="fs-6 mt-2"
+                            style="display: inline;">N/A |
+                            <a>No reviews yet</a>
+                        </p>
+                        <ng-template #reserveNotZero>
+                            <p class="fs-6 mt-2" style="display: inline;">{{propDetails.ratingOverroll | number:'1.1-1'}} |
+                                {{propDetails.numOfReview}} Reviews
+                            </p>
+                        </ng-template>
                     </div>
                 </div>
                 <div class="row" style="margin: auto;">
@@ -113,7 +150,7 @@
                         <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
                         <mat-datepicker #checkInPicker></mat-datepicker>
                     </mat-form-field>
-                    
+
                     <p *ngIf="startDate">Check-out date:</p>
                     <mat-form-field *ngIf="startDate">
                         <mat-label>Choose a check-out date</mat-label>
