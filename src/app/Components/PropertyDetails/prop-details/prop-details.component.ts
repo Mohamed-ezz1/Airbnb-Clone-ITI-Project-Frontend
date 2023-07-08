@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PropertyService } from 'src/app/Services/Property/property.service';
 import { MaterialModule } from 'src/app/AngularMaterial/material.module'
@@ -14,6 +14,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DateAdapter } from '@angular/material/core';
 import { BooleanInput } from '@angular/cdk/coercion';
 import { TabsService } from 'src/app/Services/tabs/tabs.service';
+import { postReviewDto } from 'src/app/types/postReviewDto';
+import {MatSliderModule} from '@angular/material/slider';
 
 @Component({
   selector: 'app-prop-details',
@@ -23,9 +25,29 @@ import { TabsService } from 'src/app/Services/tabs/tabs.service';
 })
 export class PropDetailsComponent implements OnInit {
 
+  postRevDto = new postReviewDto;
+  sendReview():void{
+    this.postRevDto.bookingId = this.propReview.bookingid;
+    this.postRevDto.propertyId = this.propId;
+    this.postRevDto.comment = this.comment;
+    this.postRevDto.rate = this.rate;
+    this.propService.postReview(this.postRevDto).subscribe(()=>{
+      console.log("review posted");
+      this.myRouter.navigate(['/Property}}']);
+        this.snackBar.open('Review posted successfully!', 'Ok', {
+          duration: 4000, // Duration in milliseconds
+          verticalPosition: "top",
+        });
+    },
+    ()=>{
+      console.log("review error");
+      console.log(this.rate)
+    })
+  }
+
   propDetails: any;             //all details of property
   propId: any;                      //Id of property 
-  pricePerNight!: any;              //priceeeeeeee
+  pricePerNight!: any;              //price
   numOfGuests: any = 1;         // number of guests the user reserving
   isPDisabled!: boolean;
   isMDisabled: boolean = true;
@@ -37,6 +59,11 @@ export class PropDetailsComponent implements OnInit {
   minCheckOutDate: any;
   maxCheckOutDate: any;
   range!: FormGroup;
+  hasReview!:boolean;
+  bookingIdOfThisUser: any;
+  propReview: any;
+  comment: any;
+  rate:any = 1; 
 
 myFilter = (date: Date | null): boolean => {        //filter of check in date
   if (!date) {
@@ -68,6 +95,7 @@ getNextBooking(checkInDate: Date): { checkInDate: string, checkOutDate: string }
 }
 
 onDateRangeChange() {
+  console.log(this.startDate)
   const differenceInMs = this.endDate.getTime() - this.startDate.getTime();
   this.numOfNights = Math.floor(differenceInMs / (1000 * 60 * 60 * 24));
   this.totalPrice = (this.numOfNights) * (this.propDetails.pricePerNight);
@@ -90,7 +118,13 @@ onDateRangeChange() {
       next: (data) => { this.propDetails = data; console.log(data); },
       error: (error) => { console.log(error) },
       complete: () => { console.log("complete"); }
-    })
+    });
+
+    this.propService.CheckForReviews(this.propId).subscribe({
+      next: (data) => { this.propReview = data; console.log(data); },
+      error: (error) => { console.log(error) },
+      complete: () => { console.log("complete"); }
+    });
   }
 
 
