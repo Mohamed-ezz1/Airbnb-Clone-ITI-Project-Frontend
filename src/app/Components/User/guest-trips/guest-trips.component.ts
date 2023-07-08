@@ -12,14 +12,13 @@ import { TabsService } from 'src/app/Services/tabs/tabs.service';
   styleUrls: ['./guest-trips.component.css']
 })
 export class GuestTripsComponent {
-  displayedColumns: string[] = ['propertyName', 'hostName', 'checkInDate', 'checkOutDate', 'totalPrice', 'Action'];
+  displayedColumns: string[] = ['propertyName', 'hostName', 'checkInDate', 'checkOutDate', 'totalPrice', 'status', 'Action'];
   dataSource!: MatTableDataSource<any>;
-
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
 
-  constructor(private guestDataService: GuestService,private tabService : TabsService ) {
+  constructor(private guestDataService: GuestService, private tabService: TabsService) {
     this.tabService.tab$.next("User");
   }
 
