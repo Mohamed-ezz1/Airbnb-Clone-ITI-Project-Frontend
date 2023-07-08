@@ -25,7 +25,7 @@ export class PropDetailsComponent implements OnInit {
 
   propDetails: any;             //all details of property
   propId: any;                      //Id of property 
-  pricePerNight!: any;
+  pricePerNight!: any;              //priceeeeeeee
   numOfGuests: any = 1;         // number of guests the user reserving
   isPDisabled!: boolean;
   isMDisabled: boolean = true;
