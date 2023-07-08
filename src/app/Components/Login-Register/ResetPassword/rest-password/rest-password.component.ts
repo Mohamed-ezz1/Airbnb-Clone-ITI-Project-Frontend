@@ -53,9 +53,16 @@ export class RestPasswordComponent {
 
         },
          
-          error:(e)=>{
+          error:(err)=>{
             
-        console.log(e.message)
+        console.log(err.message)
+        for(var i =0 ;i<err.error.length ; i++ ){
+
+          this.toastr.warning(err.error[i].code)
+          this.toastr.warning(err.error[i].description)
+        
+        
+        }
 
        }
       }
