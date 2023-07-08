@@ -22,7 +22,8 @@ export class UserProfileUpdateComponent implements OnInit {
     private route: Router,
     private snackBar: MatSnackBar,
     private tabService: TabsService
-    ) { this.tabService.tab$.next("User")
+  ) {
+    this.tabService.tab$.next("User")
   }
 
   ngOnInit(): void {
@@ -44,6 +45,7 @@ export class UserProfileUpdateComponent implements OnInit {
     const input = e.target as HTMLInputElement  //cast the target to html input element
     const file = input.files?.[0]
     if (!file) return;
+    console.log(file);
     this.imageService.Upload(file).subscribe(response => {
       this.ImageUrl = response.url;
       console.log(response)

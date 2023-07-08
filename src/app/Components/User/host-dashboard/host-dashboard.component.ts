@@ -25,21 +25,11 @@ export class HostDashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhh")
 
     this.propertyUpdateService.updateSubject$.subscribe((updated) => {
       console.log('Subscription triggered:', updated);
       if (updated) {
-        // Toggle to host property view
         this.toggleHostProperty();
-
-        // Delay the snack bar by 1 second
-        // setTimeout(() => {
-        //   this.snackBar.open('Property Updated successfully', 'Close', {
-        //     duration: 4000, // Duration in milliseconds
-        //     verticalPosition: 'top'
-        //   });
-        // }, 1000);
       }
     });
   }

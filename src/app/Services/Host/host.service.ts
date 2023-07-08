@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, tap, throwError } from 'rxjs';
 import { PropertyAddEditDto } from 'src/app/types/PropertyAddEditDto';
 import { UploadFileDto } from 'src/app/types/UploadFileDto';
 
@@ -18,6 +18,7 @@ export class HostService {
   private readonly hostPropertyUrl = "https://localhost:7108/api/HostSection/HostProperty";
   private readonly hostPropertyAddEditUrl = "https://localhost:7108/api/HostProperty";
   private readonly hostEditProperty = "https://localhost:7108/api/HostProperty";
+  private readonly deleteProperty = "https://localhost:7108/api/HostProperty";
 
 
   GetBookingByUserId() {
@@ -65,7 +66,34 @@ export class HostService {
     // To send our data as a form data not a json
     var form = new FormData();
     form.append("file", file) //Like we did in post man the key is file and value is the image file itself
+    console.log(file)
     return this.myClient.post<UploadFileDto>('https://localhost:7108/api/Files', form); //we will submit the form
+  }
+
+  // public DeleteProperty(id: string): Observable<any> {
+  //   // const params = new HttpParams().set('id', id);
+  //   if (confirm('Are you sure you want to delete this Booking')) {
+
+  //     return this.myClient.put<any>(`${this.deleteProperty}/${id}`).pipe(
+  //       tap((data) => {
+  //         console.log("Property Data:", data);
+  //       })
+  //     );
+  //   }
+  //   else {
+  //     return throwError(() => new Error('User cancelled delete operation'));
+  //   }
+  // }
+  public DeleteProperty(id: string): Observable<any> {
+    if (confirm('Are you sure you want to delete this Property?')) {
+      return this.myClient.put<any>(`${this.deleteProperty}/${id}`, {}).pipe(
+        tap((data) => {
+        })
+      );
+    } else {
+      const errorMessage = `User cancelled soft deletion of Property ${id}`;
+      return throwError(() => new Error(errorMessage));
+    }
   }
 
 }
