@@ -48,11 +48,15 @@
         </th>
 
         <td mat-cell *matCellDef="let row">
-          <i
-            class="fa-solid fa-sack-dollar fs-5 icon-price"
-            style="color: #006110"
-          ></i>
-          {{ row.price }}
+          <span style="padding-left: 20px">
+            <span style="padding-right: 5px">
+              <i
+                class="fa-solid fa-sack-dollar fs-5 icon-price"
+                style="color: #006110"
+              ></i
+            ></span>
+            {{ row.price }}
+          </span>
         </td>
       </ng-container>
 
