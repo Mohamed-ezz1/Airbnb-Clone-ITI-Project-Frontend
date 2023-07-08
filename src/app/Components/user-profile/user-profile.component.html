@@ -8,12 +8,13 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-12 d-flex justify-content-center">
-              <img style="height: 15rem; width: 15rem;"
-                [src]='userProfile.url'
+              <img
+                style="height: 15rem; width: 15rem"
+                [src]="
+                  userProfile.url ||
+                  'assets/Images/istockphoto-639085642-170667a.jpg'
+                "
                 class="rounded-circle profile-pic"
-                alt="Profile Photo"
-              
-                
               />
             </div>
             <div class="col-md-12 d-flex justify-content-center mt-3">

@@ -1,6 +1,6 @@
-export class PropertyBookingDto{
-    StartDate: any;
-    EndDate: any;
-    NumOfGuest: any;
-    PropertyId: any;
+export class PropertyBookingDto {
+  StartDate!: Date;
+  EndDate!: Date;
+  NumOfGuest: any;
+  PropertyId: any;
 }

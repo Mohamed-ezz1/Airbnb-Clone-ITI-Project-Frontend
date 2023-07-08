@@ -10,9 +10,9 @@ import { EmailDto } from 'src/app/types/EmailDto';
 export class EmailService {
 
   constructor(private myClient: HttpClient) { }
-  private readonly SendEmail = "https://localhost:7108/api/User/Forget_Password";
-  private readonly ResetPassword = "https://localhost:7108/api/User/Reset_Password";
-  private readonly UserCode = "https://localhost:7108/api/User/Check_Code";
+  private readonly SendEmail = "https://rentifyapiazure.azurewebsites.net/api/User/Forget_Password";
+  private readonly ResetPassword = "https://rentifyapiazure.azurewebsites.net/api/User/Reset_Password";
+  private readonly UserCode = "https://rentifyapiazure.azurewebsites.net/api/User/Check_Code";
 
 
 

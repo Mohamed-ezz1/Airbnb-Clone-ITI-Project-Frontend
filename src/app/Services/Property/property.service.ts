@@ -12,10 +12,15 @@ export class PropertyService {
 
   constructor(private myClient: HttpClient) { }
 
+<<<<<<< HEAD
   private readonly propertyDetailsUrl = "https://localhost:7108/api/Property";
   private readonly propertyBookingUrl = "https://localhost:7108/api/Property/Booking";
   private readonly checkForReview = "https://localhost:7108/api/Property/checkforRevies";
   private readonly poostReview = "https://localhost:7108/api/Property/addReview";
+=======
+  private readonly propertyDetailsUrl = "https://rentifyapiazure.azurewebsites.net/api/Property";
+  private readonly propertyBookingUrl = "https://rentifyapiazure.azurewebsites.net/api/Property/Booking";
+>>>>>>> 9a6aa81f0bcf2dc0b563883b1bae0d03f1259608
 
   GetPropertyById(ID:any) {
     return this.myClient.get(this.propertyDetailsUrl+"/"+ID);
@@ -37,7 +42,7 @@ export class PropertyService {
 
   GetAllPorperty()  {
 
-    return this.myClient.get('https://localhost:7108/api/Home/Properties')
+    return this.myClient.get('https://rentifyapiazure.azurewebsites.net/api/Home/Properties')
   }
 
 

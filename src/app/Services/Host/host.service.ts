@@ -14,11 +14,11 @@ export class HostService {
   public isHost$ = new BehaviorSubject<string>("Guest");
   public updateSubject$ = new BehaviorSubject<boolean>(false);
 
-  private readonly hostBookingUrl = "https://localhost:7108/api/HostSection/HostBooking";
-  private readonly hostPropertyUrl = "https://localhost:7108/api/HostSection/HostProperty";
-  private readonly hostPropertyAddEditUrl = "https://localhost:7108/api/HostProperty";
-  private readonly hostEditProperty = "https://localhost:7108/api/HostProperty";
-  private readonly deleteProperty = "https://localhost:7108/api/HostProperty";
+  private readonly hostBookingUrl = "https://rentifyapiazure.azurewebsites.net/api/HostSection/HostBooking";
+  private readonly hostPropertyUrl = "https://rentifyapiazure.azurewebsites.net/api/HostSection/HostProperty";
+  private readonly hostPropertyAddEditUrl = "https://rentifyapiazure.azurewebsites.net/api/HostProperty";
+  private readonly hostEditProperty = "https://rentifyapiazure.azurewebsites.net/api/HostProperty";
+  private readonly deleteProperty = "https://rentifyapiazure.azurewebsites.net/api/HostProperty";
 
 
   GetBookingByUserId() {

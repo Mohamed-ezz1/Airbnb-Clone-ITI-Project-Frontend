@@ -13,9 +13,10 @@ export class UserProfileComponent implements OnInit {
 
   constructor(private profileService: ProfileService,
     private tabService: TabsService,
-  
-  
-    ) { this.tabService.tab$.next("User")
+
+
+  ) {
+    this.tabService.tab$.next("User")
   }
 
   ngOnInit() {
@@ -26,7 +27,7 @@ export class UserProfileComponent implements OnInit {
           if (data) {
             this.userProfile = data;
             console.log("next")
-        console.log(this.userProfile)
+            console.log(this.userProfile)
           }
           this.userProfile = data
         },

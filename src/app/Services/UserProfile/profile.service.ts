@@ -10,7 +10,7 @@ export class ProfileService {
 
   constructor(private Client: HttpClient) { }
 
-  private readonly apiUrl = 'https://localhost:7108/api/UserDetails';
+  private readonly apiUrl = 'https://rentifyapiazure.azurewebsites.net/api/UserDetails';
 
   getUserProfile(): Observable<GestProfile> {
 
