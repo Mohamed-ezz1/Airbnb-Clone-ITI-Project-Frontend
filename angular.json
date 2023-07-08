@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:browser", 
           "options": {
             "outputPath": "dist/airbnb-clone-iti-project-frontend",
             "index": "src/index.html",
