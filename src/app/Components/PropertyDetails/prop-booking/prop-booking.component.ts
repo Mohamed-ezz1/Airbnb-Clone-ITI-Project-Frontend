@@ -34,11 +34,14 @@ export class PropBookingComponent implements OnInit {
   }
 
   addBooking(): void {
-    this.newBooking.StartDate = this.resDto.StartDate;
-    console.log(this.newBooking.StartDate)
-    this.newBooking.EndDate = this.resDto.EndDate;
-    console.log(this.newBooking.EndDate)
+    // Convert dates to UTC format before sending to the back-end
+    const startDate = new Date(this.resDto.StartDate);
+    const endDate = new Date(this.resDto.EndDate);
+    const utcStartDate = new Date(Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate()));
+    const utcEndDate = new Date(Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate()));
 
+    this.newBooking.StartDate = utcStartDate;
+    this.newBooking.EndDate = utcEndDate;
     this.newBooking.NumOfGuest = this.resDto.numOfGuests;
     this.newBooking.PropertyId = this.resDto.propId;
 
@@ -46,12 +49,13 @@ export class PropBookingComponent implements OnInit {
       (next) => {
         this.myRouter.navigate(['/Property']);
         this.close();
-        this.snackBar.open('Reserved succefully!', 'Ok', {
+        this.snackBar.open('Reserved successfully!', 'Ok', {
           duration: 4000, // Duration in milliseconds
           verticalPosition: "top",
         });
       },
       (error) => { console.log("Error adding booking:", error); }
-    )
+    );
   }
+
 }
