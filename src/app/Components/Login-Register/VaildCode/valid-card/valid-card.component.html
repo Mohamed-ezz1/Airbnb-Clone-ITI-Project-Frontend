@@ -1,0 +1,18 @@
+<div class="container d-flex justify-content-center align-items-center flex-column   ">
+    <h2>Verify Your Account</h2>
+    <p>We emailed you the six digit code to {{ email }} <br/> Enter the code below to confirm your email address.</p>
+    <div class="code-container">
+      <input type="number" class="code" placeholder="0" min="0" max="9" required #code0 (keydown)="onKeyDown($event, 0)">
+      <input type="number" class="code" placeholder="0" min="0" max="9" required #code1 (keydown)="onKeyDown($event, 1)">
+      <input type="number" class="code" placeholder="0" min="0" max="9" required #code2 (keydown)="onKeyDown($event, 2)">
+      <input type="number" class="code" placeholder="0" min="0" max="9" required #code3 (keydown)="onKeyDown($event, 3)">
+      <input type="number" class="code" placeholder="0" min="0" max="9" required #code4 (keydown)="onKeyDown($event, 4)">
+      <input type="number" class="code" placeholder="0" min="0" max="9" required #code5 (keydown)="onKeyDown($event, 5)">
+    </div>
+
+    <button type="submit" class="btn my-4 "style="background-color: rgb(255, 102, 102); font-family: cursive; width: 200px;" (click)="send(code0.value,code1.value,code2.value,code3.value,code4.value,code5.value)" > Send Mail </button>
+
+    <small class="info d-none">
+        no account was found in our database for the email address you entered. Please start by checking the following: Make sure there are no spelling errors in the email address    </small>
+  </div>
+  

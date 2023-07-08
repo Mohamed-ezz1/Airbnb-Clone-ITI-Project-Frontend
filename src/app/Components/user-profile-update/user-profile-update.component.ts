@@ -26,9 +26,13 @@ export class UserProfileUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log("onInit")
+
     this.userService.getUserProfile().subscribe({
       next: (Profile) => {
         this.userProfile = Profile;
+        console.log("next")
+        console.log(this.userProfile)
       },
       error: (error) => {
         console.error(error);
@@ -43,7 +47,7 @@ export class UserProfileUpdateComponent implements OnInit {
     this.imageService.Upload(file).subscribe(response => {
       this.ImageUrl = response.url;
       console.log(response)
-      // this.property.ImagesURLs = this.ImageUrl
+      this.userProfile.url = this.ImageUrl
     })
   }
 
@@ -51,7 +55,7 @@ export class UserProfileUpdateComponent implements OnInit {
     if (form.invalid) {
       return; // Do not submit the form if it's invalid
     }
-
+    console.log("after valid ")
     this.userService.updateUserProfile(this.userProfile).subscribe({
       next: (profile: any) => {
         this.snackBar.open('Profile updated successfully', 'Close', {

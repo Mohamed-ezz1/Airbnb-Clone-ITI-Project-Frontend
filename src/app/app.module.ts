@@ -42,6 +42,8 @@ import { GategoryComponent } from './Components/Home/Category/gategory/gategory.
 import { LoadingInterceptor } from './Components/Interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { StarRatingDirective } from './Components/PropertyDetails/prop-details/star-rating.directive';
+import { EmaiforgetComponent } from './Components/Login-Register/EmailForget/emaiforget/emaiforget.component';
+import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-card/valid-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +66,9 @@ import { StarRatingDirective } from './Components/PropertyDetails/prop-details/s
     GuestTripsComponent,
     GategoryComponent,
     FooterComponent,
-    StarRatingDirective
+    StarRatingDirective,
+    EmaiforgetComponent,
+    ValidCardComponent
   ],
   imports: [
     BrowserModule,
