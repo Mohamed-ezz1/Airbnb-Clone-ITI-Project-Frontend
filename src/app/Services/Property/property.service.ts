@@ -17,8 +17,6 @@ export class PropertyService {
   private readonly checkForReview = "https://localhost:7108/api/Property/checkforRevies";
   private readonly poostReview = "https://localhost:7108/api/Property/addReview";
 
-  private readonly propertyDetailsUrl2 = "https://rentifyapiazure.azurewebsites.net/api/Property";
-  private readonly propertyBookingUrl2 = "https://rentifyapiazure.azurewebsites.net/api/Property/Booking";
 
 
   GetPropertyById(ID:any) {
@@ -41,7 +39,7 @@ export class PropertyService {
 
   GetAllPorperty()  {
 
-    return this.myClient.get('https://rentifyapiazure.azurewebsites.net/api/Home/Properties')
+    return this.myClient.get('https://localhost:7108/api/Home/Properties')
   }
 
 
