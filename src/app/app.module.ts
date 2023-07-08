@@ -41,6 +41,9 @@ import { FooterComponent } from './Components/Footer/footer/footer.component';
 import { GategoryComponent } from './Components/Home/Category/gategory/gategory.component';
 import { LoadingInterceptor } from './Components/Interceptors/loading.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { EmaiforgetComponent } from './Components/Login-Register/EmailForget/emaiforget/emaiforget.component';
+import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-card/valid-card.component';
+import { RestPasswordComponent } from './Components/Login-Register/ResetPassword/rest-password/rest-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -64,7 +67,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     GategoryComponent,
     FooterComponent,
     EmaiforgetComponent,
-    ValidCardComponent
+    ValidCardComponent,
+    RestPasswordComponent
   ],
   imports: [
     BrowserModule,

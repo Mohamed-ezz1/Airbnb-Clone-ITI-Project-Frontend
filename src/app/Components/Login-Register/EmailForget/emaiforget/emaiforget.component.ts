@@ -1,6 +1,8 @@
+import { query } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators , } from '@angular/forms';
 import { Router } from '@angular/router';
+import { EmailService } from 'src/app/Services/Email/email.service';
 
 @Component({
   selector: 'app-emaiforget',
@@ -9,9 +11,11 @@ import { Router } from '@angular/router';
 })
 export class EmaiforgetComponent implements OnInit {
   form!: FormGroup;
+  found=false
 
   constructor(    private formBuilder: FormBuilder,
     private router: Router,
+    private email:EmailService,
 
     ){}
   ngOnInit(): void {
@@ -21,7 +25,22 @@ export class EmaiforgetComponent implements OnInit {
   }
   Check(email :FormGroup){
     if(email.valid){
-      this.router.navigate(['/ValidCard']);
+      console.log(email.value.email)
+      var xemail =email.value.email;
+
+      this.email.SendEmailto(email.value.email).subscribe({
+        
+          next:(data) => {
+            console.log(data)
+         this.router.navigate(['/ValidCard' ,{email:xemail}]);},
+         error:(e)=>{
+          console.log(e.message)
+          this.found= true
+
+         }
+
+
+      })
 
     }
 

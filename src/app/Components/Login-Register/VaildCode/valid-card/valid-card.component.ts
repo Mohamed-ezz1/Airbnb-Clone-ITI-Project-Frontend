@@ -1,5 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { concat } from 'rxjs';
+import { EmailService } from 'src/app/Services/Email/email.service';
+import { Check_CodeDto } from 'src/app/types/CheckCodeDto';
 
 @Component({
   selector: 'app-valid-card',
@@ -9,11 +12,25 @@ import { concat } from 'rxjs';
 })
 export class ValidCardComponent  implements OnInit {
 
+
+  EmailParams! :string;
+
+  Check_Code :Check_CodeDto ={
+    email: '',
+    code: ''
+  
+  }
+  constructor(    private router: Router   ,    private codevalid:EmailService,private myRoute: ActivatedRoute
+    ){
+
+      this.EmailParams = myRoute.snapshot.params["email"];
+
+    }
  ngOnInit(): void {
   const inputElement = document.querySelector(`input.code:nth-child(${1})`) as HTMLInputElement;
   inputElement.focus();
  }
-  email: string = 'cool_guy@email.com';
+  email: string = this.EmailParams;
   codes: string[] = ['', '', '', '', '', ''];
   code!:string;
   isValidKey(event: KeyboardEvent): boolean {
@@ -47,6 +64,23 @@ export class ValidCardComponent  implements OnInit {
     send(x1:string,x2:string,x3:string,x4:string,x5:string,x6:string){
       this.code=(x1+x2+x3+x4+x5+x6)
       console.log(this.code)
+
+      this.Check_Code['email'] = this.EmailParams
+      this.Check_Code['code'] = this.code
+
+      this.codevalid.CheckCode(this.Check_Code).subscribe({ 
+        
+        next:(data) => {
+          console.log(data)
+          this.router.navigate(['/RestPassword',{email:this.EmailParams}]);},
+          error:(e)=>{
+        console.log(e.message)
+
+       }
+      }
+
+    )
+
     }
   //   email: string = 'cool_guy@email.com';
   //   codes: HTMLInputElement[] = [];
