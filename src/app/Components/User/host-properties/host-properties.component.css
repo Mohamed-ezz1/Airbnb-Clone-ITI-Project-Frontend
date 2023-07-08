@@ -6,3 +6,51 @@
   font-family: 'Poppins', sans-serif;
   font-weight: bold;
 }
+
+.icon-green {
+  color: #4caf50;
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-green:hover {
+  transform: rotate(360deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-purple {
+  color: #800080;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-purple:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icon-price {
+  color: #006110;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-price:hover {
+  transform: scale(1.2);
+  color: #00b300;
+}
+
+.icon-address {
+  color: #ff0000;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-address:hover {
+  transform: rotate(360deg);
+  color: #ff8000;
+}
+
+button {
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+}

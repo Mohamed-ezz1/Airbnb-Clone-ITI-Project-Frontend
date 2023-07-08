@@ -16,6 +16,7 @@ import { authenticatonGuard } from './Components/guards/authenticaton.guard';
 import { GuestTripsComponent } from './Components/User/guest-trips/guest-trips.component';
 import { EmaiforgetComponent } from './Components/Login-Register/EmailForget/emaiforget/emaiforget.component';
 import { ValidCardComponent } from './Components/Login-Register/VaildCode/valid-card/valid-card.component';
+import { RestPasswordComponent } from './Components/Login-Register/ResetPassword/rest-password/rest-password.component';
 const routes: Routes = [
   { path: 'Register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
@@ -35,7 +36,9 @@ const routes: Routes = [
   {path: 'GuestTrips',canActivate:[authenticatonGuard],component:GuestTripsComponent},
   { path: 'updateProfile', canActivate: [authenticatonGuard], component: UserProfileUpdateComponent },
   { path: 'ForgetPassword', component: EmaiforgetComponent },
-  { path: 'ValidCard', component: ValidCardComponent }
+  { path: 'ValidCard', component: ValidCardComponent },
+  { path: 'RestPassword', component: RestPasswordComponent },
+
 
 
 ];

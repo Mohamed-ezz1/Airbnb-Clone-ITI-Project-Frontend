@@ -1,7 +1,7 @@
 
 
   <div class="">
-    
+
 <form [formGroup]="form" class="user-form" id="form" (ngSubmit)="Check(form)">
     
 
@@ -18,8 +18,11 @@
       </mat-form-field>
 
 
-    <button type="submit" class="btn "style="background-color: rgb(255, 102, 102);     font-family: cursive;" > Send Mail </button>
+    <button type="submit" class="btn col-3"style="background-color: rgb(255, 102, 102);     font-family: cursive;" > Send Mail </button>
+
   </form>
+  <small class="info  py-3 my-3 bg-warning" *ngIf="found">   no account was found in our database for the email address you entered. Please start by checking the following: Make sure there are no spelling errors in the email address    </small>
+
   </div>
 
 

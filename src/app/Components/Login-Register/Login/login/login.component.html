@@ -7,7 +7,9 @@
       REINTFIY
     </h6>
   </div>
-
+  <h1  style="     font-family: cursive; font-size: xx-large;" >
+    Login
+  </h1>
   <form [formGroup]="form" (submit)="handleSubmit(form)" class="needs-validation" novalidate>
     <!-- Email input -->
     <!-- <div class="form-outline mb-4">
@@ -29,7 +31,7 @@
 
     <mat-form-field class="w-100" appearance="outline">
       <mat-label>UserName</mat-label>
-      <input formControlName="username" type="text" matInput placeholder="UserName" maxlength="10" minlength="4">
+      <input formControlName="username" type="text" matInput placeholder="UserName" maxlength="15" >
 
       <mat-error *ngIf="form.get('username')?.hasError('required')">
         UserName is <strong>required</strong>
@@ -92,7 +94,7 @@
     </div>
 
     <!-- Submit button -->
-    <button type="submit" class="btn fs-4  btn-block mb-4 col-4" style="background-color: rgb(255, 102, 102);     font-family: cursive;
+    <button type="submit" class="btn fs-4  btn-block mb-4 col-6" style="background-color: rgb(255, 102, 102);     font-family: cursive;
     ">
       Sign in
     </button>

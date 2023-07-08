@@ -43,7 +43,15 @@ div {
 .user-form input::placeholder {
   color: #bbb;
 }
-
+.info {
+  background-color: #eaeaea;
+  display: inline-block;
+  padding: 10px;
+  line-height: 20px;
+  max-width: 400px;
+  color: #777;
+  border-radius: 5px;
+}
 
 
 
