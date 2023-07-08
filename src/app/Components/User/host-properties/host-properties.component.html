@@ -15,29 +15,65 @@
     <table mat-table [dataSource]="dataSource" matSort>
       <!-- Name Column -->
       <ng-container matColumnDef="propertyName">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>propertyName</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Property Name</th>
         <td mat-cell *matCellDef="let row">
-          <a id="name">{{ row.propertyName }}</a>
+          <span>
+            <span style="padding-right: 5px">
+              <i class="fas fa-building icon-green"></i>
+            </span>
+            {{ row.propertyName }}
+          </span>
         </td>
       </ng-container>
-      <!-- email Column -->
+      <!-- Maximum Guests Column -->
       <ng-container matColumnDef="MaxNumberOfGuests">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          MaxNumberOfGuests
+          Maximum Guests
         </th>
-        <td mat-cell *matCellDef="let row">{{ row.maxGuests }}</td>
+
+        <td mat-cell *matCellDef="let row" style="padding-left: 50px">
+          <span
+            ><span style="padding-right: 5px"
+              ><i class="fas fa-users icon-purple" style="color: #800080"></i
+            ></span>
+            {{ row.maxGuests }}</span
+          >
+        </td>
       </ng-container>
 
-      <!-- Phone Column -->
+      <!-- Price per night Column -->
       <ng-container matColumnDef="PricePerNight">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>PricePerNight</th>
-        <td mat-cell *matCellDef="let row">{{ row.price }}</td>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Price Per Night
+        </th>
+
+        <td mat-cell *matCellDef="let row">
+          <span style="padding-left: 20px">
+            <span style="padding-right: 5px">
+              <i
+                class="fa-solid fa-sack-dollar fs-5 icon-price"
+                style="color: #006110"
+              ></i
+            ></span>
+            {{ row.price }}
+          </span>
+        </td>
       </ng-container>
 
       <!-- Address Column -->
       <ng-container matColumnDef="Address">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
-        <td mat-cell *matCellDef="let row">{{ row.adress }}</td>
+        <td mat-cell *matCellDef="let row">
+          <span style="padding-left: 13px">
+            <span style="padding-right: 5px"
+              ><i
+                class="fas fa-map-marker-alt icon-address"
+                style="color: #ff0000"
+              ></i
+            ></span>
+            {{ row.adress }}</span
+          >
+        </td>
       </ng-container>
 
       <!-- Update Column -->
@@ -46,13 +82,15 @@
           Update Property
         </th>
         <td mat-cell *matCellDef="let row">
-          <button
-            mat-icon-button
-            color="primary"
-            (click)="navigateToEdit(row.propertyId)"
+          <span style="padding-left: 30px">
+            <button
+              mat-icon-button
+              color="primary"
+              (click)="navigateToEdit(row.propertyId)"
+            >
+              <mat-icon>edit</mat-icon>
+            </button></span
           >
-            <mat-icon>edit</mat-icon>
-          </button>
         </td>
       </ng-container>
 
@@ -62,13 +100,15 @@
           Delete Property
         </th>
         <td mat-cell *matCellDef="let row">
-          <button
-            mat-icon-button
-            color="warn"
-            (click)="deleteHostProperty(row.propertyId)"
+          <span style="padding-left: 30px">
+            <button
+              mat-icon-button
+              color="warn"
+              (click)="deleteHostProperty(row.propertyId)"
+            >
+              <mat-icon>delete</mat-icon>
+            </button></span
           >
-            <mat-icon>delete</mat-icon>
-          </button>
         </td>
       </ng-container>
 

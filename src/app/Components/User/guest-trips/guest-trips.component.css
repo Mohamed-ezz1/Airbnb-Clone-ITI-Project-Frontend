@@ -7,3 +7,64 @@
   font-weight: bold;
   margin-top: 50px;
 }
+
+
+.icon-checkin {
+  color: #e91e63;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-checkin:hover {
+  transform: translateY(-3px);
+}
+
+.icon-checkout {
+  color: #4caf50;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-checkout:hover {
+  transform: translateY(-3px);
+}
+
+.date-wrapper:hover .icon-checkin,
+.date-wrapper:hover .icon-checkout {
+  transform: translateY(-3px);
+}
+
+.icon-price {
+  color: #006110;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-price:hover {
+  transform: scale(1.2);
+  color: #00b300;
+}
+
+.icon-green {
+  color: #4caf50;
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-green:hover {
+  transform: rotate(360deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-blue {
+  color: black;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-blue:hover {
+  transform: translateY(-3px);
+}
+
+button {
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
