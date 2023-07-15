@@ -190,7 +190,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     if (this.selectedCountry == 0) {
       this.selectedCountry = null
-      this.selectedCity = null
+      this.selectedCity = 0
 
 
     }
@@ -216,7 +216,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   switchToHosting(): void {
-    console.log("A7AAAAAAAAAAAAAAAAA")
     this.hostService.updateSubject$.next(false);
   }
 }

@@ -8,8 +8,8 @@ import { throwError } from 'rxjs';
 export class GuestService {
 
   constructor(private myClient: HttpClient) { }
-  private readonly guestBookingUrl = "https://rentifyapiazure.azurewebsites.net/api/GuestsSection/GuestBooking"
-  private readonly guestDeleteBooking = "https://rentifyapiazure.azurewebsites.net/api/GuestsSection";
+  private readonly guestBookingUrl = "https://localhost:7108/api/GuestsSection/GuestBooking"
+  private readonly guestDeleteBooking = "https://localhost:7108/api/GuestsSection";
 
   GetBookingByUserId() {
     return this.myClient.get(this.guestBookingUrl);

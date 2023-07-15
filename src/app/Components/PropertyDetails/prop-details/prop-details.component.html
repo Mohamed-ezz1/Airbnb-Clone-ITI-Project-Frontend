@@ -1,227 +1,332 @@
 <div *ngIf="propDetails" class="container">
+  <div class="row">
+    <h1 class="col-sm-12">{{ propDetails.nameOfProperty }}</h1>
+    <div>
+      <mat-icon style="display: inline; font-size: 1.1rem">star</mat-icon>
+      <p
+        *ngIf="propDetails.ratingOverroll === 0.0; else topNotZero"
+        class="fs-6 colo-sm-12"
+        style="display: inline"
+      >
+        N/A | <a>No reviews yet</a> | {{ propDetails.cityNmae }},
+        {{ propDetails.countryNmae }}
+      </p>
+      <ng-template #topNotZero>
+        <p class="fs-6 colo-sm-12" style="display: inline">
+          {{ propDetails.ratingOverroll | number : "1.1-1" }} |
+          <a>{{ propDetails.numOfReview }} Reviews</a> |
+          {{ propDetails.cityNmae }},
+          {{ propDetails.countryNmae }}
+        </p>
+      </ng-template>
+    </div>
+  </div>
 
-    <div class="row">
-        <h1 class="col-sm-12">{{propDetails.nameOfProperty}}</h1>
-        <div>
-            <mat-icon style="display: inline; font-size:1.1rem">star</mat-icon>
-            <p *ngIf="propDetails.ratingOverroll===0.0; else topNotZero" class="fs-6 colo-sm-12"
-                style="display: inline;">N/A |
-                <a>No reviews yet</a> |
-                {{propDetails.cityNmae}},
-                {{propDetails.countryNmae}}
+  <div class="row mt-3">
+    <div class="col" *ngFor="let i of propDetails.imgs">
+      <div class="d-flex justify-content-center flex-wrap m-2">
+        <img
+          src="{{ i }}"
+          class="rounded"
+          style="height: 15rem; width: 25rem"
+        />
+      </div>
+    </div>
+  </div>
+  <hr />
+
+  <div class="row">
+    <div class="col-lg-8 colo-sm-12">
+      <div class="row mb-4">
+        <div class="colo-sm-12 mb-3 d-flex justify-content-between">
+          <div>
+            <h1>Hosted by: {{ propDetails.userName }}</h1>
+            <p class="fs-6" style="display: inline">
+              Maximum of {{ propDetails.maxNumOfGuest }} Guests |
+              {{ propDetails.bedRoomCount }} BedRooms |
+              {{ propDetails.bathRoomCount }} BathRooms
             </p>
-            <ng-template #topNotZero>
-                <p class="fs-6 colo-sm-12" style="display: inline;">{{propDetails.ratingOverroll | number:'1.1-1' }} |
-                    <a>{{propDetails.numOfReview}} Reviews</a> |
-                    {{propDetails.cityNmae}},
-                    {{propDetails.countryNmae}}
-                </p>
+          </div>
+          <img
+            src="{{ propDetails.userImage }}"
+            class="rounded-circle"
+            style="height: 4rem; width: 4rem"
+          />
+        </div>
+        <hr />
+      </div>
+
+      <div class="row">
+        <div class="col-1">
+          <p style="display: block" class="material-icons fs-1">
+            supervised_user_circle
+          </p>
+          <p style="display: block" class="material-icons fs-1">location_on</p>
+          <p style="display: block" class="material-icons fs-1">key</p>
+        </div>
+        <div class="col-11">
+          <h4 style="display: inline; font-weight: bold">
+            {{ propDetails.userName }} is a Superhost
+          </h4>
+          <p style="margin-left: 0.2rem">
+            Superhosts are experienced, highly rated hosts who are committed to
+            providing great stays for guests.
+          </p>
+          <h4 style="display: inline; font-weight: bold">Great location</h4>
+          <p style="margin-left: 0.2rem">
+            100% of recent guests gave the location a 5-star rating.
+          </p>
+          <h4 style="display: inline; font-weight: bold">
+            Great check-in experience
+          </h4>
+          <p style="margin-left: 0.2rem">
+            100% of recent guests gave the check-in process a 5-star rating.
+          </p>
+        </div>
+      </div>
+      <hr />
+      <div>
+        <h1 class="fs-2"><span style="color: red">air</span>cover</h1>
+        <p>
+          Every booking includes free protection from Host cancellations,
+          listing inaccuracies, and other issues like trouble checking in.
+        </p>
+      </div>
+      <hr />
+      <div>
+        <p class="fs-6">
+          Westin Kaanapali Ocean Resort Villas North timeshare - Pay resort:
+          $14-20/day, stays under 7 night $38/res - Inquire about availability,
+          I review then offer/approve if available :) - READ "The Space" for
+          cleaning/etc AND brief explanation about timeshare reservations - Want
+          guaranteed view for additional cost? Must be weekly rental, other
+          restrictions - Wheelchair accessible / ADA, call resort directly to
+          ensure U receive. If U need ADA U MUST inform us BEFORE booking.
+        </p>
+      </div>
+      <hr />
+
+      <h2 class="fw-bold">What this place offers</h2>
+      <div *ngFor="let a of propDetails.aminties">
+        <p style="display: inline" class="material-icons fs-3">{{ a.icon }}</p>
+        <p style="display: inline" class="fs-3">{{ a.amintiesName }}</p>
+      </div>
+      <div class=""></div>
+      <hr />
+      <div>
+        <p style="display: inline" class="material-icons fs-5">star</p>
+        <p
+          *ngIf="propDetails.ratingOverroll === 0.0; else notZero"
+          class="fs-5"
+          style="display: inline"
+        >
+          N/A | No reviews yet
+        </p>
+        <ng-template #notZero>
+          <p class="fs-5" style="display: inline">
+            {{ propDetails.ratingOverroll | number : "1.1-1" }} |
+            {{ propDetails.numOfReview }} Reviews
+          </p>
+        </ng-template>
+      </div>
+      <div class="row d-flex justify-content-start flex-wrap">
+        <div class="col-6 mt-3" *ngFor="let i of propDetails.reviews">
+          <div class="row">
+            <div class="col-2">
+              <img
+                src="{{ i.userimage }}"
+                class="rounded-circle"
+                style="height: 3rem; width: 3rem"
+              />
+            </div>
+            <div class="col-6">
+              <h3 class="fw-bold" style="display: inline">{{ i.userName }}</h3>
+              <h5>{{ i.createDate | date : "EEEE, MMMM d, y" }}</h5>
+            </div>
+            <div class="col-4 d-flex">
+              <h1 class="star" [appStarRating]="i.rate"></h1>
+            </div>
+          </div>
+          <div class="row">
+            <p>{{ i.reviewComment }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="propReview.hasreview == true ">
+        <div class="row">
+          <h2>You have reserved this property before!</h2>
+          <h3>Tell us about your experience..</h3>
+        </div>
+        <div class="row">
+          <div class="col-4>">
+            <p style="display: inline">Choose your rating:</p>
+          </div>
+          <div class="col-8">
+            0
+            <mat-slider
+              style="width: 10rem"
+              min="0"
+              max="5"
+              step="1"
+              showTickMarks
+              discrete
+            >
+              <input matSliderThumb [(ngModel)]="rate" />
+            </mat-slider>
+            5
+          </div>
+        </div>
+
+        <div class="row">
+          <mat-form-field>
+            <mat-label>Add your comment..</mat-label>
+            <textarea matInput [(ngModel)]="comment"></textarea>
+          </mat-form-field>
+          <button
+            mat-raised-button
+            color="warn"
+            class="mx-auto my-4"
+            style="width: 30%"
+            (click)="sendReview()"
+          >
+            Send your review
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-12">
+      <div
+        class="row"
+        style="
+          position: sticky;
+          top: 6rem;
+          left: 12rem;
+          border: lightgray solid 1px;
+          border-radius: 5px;
+          box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.2);
+          margin-left: 4rem;
+          margin-top: 2rem;
+        "
+      >
+        <div class="row">
+          <div class="d-flex">
+            <h2 class="me-auto" style="display: inline">
+              ${{ propDetails.pricePerNight }}
+              <span style="font-size: small">per night</span>
+            </h2>
+            <p style="display: inline" class="material-icons fs-6 mt-2">star</p>
+
+            <p
+              *ngIf="propDetails.ratingOverroll === 0.0; else reserveNotZero"
+              class="fs-6 mt-2"
+              style="display: inline"
+            >
+              N/A |
+              <a>No reviews yet</a>
+            </p>
+            <ng-template #reserveNotZero>
+              <p class="fs-6 mt-2" style="display: inline">
+                {{ propDetails.ratingOverroll | number : "1.1-1" }} |
+                {{ propDetails.numOfReview }} Reviews
+              </p>
             </ng-template>
+          </div>
         </div>
+        <div class="row" style="margin: auto">
+          <p>check-in date:</p>
+          <mat-form-field>
+            <mat-label>Choose a check-in date</mat-label>
+            <input
+              matInput
+              [min]="minDate"
+              [matDatepickerFilter]="myFilter"
+              [matDatepicker]="checkInPicker"
+              placeholder="Check-in"
+              (dateInput)="onCheckInDateChange()"
+              [(ngModel)]="startDate"
+            />
+            <mat-hint>Disabled dates are reserved.</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="checkInPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #checkInPicker></mat-datepicker>
+          </mat-form-field>
+
+          <p *ngIf="startDate">Check-out date:</p>
+          <mat-form-field *ngIf="startDate">
+            <mat-label>Choose a check-out date</mat-label>
+            <input
+              matInput
+              [matDatepicker]="checkOutPicker"
+              [min]="minCheckOutDate"
+              [max]="maxCheckOutDate"
+              placeholder="Check-out"
+              (dateInput)="onDateRangeChange()"
+              [(ngModel)]="endDate"
+            />
+            <mat-hint>Disabled dates are reserved.</mat-hint>
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="checkOutPicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #checkOutPicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="row" style="margin: auto; margin-top: 2rem">
+          <div
+            class="d-flex"
+            style="border: black solid 1px; border-radius: 5px"
+          >
+            <h3 class="me-auto mt-3">Guests</h3>
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label=""
+              class="mt-1"
+              [disabled]="isPDisabled"
+              (click)="pButton()"
+            >
+              <mat-icon>add_circle</mat-icon>
+            </button>
+            <h4 class="pt-2" class="mt-3">{{ numOfGuests }}</h4>
+            <button
+              mat-icon-button
+              color="primary"
+              aria-label=""
+              class="mt-1"
+              [disabled]="isMDisabled"
+              (click)="mButton()"
+            >
+              <mat-icon>remove_circle</mat-icon>
+            </button>
+          </div>
+        </div>
+        <div class="row" style="margin: auto; margin-top: 1rem">
+          <button mat-raised-button color="warn" (click)="openPopup()">
+            Reserve
+          </button>
+        </div>
+
+        <div class="row">
+          <h3>You won't be charged yet.</h3>
+          <p>
+            Price shown is the total trip price, including additional fees and
+            taxes.
+          </p>
+          <hr class="m-2" />
+        </div>
+        <div class="row">
+          <div class="d-flex">
+            <h2 class="me-auto">Total</h2>
+            <h3>${{ totalPrice }}</h3>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="row mt-3">
-        <div class="col" *ngFor="let i of propDetails.imgs">
-            <div class="d-flex justify-content-center flex-wrap m-2">
-                <img src="{{i}}" class="rounded" style="height: 15rem; width: 25rem;">
-            </div>
-        </div>
-    </div>
-    <hr>
-
-    <div class="row">
-        <div class="col-lg-8 colo-sm-12">
-            <div class="row mb-4">
-                <div class="colo-sm-12 mb-3 d-flex justify-content-between">
-                    <div>
-                        <h1>Hosted by: {{propDetails.userName}}</h1>
-                        <p class="fs-6" style="display: inline;">
-                            Maximum of {{propDetails.maxNumOfGuest}} Guests |
-                            {{propDetails.bedRoomCount}} BedRooms |
-                            {{propDetails.bathRoomCount}} BathRooms</p>
-                    </div>
-                    <img src="{{propDetails.userImage}}" class="rounded-circle" style="height: 4rem; width: 4rem;">
-                </div>
-                <hr>
-            </div>
-
-            <div class="row">
-                <div class="col-1">
-                    <p style="display: block;" class="material-icons fs-1"> supervised_user_circle </p>
-                    <p style="display: block;" class="material-icons fs-1"> location_on </p>
-                    <p style="display: block;" class="material-icons fs-1"> key </p>
-                </div>
-                <div class="col-11">
-                    <h4 style="display: inline; font-weight: bold;">{{propDetails.userName}} is a Superhost</h4>
-                    <p style="margin-left: 0.2rem;">Superhosts are experienced, highly rated hosts who are committed to
-                        providing great stays for guests.</p>
-                    <h4 style="display: inline; font-weight: bold;">Great location</h4>
-                    <p style="margin-left: 0.2rem;">100% of recent guests gave the location a 5-star rating.</p>
-                    <h4 style="display: inline; font-weight: bold;">Great check-in experience</h4>
-                    <p style="margin-left: 0.2rem;">100% of recent guests gave the check-in process a 5-star rating.</p>
-                </div>
-            </div>
-            <hr>
-            <div>
-                <h1 class="fs-2"><span style="color: red;">air</span>cover</h1>
-                <p>Every booking includes free protection from Host cancellations, listing inaccuracies, and other
-                    issues like trouble checking in.</p>
-            </div>
-            <hr>
-            <div>
-                <p class="fs-6">Westin Kaanapali Ocean Resort Villas North timeshare - Pay resort: $14-20/day, stays
-                    under 7 night $38/res - Inquire about availability, I review then offer/approve if available :) -
-                    READ "The Space" for cleaning/etc AND brief explanation about timeshare reservations - Want
-                    guaranteed view for additional cost? Must be weekly rental, other restrictions - Wheelchair
-                    accessible / ADA, call resort directly to ensure U receive. If U need ADA U MUST inform us BEFORE
-                    booking.</p>
-            </div>
-            <hr>
-
-            <h2 class="fw-bold">What this place offers</h2>
-            <div *ngFor="let a of propDetails.aminties">
-                <p style="display: inline;" class="material-icons fs-3">{{a.icon}}</p>
-                <p style="display: inline;" class="fs-3"> {{a.amintiesName}}</p>
-            </div>
-            <div class="">
-
-            </div>
-            <hr>
-            <div>
-                <p style="display: inline;" class="material-icons fs-5">star</p>
-                <p *ngIf="propDetails.ratingOverroll === 0.0; else notZero" class="fs-5" style="display: inline;">
-                    N/A |
-                    No reviews yet</p>
-                <ng-template #notZero>
-                    <p class="fs-5" style="display: inline;">
-                        {{propDetails.ratingOverroll | number:'1.1-1'}} |
-                        {{propDetails.numOfReview}} Reviews</p>
-                </ng-template>
-            </div>
-            <div class="row d-flex justify-content-start flex-wrap">
-                <div class="col-6 mt-3" *ngFor="let i of propDetails.reviews">
-                    <div class="row">
-                        <div class="col-2"><img src="{{i.userimage}}" class="rounded-circle"
-                                style="height: 3rem; width: 3rem;">
-                        </div>
-                        <div class="col-6">
-                            <h3 class="fw-bold" style="display: inline;">{{i.userName}}</h3>
-                            <h5>{{i.createDate | date:'EEEE, MMMM d, y'}}</h5>
-                        </div>
-                        <div class="col-4 d-flex">
-                            <h1 class="star" [appStarRating]="i.rate"></h1>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <p>{{i.reviewComment}}</p>
-                    </div>
-                </div>
-            </div>
-
-            <div *ngIf="propReview.hasreview == true">
-                <div class="row">
-                    <h2>You have reserved this property before!</h2>
-                    <h3>Tell us about your experience..</h3>
-                </div>
-                <div class="row">
-                    <div class="col-4>">
-                        <p style="display: inline;">Choose your rating:</p>
-                    </div>
-                    <div class="col-8">
-                        0 <mat-slider style="width: 10rem;" min="0" max="5" step="1"
-                            showTickMarks discrete>
-                            <input matSliderThumb [(ngModel)]="rate">
-                        </mat-slider> 5</div>
-                </div>
-
-                <div class="row">
-                    <mat-form-field>
-                        <mat-label>Add your comment..</mat-label>
-                        <textarea matInput [(ngModel)]="comment"></textarea>
-                    </mat-form-field>
-                    <button mat-raised-button color="warn" class="mx-auto my-4" style="width: 30%;"
-                        (click)="sendReview()">Send your
-                        review</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-sm-12">
-            <div class="row" style="position: sticky; top: 6rem; left: 12rem; 
-            border: lightgray solid 1px; border-radius: 5px; box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
-            margin-left: 4rem; margin-top: 2rem;">
-                <div class="row">
-                    <div class="d-flex">
-                        <h2 class="me-auto" style="display: inline;">${{propDetails.pricePerNight}} <span
-                                style="font-size:small;">per night</span> </h2>
-                        <p style="display: inline;" class="material-icons fs-6 mt-2">star</p>
-
-                        <p *ngIf="propDetails.ratingOverroll ===0.0; else reserveNotZero" class="fs-6 mt-2"
-                            style="display: inline;">N/A |
-                            <a>No reviews yet</a>
-                        </p>
-                        <ng-template #reserveNotZero>
-                            <p class="fs-6 mt-2" style="display: inline;">{{propDetails.ratingOverroll |
-                                number:'1.1-1'}} |
-                                {{propDetails.numOfReview}} Reviews
-                            </p>
-                        </ng-template>
-                    </div>
-                </div>
-                <div class="row" style="margin: auto;">
-                    <p>check-in date:</p>
-                    <mat-form-field>
-                        <mat-label>Choose a check-in date</mat-label>
-                        <input matInput [min]="minDate" [matDatepickerFilter]="myFilter" [matDatepicker]="checkInPicker"
-                            placeholder="Check-in" (dateInput)="onCheckInDateChange()" [(ngModel)]="startDate">
-                        <mat-hint>Disabled dates are reserved.</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="checkInPicker"></mat-datepicker-toggle>
-                        <mat-datepicker #checkInPicker></mat-datepicker>
-                    </mat-form-field>
-
-                    <p *ngIf="startDate">Check-out date:</p>
-                    <mat-form-field *ngIf="startDate">
-                        <mat-label>Choose a check-out date</mat-label>
-                        <input matInput [matDatepicker]="checkOutPicker" [min]="minCheckOutDate" [max]="maxCheckOutDate"
-                            placeholder="Check-out" (dateInput)="onDateRangeChange()" [(ngModel)]="endDate">
-                        <mat-hint>Disabled dates are reserved.</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="checkOutPicker"></mat-datepicker-toggle>
-                        <mat-datepicker #checkOutPicker></mat-datepicker>
-                    </mat-form-field>
-                </div>
-
-                <div class="row" style="margin: auto; margin-top: 2rem;">
-                    <div class="d-flex" style="border: black solid 1px; border-radius: 5px;">
-                        <h3 class="me-auto mt-3">Guests</h3>
-                        <button mat-icon-button color="primary" aria-label="" class="mt-1" [disabled]="isPDisabled"
-                            (click)="pButton()">
-                            <mat-icon>add_circle</mat-icon></button>
-                        <h4 class="pt-2" class="mt-3">{{numOfGuests}}</h4>
-                        <button mat-icon-button color="primary" aria-label="" class="mt-1" [disabled]="isMDisabled"
-                            (click)="mButton()">
-                            <mat-icon>remove_circle</mat-icon></button>
-                    </div>
-                </div>
-                <div class="row" style="margin: auto; margin-top: 1rem;">
-                    <button mat-raised-button color="warn" (click)="openPopup()">Reserve</button>
-                </div>
-
-                <div class="row">
-                    <h3>You won't be charged yet.</h3>
-                    <p>Price shown is the total trip price, including additional fees and taxes.</p>
-                    <hr class="m-2">
-                </div>
-                <div class="row">
-                    <div class="d-flex">
-                        <h2 class="me-auto">Total</h2>
-                        <h3>${{totalPrice}}</h3>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
+  </div>
 </div>

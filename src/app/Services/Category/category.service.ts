@@ -13,7 +13,7 @@ export class CategoryService {
 
 
   public queryforcategory = new  BehaviorSubject<any>(null!);
-  public query$ = this.queryforcategory.asObservable(); //Has a $ 
+  public query$ = this.queryforcategory.asObservable(); //Has a $
 
   setqeury(query:any ){
 
@@ -22,11 +22,11 @@ export class CategoryService {
     }
 
 
-  
+
 
   GetAllGategory(): Observable<any> {
 
-    return this.myClient.get('https://rentifyapiazure.azurewebsites.net/api/Home/Categories')
+    return this.myClient.get('https://localhost:7108/api/Home/Categories')
   }
 
 }

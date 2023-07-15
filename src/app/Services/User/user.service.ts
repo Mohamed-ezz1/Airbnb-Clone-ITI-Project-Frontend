@@ -15,7 +15,7 @@ export class AuthenticationService {
 
   constructor(private client: HttpClient, private UsertypeService: UsertypeService) { }
 
-  private readonly Base_URL = "https://rentifyapiazure.azurewebsites.net/api/User/Register";
+  private readonly Base_URL = "https://localhost:7108/api/User/Register";
 
 
   AddUser(newUser: RegisterDto): Observable<any> {
@@ -27,7 +27,7 @@ export class AuthenticationService {
 
   public login(credentials: LoginDto): Observable<TokenDto> {
     return this.client
-      .post<TokenDto>('https://rentifyapiazure.azurewebsites.net/api/User/Login', credentials)
+      .post<TokenDto>('https://localhost:7108/api/User/Login', credentials)
       .pipe(
         tap((tokenDto) => {
           this.isLoggedIn$.next(true);

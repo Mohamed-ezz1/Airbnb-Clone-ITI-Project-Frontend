@@ -18,7 +18,7 @@ export class GategoryComponent {
     TabsService.tab$.subscribe({
 
       next: (data)=>{
-  
+
         if(data=="Home"){
           this.ishome=true}
           else{
@@ -30,7 +30,7 @@ export class GategoryComponent {
    }
 
  // filters = filters  // data
-  
+
   isFullyScrolledRight: boolean = false
   isFullyScrolledLeft: boolean = false
   stayFilter !: GtegoryDto
@@ -38,6 +38,7 @@ export class GategoryComponent {
 category!: GtegoryDto[];
   ngOnInit(): void {
     this.subscription = this.stayService.GetAllGategory().subscribe(stayFilter => {
+      console.log(stayFilter);
       this.category = stayFilter
     })
   }
@@ -56,7 +57,7 @@ category!: GtegoryDto[];
     if (this.elFilter.nativeElement) {
       this.isFullyScrolledRight = Math.abs(calc) <= 1
       this.isFullyScrolledLeft = this.elFilter.nativeElement?.scrollLeft === 0
-      
+
     }
   }
 

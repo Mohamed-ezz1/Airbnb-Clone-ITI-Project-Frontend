@@ -7,14 +7,14 @@ import { Injectable } from '@angular/core';
 export class SearchboxService {
   myclient:HttpClient
 
-  constructor(myclient : HttpClient) { 
+  constructor(myclient : HttpClient) {
 
     this.myclient = myclient
   }
 
 
 
-  private readonly search = "https://rentifyapiazure.azurewebsites.net/api/SearchBar";
+  private readonly search = "https://localhost:7108/api/SearchBar";
 
   Searchbarinformation() {
     return this.myclient.get(this.search);

@@ -7,10 +7,10 @@ import { GestToUpdateProfile } from 'src/app/types/ProfileOfUserDTO';
   providedIn: 'root'
 })
 export class UserProfileUpdateService {
-  
 
 
-  private apiUrl = 'https://rentifyapiazure.azurewebsites.net/api/UserDetails';
+
+  private apiUrl = 'https://localhost:7108/api/UserDetails';
 
   constructor(private client: HttpClient) {}
 

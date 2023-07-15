@@ -46,7 +46,7 @@ export class PropDetailsComponent implements OnInit {
   }
 
   propDetails: any;             //all details of property
-  propId: any;                      //Id of property 
+  propId: any;                      //Id of property
   pricePerNight!: any;              //price
   numOfGuests: any = 1;         // number of guests the user reserving
   isPDisabled!: boolean;
@@ -59,11 +59,10 @@ export class PropDetailsComponent implements OnInit {
   minCheckOutDate: any;
   maxCheckOutDate: any;
   range!: FormGroup;
-  hasReview!:boolean;
   bookingIdOfThisUser: any;
-  propReview: any;
+  propReview : any;
   comment: any;
-  rate:any = 1; 
+  rate:any = 1;
 
 myFilter = (date: Date | null): boolean => {        //filter of check in date
   if (!date) {
@@ -121,7 +120,13 @@ onDateRangeChange() {
     });
 
     this.propService.CheckForReviews(this.propId).subscribe({
-      next: (data) => { this.propReview = data; console.log(data); },
+      next: (data) => { this.propReview = data;
+
+        console.log("cheeeeeeeeeeeeeeee");
+        console.log(data);
+
+
+      },
       error: (error) => { console.log(error) },
       complete: () => { console.log("complete"); }
     });

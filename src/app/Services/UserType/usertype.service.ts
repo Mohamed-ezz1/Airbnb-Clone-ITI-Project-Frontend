@@ -18,7 +18,7 @@ export class UsertypeService {
 
   public usertype$ = new BehaviorSubject<any>(null);
 
-  private readonly Usertype = "https://rentifyapiazure.azurewebsites.net/api/UserDetails/UserType/";
+  private readonly Usertype = "https://localhost:7108/api/UserDetails/UserType/";
 
   getusertype() {
 
